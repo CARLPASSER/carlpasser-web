@@ -2228,13 +2228,44 @@ textarea.form-control {
         padding: 72px 0;
     }
 
+    .maintenance .intro,
+    .maintenance .solution,
+    .maintenance .menu,
+    .maintenance .cta,
+    .sell .intro,
+    .sell .solution,
+    .sell .menu,
+    .sell .cta {
+        width: calc(100% - 36px);
+        padding-top: 64px;
+        padding-bottom: 64px;
+    }
+
+    .maintenance .empathy,
+    .maintenance .trust,
+    .sell .empathy,
+    .sell .trust {
+        width: calc(100% - 36px);
+        padding-left: 18px;
+        padding-right: 18px;
+        padding-top: 64px;
+        padding-bottom: 64px;
+        box-sizing: border-box;
+    }
+
     .maintenance .menu-grid {
         grid-template-columns: 1fr;
         gap: 14px;
     }
 
+    .maintenance .menu-box,
+    .sell .menu-box {
+        padding: 20px 18px;
+    }
+
     .maintenance .maintenance-scenes {
-        padding: 8px 0 72px;
+        width: calc(100% - 36px);
+        padding: 8px 0 64px;
     }
 
     .maintenance .maintenance-scenes-grid {
@@ -2253,11 +2284,15 @@ textarea.form-control {
 
     .maintenance h2 {
         font-size: 1.6rem;
+        line-height: 1.5;
+        margin-bottom: 18px;
+        padding-right: 4px;
     }
 
     .maintenance p,
     .maintenance li {
         font-size: 0.95rem;
+        line-height: 1.88;
     }
 
     .sell .hero.fv-mobile-center {
@@ -2284,11 +2319,28 @@ textarea.form-control {
 
     .sell h2 {
         font-size: 1.6rem;
+        line-height: 1.5;
+        margin-bottom: 18px;
+        padding-right: 4px;
     }
 
     .sell p,
     .sell li {
         font-size: 0.95rem;
+        line-height: 1.88;
+    }
+
+    .maintenance .hero h1,
+    .sell .hero h1 {
+        max-width: 11.5em;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .line-btn {
+        min-height: 56px;
+        padding: 16px 32px;
+        line-height: 1.2;
     }
 
     .pc-only {
