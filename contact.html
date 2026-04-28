@@ -106,8 +106,11 @@
         </div>
 
         <div class="contact-form">
-            <form name="contact" method="POST" data-netlify="true" action="/thanks.html">
+            <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thanks.html">
                 <input type="hidden" name="form-name" value="contact">
+                <p style="display:none;">
+                    <label>Don’t fill this out if you’re human: <input name="bot-field"></label>
+                </p>
                 <div class="form-group">
                     <label for="name">お名前</label>
                     <input type="text" id="name" name="name" class="form-control" required maxlength="100" autocomplete="name">
@@ -121,11 +124,6 @@
                 <div class="form-group">
                     <label for="message">お問い合わせ内容</label>
                     <textarea id="message" name="message" class="form-control" required maxlength="3000"></textarea>
-                </div>
-
-                <div style="position: absolute; left: -9999px; opacity: 0; pointer-events: none;" aria-hidden="true">
-                    <label for="website">Website</label>
-                    <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
                 </div>
 
                 <div style="text-align: center;">
