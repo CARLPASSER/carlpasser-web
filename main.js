@@ -92,6 +92,43 @@ document.addEventListener('DOMContentLoaded', () => {
         return response.json();
     };
 
+    const fetchNewsData = async (params = {}) => {
+        const searchParams = new URLSearchParams(params);
+        const queryString = searchParams.toString();
+        const response = await fetch(`/.netlify/functions/news${queryString ? `?${queryString}` : ''}`);
+
+        if (!response.ok) {
+            throw new Error(`API fetch failed: ${response.status}`);
+        }
+
+        return response.json();
+    };
+
+    const fetchAllNewsData = async () => {
+        const pageSize = 100;
+        const allItems = [];
+        let offset = 0;
+        let totalCount = Infinity;
+
+        while (allItems.length < totalCount) {
+            const data = await fetchNewsData({
+                limit: String(pageSize),
+                offset: String(offset)
+            });
+            const items = Array.isArray(data.contents) ? data.contents : [];
+            totalCount = Number.isFinite(data.totalCount) ? data.totalCount : items.length;
+
+            if (!items.length) {
+                break;
+            }
+
+            allItems.push(...items);
+            offset += items.length;
+        }
+
+        return allItems;
+    };
+
     const formatDate = (dateString) => {
         const dateObj = new Date(dateString);
 
@@ -102,48 +139,91 @@ document.addEventListener('DOMContentLoaded', () => {
         return `${dateObj.getFullYear()}.${String(dateObj.getMonth() + 1).padStart(2, '0')}.${String(dateObj.getDate()).padStart(2, '0')}`;
     };
 
+    const escapeHtml = (value) => String(value)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+
+    const getNewsDetailUrl = (id) => `/news-detail.html?id=${encodeURIComponent(id)}`;
+
+    const createNewsListItem = (item) => {
+        const hasLink = Boolean(item.id);
+        const element = document.createElement(hasLink ? 'a' : 'article');
+        element.className = 'news-item';
+
+        if (hasLink) {
+            element.href = getNewsDetailUrl(item.id);
+            element.setAttribute('aria-label', `${item.title || 'お知らせ'}の詳細を見る`);
+        }
+
+        const date = document.createElement('div');
+        date.className = 'news-date';
+        date.textContent = formatDate(item.date || item.publishedAt);
+
+        const title = document.createElement('div');
+        title.className = 'news-content-title';
+        title.style.flex = '1';
+        title.textContent = item.title || '';
+
+        element.appendChild(date);
+        element.appendChild(title);
+
+        return element;
+    };
+
+    const renderNewsList = (container, newsData, emptyMessage) => {
+        if (!container) return;
+
+        if (!newsData.length) {
+            container.innerHTML = `<p class="news-empty">${emptyMessage}</p>`;
+            return;
+        }
+
+        container.innerHTML = '';
+        const fragment = document.createDocumentFragment();
+
+        newsData.forEach((item) => {
+            fragment.appendChild(createNewsListItem(item));
+        });
+
+        container.appendChild(fragment);
+    };
+
+    const renderNewsBody = (container, body) => {
+        if (!container) return;
+
+        container.innerHTML = '';
+
+        if (!body) {
+            return;
+        }
+
+        if (/<[a-z][\s\S]*>/i.test(body)) {
+            container.innerHTML = body;
+            return;
+        }
+
+        body.split(/\n{2,}/).forEach((paragraph) => {
+            const trimmedParagraph = paragraph.trim();
+            if (!trimmedParagraph) return;
+
+            const element = document.createElement('p');
+            element.innerHTML = escapeHtml(trimmedParagraph).replace(/\n/g, '<br>');
+            container.appendChild(element);
+        });
+    };
+
     // Load News Data from microCMS
     const loadNews = async () => {
         const newsContainer = document.getElementById('news-container');
         if (!newsContainer) return;
 
         try {
-            const response = await fetch('/.netlify/functions/news');
-
-            if (!response.ok) {
-                throw new Error(`API fetch failed: ${response.status}`);
-            }
-
-            const data = await response.json();
+            const data = await fetchNewsData({ limit: '3' });
             const newsData = Array.isArray(data.contents) ? data.contents : [];
-
-            if (newsData.length === 0) {
-                newsContainer.innerHTML = '<p style="text-align: center; color: var(--text-light);">現在お知らせはありません</p>';
-                return;
-            }
-
-            newsContainer.innerHTML = '';
-            const fragment = document.createDocumentFragment();
-
-            newsData.forEach((item) => {
-                const article = document.createElement('article');
-                article.className = 'news-item';
-
-                const date = document.createElement('div');
-                date.className = 'news-date';
-                date.textContent = formatDate(item.date || item.publishedAt);
-
-                const title = document.createElement('div');
-                title.className = 'news-content-title';
-                title.style.flex = '1';
-                title.textContent = item.title || '';
-
-                article.appendChild(date);
-                article.appendChild(title);
-                fragment.appendChild(article);
-            });
-
-            newsContainer.appendChild(fragment);
+            renderNewsList(newsContainer, newsData, '現在お知らせはありません');
         } catch (error) {
             console.log('Error fetching news:', error);
             newsContainer.innerHTML = '<p style="text-align: center; color: var(--text-light);">お知らせの読み込みに失敗しました。</p>';
@@ -151,6 +231,55 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     loadNews();
+
+    const loadNewsArchive = async () => {
+        const archiveContainer = document.getElementById('news-archive-list');
+        if (!archiveContainer) return;
+
+        try {
+            const newsData = await fetchAllNewsData();
+            renderNewsList(archiveContainer, newsData, '現在お知らせはありません');
+        } catch (error) {
+            console.log('Error fetching news archive:', error);
+            archiveContainer.innerHTML = '<p class="news-empty">お知らせの読み込みに失敗しました。</p>';
+        }
+    };
+
+    loadNewsArchive();
+
+    const loadNewsDetail = async () => {
+        const detailTitle = document.getElementById('news-detail-title');
+        const detailDate = document.getElementById('news-detail-date');
+        const detailBody = document.getElementById('news-detail-body');
+        if (!detailTitle || !detailDate || !detailBody) return;
+
+        const id = new URLSearchParams(window.location.search).get('id');
+
+        if (!id) {
+            detailTitle.textContent = 'お知らせが見つかりません';
+            detailDate.textContent = '';
+            detailBody.innerHTML = '<p>記事IDが指定されていません。</p>';
+            return;
+        }
+
+        try {
+            const item = await fetchNewsData({ id });
+            detailTitle.textContent = item.title || 'お知らせ';
+            detailDate.textContent = formatDate(item.date || item.publishedAt);
+            renderNewsBody(detailBody, item.body || '');
+
+            if (item.title) {
+                document.title = `${item.title} | NEWS | CARL PASSER`;
+            }
+        } catch (error) {
+            console.log('Error fetching news detail:', error);
+            detailTitle.textContent = 'お知らせの読み込みに失敗しました';
+            detailDate.textContent = '';
+            detailBody.innerHTML = '<p>時間をおいて再度お試しください。</p>';
+        }
+    };
+
+    loadNewsDetail();
 
     // Load Weekly Select Cards (sales.html)
     const loadWeeklySelect = () => {
