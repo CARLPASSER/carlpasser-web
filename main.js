@@ -81,64 +81,69 @@ document.addEventListener('DOMContentLoaded', () => {
     const fadeElements = document.querySelectorAll('.fade-up');
     fadeElements.forEach(el => observer.observe(el));
 
+    const fetchMicroCMS = async (endpoint, params = {}) => {
+        const searchParams = new URLSearchParams({ endpoint, ...params });
+        const response = await fetch(`/.netlify/functions/microcms?${searchParams.toString()}`);
+
+        if (!response.ok) {
+            throw new Error(`API fetch failed: ${response.status}`);
+        }
+
+        return response.json();
+    };
+
+    const formatDate = (dateString) => {
+        const dateObj = new Date(dateString);
+
+        if (Number.isNaN(dateObj.getTime())) {
+            return '';
+        }
+
+        return `${dateObj.getFullYear()}.${String(dateObj.getMonth() + 1).padStart(2, '0')}.${String(dateObj.getDate()).padStart(2, '0')}`;
+    };
+
     // Load News Data from microCMS
     const loadNews = async () => {
         const newsContainer = document.getElementById('news-container');
         if (!newsContainer) return;
 
-        // 【TODO】こちらにご自身のmicroCMS情報をご入力ください
-        const SERVICE_DOMAIN = 'carlpasser'; // 例: carlpasser
-        const ENDPOINT = 'news'; // 作成したエンドポイント名
-        const API_KEY = 'eZWaPSsxhICkKh0Z5Me6OtZCzUAkMR4xMhGU';
-
-        if (SERVICE_DOMAIN === 'YOUR_SERVICE_DOMAIN' || API_KEY === 'YOUR_API_KEY') {
-            newsContainer.innerHTML = '<p style="text-align: center; color: var(--text-light);"><small>※microCMSの設定が完了し、設定値（Service Domain と API Key）を入力するとお知らせが表示されます。</small></p>';
-            return;
-        }
-
         try {
-            const response = await fetch(`https://${SERVICE_DOMAIN}.microcms.io/api/v1/${ENDPOINT}?limit=3`, {
-                headers: {
-                    'X-MICROCMS-API-KEY': API_KEY
-                }
+            const data = await fetchMicroCMS('news', {
+                limit: '3',
+                orders: '-publishedAt',
+                fields: 'date,title,publishedAt'
             });
-
-            if (!response.ok) throw new Error('API fetch failed');
-
-            const data = await response.json();
-            const newsData = data.contents;
+            const newsData = Array.isArray(data.contents) ? data.contents : [];
 
             if (newsData.length === 0) {
-                newsContainer.innerHTML = '<p style="text-align: center; color: var(--text-light);">現在、お知らせはありません。</p>';
+                newsContainer.innerHTML = '<p style="text-align: center; color: var(--text-light);">現在お知らせはありません</p>';
                 return;
             }
 
-            // Create HTML
             newsContainer.innerHTML = '';
-            newsData.forEach(item => {
-                // dateフィールドがあればそれを使用、なければ公開日(publishedAt)を使用
-                const dateString = item.date ? item.date : item.publishedAt;
-                const dateObj = new Date(dateString);
-                const formattedDate = `${dateObj.getFullYear()}.${String(dateObj.getMonth() + 1).padStart(2, '0')}.${String(dateObj.getDate()).padStart(2, '0')}`;
+            const fragment = document.createDocumentFragment();
 
+            newsData.forEach((item) => {
                 const article = document.createElement('article');
                 article.className = 'news-item';
 
-                const titleHtml = item.link_url ? `<a href="${item.link_url}" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline;">${item.title}</a>` : item.title;
-                const bodyHtml = item.body ? `<div class="news-body" style="margin-top: 10px; font-size: 13px; color: #555; line-height: 1.6;">${item.body}</div>` : '';
+                const date = document.createElement('div');
+                date.className = 'news-date';
+                date.textContent = formatDate(item.date || item.publishedAt);
 
-                article.innerHTML = `
-                    <div class="news-date">${formattedDate}</div>
-                    <div class="news-content-title" style="flex: 1;">
-                        <div style="font-weight: 500; font-size: 15px;">${titleHtml}</div>
-                        ${bodyHtml}
-                    </div>
-                `;
-                newsContainer.appendChild(article);
+                const title = document.createElement('div');
+                title.className = 'news-content-title';
+                title.style.flex = '1';
+                title.textContent = item.title || '';
+
+                article.appendChild(date);
+                article.appendChild(title);
+                fragment.appendChild(article);
             });
 
+            newsContainer.appendChild(fragment);
         } catch (error) {
-            console.error('Error fetching news:', error);
+            console.log('Error fetching news:', error);
             newsContainer.innerHTML = '<p style="text-align: center; color: var(--text-light);">お知らせの読み込みに失敗しました。</p>';
         }
     };
@@ -195,21 +200,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const galleryContainer = document.getElementById('gallery-container');
         if (!galleryContainer) return;
 
-        const SERVICE_DOMAIN = 'carlpasser';
-        const ENDPOINT = 'gallery';
-        const API_KEY = 'eZWaPSsxhICkKh0Z5Me6OtZCzUAkMR4xMhGU';
-
         try {
-            const response = await fetch(`https://${SERVICE_DOMAIN}.microcms.io/api/v1/${ENDPOINT}?limit=20`, {
-                headers: {
-                    'X-MICROCMS-API-KEY': API_KEY
-                }
+            const data = await fetchMicroCMS('gallery', {
+                limit: '20'
             });
-
-            if (!response.ok) throw new Error('API fetch failed');
-
-            const data = await response.json();
-            const items = data.contents;
+            const items = Array.isArray(data.contents) ? data.contents : [];
 
             if (items.length === 0) {
                 // データがない場合は既存の静的画像を残すか、または何も表示しない
@@ -235,7 +230,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
         } catch (error) {
-            console.error('Error fetching gallery:', error);
+            console.log('Error fetching gallery:', error);
         }
     };
 
