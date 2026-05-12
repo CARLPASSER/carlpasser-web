@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const defaultServiceDomain = 'carlpasser';
+const microCMSNewsUrl = 'https://carlpasser.microcms.io/api/v1/news?limit=3&orders=-publishedAt';
 
 const loadEnvFile = () => {
   const envPath = path.resolve(process.cwd(), '.env');
@@ -38,16 +38,18 @@ const getMicroCMSConfig = () => {
   const fileEnv = loadEnvFile();
 
   return {
-    serviceDomain: (process.env.MICROCMS_SERVICE_DOMAIN || fileEnv.MICROCMS_SERVICE_DOMAIN || defaultServiceDomain).trim(),
     apiKey: process.env.MICROCMS_API_KEY || fileEnv.MICROCMS_API_KEY
   };
 };
 
 exports.handler = async (event) => {
-  if (event.httpMethod !== 'GET') {
+  const httpMethod = (event.httpMethod || '').toUpperCase();
+
+  if (httpMethod !== 'GET') {
     return {
       statusCode: 405,
       headers: {
+        'Allow': 'GET',
         'Content-Type': 'application/json; charset=utf-8'
       },
       body: JSON.stringify({
@@ -57,9 +59,9 @@ exports.handler = async (event) => {
     }
   }
 
-  const { serviceDomain, apiKey } = getMicroCMSConfig();
+  const { apiKey } = getMicroCMSConfig();
 
-  if (!serviceDomain || !apiKey) {
+  if (!apiKey) {
     return {
       statusCode: 500,
       headers: {
@@ -72,10 +74,8 @@ exports.handler = async (event) => {
     }
   }
 
-  const apiUrl = `https://${serviceDomain}.microcms.io/api/v1/news?limit=3&orders=-publishedAt`;
-
   try {
-    const response = await fetch(apiUrl, {
+    const response = await fetch(microCMSNewsUrl, {
       headers: {
         'X-MICROCMS-API-KEY': apiKey
       }
