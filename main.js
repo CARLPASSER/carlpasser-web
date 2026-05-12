@@ -108,11 +108,13 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!newsContainer) return;
 
         try {
-            const data = await fetchMicroCMS('news', {
-                limit: '3',
-                orders: '-publishedAt',
-                fields: 'date,title,publishedAt'
-            });
+            const response = await fetch('/.netlify/functions/news');
+
+            if (!response.ok) {
+                throw new Error(`API fetch failed: ${response.status}`);
+            }
+
+            const data = await response.json();
             const newsData = Array.isArray(data.contents) ? data.contents : [];
 
             if (newsData.length === 0) {
