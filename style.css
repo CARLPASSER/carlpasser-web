@@ -2723,6 +2723,21 @@ textarea.form-control {
     text-align: center;
 }
 
+.brand-closing .brand-text {
+    text-align: center;
+    max-width: 540px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.brand-closing .brand-text:last-child {
+    margin-bottom: 0;
+}
+
+.brand-line-cta {
+    padding-top: 76px;
+}
+
 .brand-line-cta .brand-text {
     text-align: center;
     margin-left: auto;
@@ -2957,6 +2972,14 @@ textarea.form-control {
 
     .brand-section {
         padding: 80px 0;
+    }
+
+    .brand-closing .brand-text {
+        max-width: 32em;
+    }
+
+    .brand-line-cta {
+        padding-top: 56px;
     }
 
     .brand-service-grid {
