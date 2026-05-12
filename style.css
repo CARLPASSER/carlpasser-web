@@ -2976,6 +2976,9 @@ textarea.form-control {
 
     .brand-closing .brand-text {
         max-width: 32em;
+        text-align: left;
+        margin-left: 0;
+        margin-right: 0;
     }
 
     .brand-line-cta {
