@@ -990,6 +990,19 @@ footer {
     margin: 0 auto;
 }
 
+.footer-business-name {
+    margin-bottom: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+}
+
+.footer-business-area {
+    margin-bottom: 18px;
+    font-size: 13px;
+    color: var(--text-light);
+}
+
 .copyright {
     font-size: 11px;
     color: var(--text-light);
