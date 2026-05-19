@@ -73,7 +73,8 @@ ul {
 }
 
 .hero-title-mobile-break,
-.our-carlife-mobile-break {
+.our-carlife-mobile-break,
+.service-mobile-br {
     display: none;
 }
 
@@ -2175,11 +2176,9 @@ textarea.form-control {
         background-color: var(--text-color) !important;
     }
 
-    /* FV text layout: unify around sell page look */
+    /* FV text layout: absolute-positioned heroes (BUY / brand) */
     .fv-mobile-center.sales-hero-content,
-    .brand-hero-content.fv-mobile-center,
-    .maintenance .hero.fv-mobile-center,
-    .sell .hero.fv-mobile-center {
+    .brand-hero-content.fv-mobile-center {
         left: 50%;
         bottom: 12%;
         transform: translateX(-50%) !important;
@@ -2187,6 +2186,26 @@ textarea.form-control {
         width: min(90%, 348px);
         max-width: 348px;
         padding: 0 10px;
+    }
+
+    /* FV text layout: flex-based heroes (MAINTENANCE / SELL) — match BUY proportions */
+    .maintenance .hero.fv-mobile-center,
+    .sell .hero.fv-mobile-center {
+        left: auto;
+        right: auto;
+        bottom: auto;
+        transform: none !important;
+        width: 100%;
+        max-width: none;
+        min-height: 56vh;
+        padding: 0 12px 12%;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-end;
+        text-align: center;
+        background-position: center 60%;
     }
 
     .sales-hero h1,
@@ -2287,13 +2306,6 @@ textarea.form-control {
         font-size: 15px;
     }
 
-    .maintenance .hero.fv-mobile-center {
-        min-height: 50vh;
-        padding: 0 20px 14%;
-        text-align: center;
-        align-items: center;
-        justify-content: flex-end;
-    }
 
     .maintenance .intro,
     .maintenance .empathy,
@@ -2312,7 +2324,7 @@ textarea.form-control {
     .sell .solution,
     .sell .menu,
     .sell .cta {
-        width: calc(100% - 36px);
+        width: min(90%, 860px);
         padding-top: 64px;
         padding-bottom: 64px;
     }
@@ -2321,9 +2333,9 @@ textarea.form-control {
     .maintenance .trust,
     .sell .empathy,
     .sell .trust {
-        width: calc(100% - 36px);
-        padding-left: 18px;
-        padding-right: 18px;
+        width: 100%;
+        padding-left: 5%;
+        padding-right: 5%;
         padding-top: 64px;
         padding-bottom: 64px;
         box-sizing: border-box;
@@ -2340,7 +2352,7 @@ textarea.form-control {
     }
 
     .maintenance .maintenance-scenes {
-        width: calc(100% - 36px);
+        width: min(90%, 980px);
         padding: 8px 0 64px;
     }
 
@@ -2362,7 +2374,9 @@ textarea.form-control {
         font-size: 1.6rem;
         line-height: 1.5;
         margin-bottom: 18px;
-        padding-right: 4px;
+        padding-right: 0;
+        text-wrap: balance;
+        word-break: keep-all;
     }
 
     .maintenance p,
@@ -2371,13 +2385,6 @@ textarea.form-control {
         line-height: 1.88;
     }
 
-    .sell .hero.fv-mobile-center {
-        min-height: 50vh;
-        padding: 0 20px 14%;
-        text-align: center;
-        align-items: center;
-        justify-content: flex-end;
-    }
 
     .sell .intro,
     .sell .empathy,
@@ -2397,7 +2404,9 @@ textarea.form-control {
         font-size: 1.6rem;
         line-height: 1.5;
         margin-bottom: 18px;
-        padding-right: 4px;
+        padding-right: 0;
+        text-wrap: balance;
+        word-break: keep-all;
     }
 
     .sell p,
@@ -2406,11 +2415,39 @@ textarea.form-control {
         line-height: 1.88;
     }
 
-    .maintenance .hero h1,
-    .sell .hero h1 {
-        max-width: 11.5em;
+    .maintenance .hero.fv-mobile-center h1,
+    .sell .hero.fv-mobile-center h1 {
+        width: min(90vw, 352px);
+        max-width: 352px;
         margin-left: auto;
         margin-right: auto;
+        padding: 0 12px;
+        box-sizing: border-box;
+        font-size: clamp(21px, 6vw, 27px);
+        line-height: 1.44;
+        letter-spacing: 0.04em;
+    }
+
+    .maintenance .hero.fv-mobile-center p,
+    .sell .hero.fv-mobile-center p {
+        font-size: clamp(13px, 3.7vw, 14.5px);
+        line-height: 1.82;
+    }
+
+    .maintenance .cta h2,
+    .sell .cta h2 {
+        max-width: 16em;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .maintenance .menu > h2,
+    .sell .menu > h2 {
+        max-width: 18em;
+    }
+
+    .service-mobile-br {
+        display: inline;
     }
 
     .line-btn {
@@ -3069,5 +3106,43 @@ textarea.form-control {
         margin-right: auto !important;
         line-height: 1.82 !important;
         text-align: center !important;
+    }
+
+    body.subpage .maintenance .hero.fv-mobile-center,
+    body.subpage .sell .hero.fv-mobile-center {
+        left: auto !important;
+        right: auto !important;
+        bottom: auto !important;
+        transform: none !important;
+        width: 100% !important;
+        max-width: none !important;
+        min-height: 56vh !important;
+        padding: 0 12px 12% !important;
+        background-position: center 60% !important;
+    }
+
+    body.subpage .maintenance .hero.fv-mobile-center h1,
+    body.subpage .sell .hero.fv-mobile-center h1 {
+        font-size: clamp(21px, 6vw, 27px) !important;
+        line-height: 1.44 !important;
+        letter-spacing: 0.04em !important;
+        width: min(90vw, 352px) !important;
+        max-width: 352px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        padding: 0 12px !important;
+        box-sizing: border-box !important;
+        word-break: keep-all;
+        text-wrap: balance;
+    }
+
+    body.subpage .maintenance .hero.fv-mobile-center p,
+    body.subpage .sell .hero.fv-mobile-center p {
+        max-width: 330px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        line-height: 1.82 !important;
+        text-align: center !important;
+        font-size: clamp(13px, 3.7vw, 14.5px) !important;
     }
 }
