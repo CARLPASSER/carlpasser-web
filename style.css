@@ -75,7 +75,8 @@ ul {
 .hero-title-mobile-break,
 .our-carlife-mobile-break,
 .service-mobile-br,
-.about-concept-mobile-br {
+.about-concept-mobile-br,
+.phi-mobile-br {
     display: none;
 }
 
@@ -615,6 +616,10 @@ body.subpage .menu-toggle span {
     .phi-desc p {
         font-size: 14px;
         line-height: 1.8;
+    }
+
+    .phi-mobile-br {
+        display: inline;
     }
 }
 
