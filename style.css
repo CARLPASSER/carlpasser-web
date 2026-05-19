@@ -3131,6 +3131,12 @@ textarea.form-control {
         object-position: center 20%;
     }
 
+    .about-staff-group .about-profile-text {
+        padding-left: clamp(16px, 4vw, 22px);
+        padding-right: clamp(16px, 4vw, 22px);
+        box-sizing: border-box;
+    }
+
     .about-staff-group .about-profile-name,
     .about-staff-group .brand-text {
         max-width: 100%;
