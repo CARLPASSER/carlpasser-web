@@ -3103,10 +3103,39 @@ textarea.form-control {
 
     .about-staff-group {
         gap: 34px;
+        width: 100%;
+        max-width: 100%;
+        overflow: hidden;
+        box-sizing: border-box;
     }
 
     .about-staff-group .about-profile {
         gap: 24px;
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+    }
+
+    .about-staff-group .about-profile-image {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        overflow: hidden;
+    }
+
+    .about-staff-group .about-profile-image img {
+        width: 100%;
+        max-width: 100%;
+        display: block;
+        object-fit: cover;
+        object-position: center 20%;
+    }
+
+    .about-staff-group .about-profile-name,
+    .about-staff-group .brand-text {
+        max-width: 100%;
+        overflow-wrap: anywhere;
+        word-break: normal;
     }
 
     .about-company-item {
