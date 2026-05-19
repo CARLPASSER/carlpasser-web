@@ -74,7 +74,8 @@ ul {
 
 .hero-title-mobile-break,
 .our-carlife-mobile-break,
-.service-mobile-br {
+.service-mobile-br,
+.about-concept-mobile-br {
     display: none;
 }
 
@@ -3138,6 +3139,41 @@ textarea.form-control {
     .about-company-item {
         grid-template-columns: 1fr;
         gap: 6px;
+    }
+
+    .about-concept {
+        text-align: center;
+    }
+
+    .about-concept-mobile-br {
+        display: inline;
+    }
+
+    .about-concept-title {
+        font-size: clamp(1.35rem, 5.4vw, 1.6rem);
+        line-height: 1.55;
+        max-width: 16.5em;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 26px;
+        letter-spacing: 0.03em;
+        word-break: normal;
+        overflow-wrap: normal;
+        text-wrap: wrap;
+    }
+
+    .about-concept-nowrap {
+        white-space: nowrap;
+    }
+
+    .about-concept .brand-text {
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .about-eyebrow {
+        letter-spacing: 0.12em;
     }
 }
 
