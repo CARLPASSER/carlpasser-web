@@ -2383,32 +2383,18 @@ textarea.form-control {
     .maintenance .solution,
     .maintenance .menu,
     .maintenance .trust,
-    .maintenance .cta {
-        padding: 72px 0;
-    }
-
-    .maintenance .intro,
-    .maintenance .solution,
-    .maintenance .menu,
     .maintenance .cta,
     .sell .intro,
+    .sell .empathy,
     .sell .solution,
     .sell .menu,
+    .sell .trust,
     .sell .cta {
-        width: min(90%, 860px);
-        padding-top: 64px;
-        padding-bottom: 64px;
-    }
-
-    .maintenance .empathy,
-    .maintenance .trust,
-    .sell .empathy,
-    .sell .trust {
         width: 100%;
-        padding-left: 5%;
-        padding-right: 5%;
-        padding-top: 64px;
-        padding-bottom: 64px;
+        max-width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 64px 26px;
         box-sizing: border-box;
     }
 
@@ -2423,8 +2409,10 @@ textarea.form-control {
     }
 
     .maintenance .maintenance-scenes {
-        width: min(90%, 980px);
-        padding: 8px 0 64px;
+        width: 100%;
+        max-width: 100%;
+        padding: 8px 26px 64px;
+        box-sizing: border-box;
     }
 
     .maintenance .maintenance-scenes-grid {
@@ -2441,49 +2429,34 @@ textarea.form-control {
         transition-delay: 0s;
     }
 
-    .maintenance h2 {
-        font-size: 1.6rem;
-        line-height: 1.5;
+    .maintenance h2,
+    .sell h2 {
+        width: 100%;
+        max-width: 100%;
+        font-size: clamp(1.28rem, 4.6vw, 1.48rem);
+        line-height: 1.55;
         margin-bottom: 18px;
+        padding-left: 0;
         padding-right: 0;
-        text-wrap: balance;
-        word-break: keep-all;
+        box-sizing: border-box;
+        letter-spacing: 0.02em;
+        text-wrap: wrap;
+        word-break: normal;
+        overflow-wrap: anywhere;
     }
 
     .maintenance p,
-    .maintenance li {
+    .maintenance li,
+    .sell p,
+    .sell li {
         font-size: 0.95rem;
         line-height: 1.88;
-    }
-
-
-    .sell .intro,
-    .sell .empathy,
-    .sell .solution,
-    .sell .menu,
-    .sell .trust,
-    .sell .cta {
-        padding: 72px 0;
+        max-width: 100%;
     }
 
     .sell .menu-grid {
         grid-template-columns: 1fr;
         gap: 14px;
-    }
-
-    .sell h2 {
-        font-size: 1.6rem;
-        line-height: 1.5;
-        margin-bottom: 18px;
-        padding-right: 0;
-        text-wrap: balance;
-        word-break: keep-all;
-    }
-
-    .sell p,
-    .sell li {
-        font-size: 0.95rem;
-        line-height: 1.88;
     }
 
     .maintenance .service-hero-inner h1,
@@ -2510,14 +2483,14 @@ textarea.form-control {
 
     .maintenance .cta h2,
     .sell .cta h2 {
-        max-width: 16em;
+        max-width: 100%;
         margin-left: auto;
         margin-right: auto;
     }
 
     .maintenance .menu > h2,
     .sell .menu > h2 {
-        max-width: 18em;
+        max-width: 100%;
     }
 
     .service-mobile-br {
