@@ -1878,27 +1878,68 @@ textarea.form-control {
     margin-top: var(--header-height);
 }
 
-.maintenance .hero {
+.maintenance .hero.service-hero,
+.sell .hero.service-hero {
     position: relative;
+    width: 100%;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
     min-height: 54vh;
     padding: 0 8% 9%;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+    align-items: stretch;
     color: #fff;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.42), rgba(0, 0, 0, 0.42)), url('photo/Image (26).jpg');
-    background-size: cover;
-    background-position: center;
 }
 
-.maintenance .hero h1 {
+.service-hero-media {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    overflow: hidden;
+}
+
+.service-hero-media::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: rgba(0, 0, 0, 0.42);
+    pointer-events: none;
+}
+
+.service-hero-media img {
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+}
+
+.service-hero-inner {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 100%;
+}
+
+.maintenance .hero h1,
+.maintenance .service-hero-inner h1 {
     font-size: clamp(28px, 4vw, 46px);
     margin-bottom: 12px;
     line-height: 1.3;
     text-shadow: 0 3px 16px rgba(0, 0, 0, 0.6);
 }
 
-.maintenance .hero p {
+.maintenance .hero p,
+.maintenance .service-hero-inner p {
     font-size: clamp(14px, 1.5vw, 18px);
     line-height: 1.7;
     text-shadow: 0 3px 16px rgba(0, 0, 0, 0.6);
@@ -2033,27 +2074,16 @@ textarea.form-control {
     margin-top: var(--header-height);
 }
 
-.sell .hero {
-    position: relative;
-    min-height: 54vh;
-    padding: 0 8% 9%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    color: #fff;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.42), rgba(0, 0, 0, 0.42)), url('Image (7).jpg');
-    background-size: cover;
-    background-position: center;
-}
-
-.sell .hero h1 {
+.sell .hero h1,
+.sell .service-hero-inner h1 {
     font-size: clamp(28px, 4vw, 46px);
     margin-bottom: 12px;
     line-height: 1.3;
     text-shadow: 0 3px 16px rgba(0, 0, 0, 0.6);
 }
 
-.sell .hero p {
+.sell .hero p,
+.sell .service-hero-inner p {
     font-size: clamp(14px, 1.5vw, 18px);
     line-height: 1.7;
     text-shadow: 0 3px 16px rgba(0, 0, 0, 0.6);
@@ -2149,6 +2179,19 @@ textarea.form-control {
 }
 
 @media (max-width: 768px) {
+    html,
+    body {
+        overflow-x: hidden;
+        max-width: 100%;
+    }
+
+    .maintenance,
+    .sell {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
     .header.mobile-header-ready,
     header.mobile-header-ready {
         background: #fff !important;
@@ -2188,24 +2231,51 @@ textarea.form-control {
         padding: 0 10px;
     }
 
-    /* FV text layout: flex-based heroes (MAINTENANCE / SELL) — match BUY proportions */
-    .maintenance .hero.fv-mobile-center,
-    .sell .hero.fv-mobile-center {
-        left: auto;
-        right: auto;
+    /* FV: MAINTENANCE / SELL — image container flush to viewport */
+    .maintenance .hero.service-hero.fv-mobile-center,
+    .sell .hero.service-hero.fv-mobile-center {
+        left: 0;
+        right: 0;
         bottom: auto;
         transform: none !important;
         width: 100%;
-        max-width: none;
+        max-width: 100%;
         min-height: 56vh;
-        padding: 0 12px 12%;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 0 16px 12%;
         box-sizing: border-box;
+        overflow: hidden;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: flex-end;
         text-align: center;
-        background-position: center 60%;
+    }
+
+    .service-hero-media {
+        left: 0;
+        right: 0;
+        width: 100%;
+        max-width: 100%;
+        transform: none;
+    }
+
+    .service-hero-media img {
+        width: 100%;
+        max-width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover;
+        object-position: center 60%;
+        aspect-ratio: auto;
+    }
+
+    .service-hero-inner {
+        width: 100%;
+        max-width: 100%;
+        padding: 0;
+        box-sizing: border-box;
     }
 
     .sales-hero h1,
@@ -2415,21 +2485,24 @@ textarea.form-control {
         line-height: 1.88;
     }
 
-    .maintenance .hero.fv-mobile-center h1,
-    .sell .hero.fv-mobile-center h1 {
-        width: min(90vw, 352px);
-        max-width: 352px;
+    .maintenance .service-hero-inner h1,
+    .sell .service-hero-inner h1 {
+        width: 100%;
+        max-width: 100%;
         margin-left: auto;
         margin-right: auto;
-        padding: 0 12px;
+        padding: 0;
         box-sizing: border-box;
         font-size: clamp(21px, 6vw, 27px);
         line-height: 1.44;
         letter-spacing: 0.04em;
+        overflow-wrap: anywhere;
     }
 
-    .maintenance .hero.fv-mobile-center p,
-    .sell .hero.fv-mobile-center p {
+    .maintenance .service-hero-inner p,
+    .sell .service-hero-inner p {
+        width: 100%;
+        max-width: 330px;
         font-size: clamp(13px, 3.7vw, 14.5px);
         line-height: 1.82;
     }
@@ -3079,8 +3152,8 @@ textarea.form-control {
         right: auto !important;
         transform: translateX(-50%) !important;
         bottom: 12% !important;
-        width: min(90vw, 352px) !important;
-        max-width: 352px !important;
+        width: min(100%, 352px) !important;
+        max-width: calc(100% - 32px) !important;
         margin: 0 auto !important;
         padding: 0 12px !important;
         text-align: center !important;
@@ -3108,36 +3181,57 @@ textarea.form-control {
         text-align: center !important;
     }
 
-    body.subpage .maintenance .hero.fv-mobile-center,
-    body.subpage .sell .hero.fv-mobile-center {
-        left: auto !important;
-        right: auto !important;
+    body.subpage .maintenance .hero.service-hero.fv-mobile-center,
+    body.subpage .sell .hero.service-hero.fv-mobile-center {
+        left: 0 !important;
+        right: 0 !important;
         bottom: auto !important;
         transform: none !important;
         width: 100% !important;
-        max-width: none !important;
+        max-width: 100% !important;
         min-height: 56vh !important;
-        padding: 0 12px 12% !important;
-        background-position: center 60% !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        padding: 0 16px 12% !important;
+        overflow: hidden !important;
     }
 
-    body.subpage .maintenance .hero.fv-mobile-center h1,
-    body.subpage .sell .hero.fv-mobile-center h1 {
+    body.subpage .service-hero-media {
+        width: 100% !important;
+        max-width: 100% !important;
+        left: 0 !important;
+        right: 0 !important;
+        transform: none !important;
+        overflow: hidden !important;
+    }
+
+    body.subpage .service-hero-media img {
+        width: 100% !important;
+        max-width: 100% !important;
+        display: block !important;
+        object-fit: cover !important;
+        object-position: center 60% !important;
+    }
+
+    body.subpage .maintenance .service-hero-inner h1,
+    body.subpage .sell .service-hero-inner h1 {
         font-size: clamp(21px, 6vw, 27px) !important;
         line-height: 1.44 !important;
         letter-spacing: 0.04em !important;
-        width: min(90vw, 352px) !important;
-        max-width: 352px !important;
+        width: 100% !important;
+        max-width: 100% !important;
         margin-left: auto !important;
         margin-right: auto !important;
-        padding: 0 12px !important;
+        padding: 0 !important;
         box-sizing: border-box !important;
         word-break: keep-all;
+        overflow-wrap: anywhere;
         text-wrap: balance;
     }
 
-    body.subpage .maintenance .hero.fv-mobile-center p,
-    body.subpage .sell .hero.fv-mobile-center p {
+    body.subpage .maintenance .service-hero-inner p,
+    body.subpage .sell .service-hero-inner p {
+        width: 100% !important;
         max-width: 330px !important;
         margin-left: auto !important;
         margin-right: auto !important;
