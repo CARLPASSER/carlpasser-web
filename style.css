@@ -211,6 +211,11 @@ body.cp-loading .cp-loader {
     letter-spacing: 0.01em;
 }
 
+.cp-brand-message {
+    white-space: nowrap;
+    word-break: keep-all;
+}
+
 .cp-philosophy-sub {
     font-weight: 700;
     color: #222 !important;
@@ -666,6 +671,13 @@ body.cp-loading .cp-loader {
 
     .cp-philosophy-section .cp-section-heading h2 {
         font-size: clamp(36px, 10.5vw, 54px);
+    }
+
+    .cp-philosophy-section .cp-brand-message,
+    .cp-about-philosophy .cp-brand-message,
+    .cp-brand-message {
+        font-size: clamp(30px, 8.5vw, 42px);
+        white-space: nowrap;
     }
 
     .cp-category-card,
