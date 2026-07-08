@@ -253,6 +253,25 @@ body.cp-loading .cp-loader {
     font-size: clamp(28px, 4vw, 48px);
 }
 
+.cp-mag-section .cp-section-heading {
+    margin-bottom: 0;
+}
+
+.cp-mag-title {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: clamp(76px, 9vw, 112px);
+    padding: 0 clamp(28px, 5vw, 56px);
+    border: 2px solid #151515;
+    border-radius: 8px;
+    background: #fff;
+    font-size: clamp(34px, 5vw, 58px) !important;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: 0.08em;
+}
+
 .cp-flow-icon,
 .cp-service-icon {
     display: block;
@@ -335,6 +354,72 @@ body.cp-loading .cp-loader {
 
 .cp-insurance-hero {
     background: linear-gradient(rgba(255,255,255,0.86), rgba(255,255,255,0.92)), url('photo/Image (31).jpg') center/cover;
+}
+
+.cp-insurance-policy-grid .cp-info-card {
+    min-height: 300px;
+}
+
+.cp-insurance-support-panel,
+.cp-insurance-closing {
+    border: 1px solid #dfdfd8;
+    border-radius: 8px;
+    background: #fff;
+}
+
+.cp-insurance-support-panel {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: clamp(34px, 6vw, 76px);
+    align-items: center;
+    padding: clamp(30px, 6vw, 72px);
+}
+
+.cp-insurance-support-panel h2,
+.cp-insurance-closing h2 {
+    margin: 0;
+    color: #161616;
+    font-size: clamp(30px, 4.6vw, 54px);
+    line-height: 1.16;
+    letter-spacing: 0;
+}
+
+.cp-insurance-support-panel p:not(.cp-kicker),
+.cp-insurance-closing p {
+    max-width: 680px;
+    margin: 22px 0 0;
+    color: #444;
+    font-size: 16px;
+    line-height: 1.95;
+}
+
+.cp-support-mini-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.cp-support-mini-grid div {
+    min-height: 136px;
+    padding: 22px;
+    border: 1px solid #e3e3dc;
+    border-radius: 8px;
+    background: #fafaf7;
+}
+
+.cp-support-mini-grid span {
+    display: block;
+    color: #191919;
+    font-size: 15px;
+    font-weight: 800;
+}
+
+.cp-insurance-closing {
+    padding: clamp(34px, 6vw, 72px);
+}
+
+.cp-insurance-closing h2 {
+    font-size: clamp(34px, 5vw, 62px);
 }
 
 .cp-check-grid,
@@ -556,6 +641,26 @@ body.cp-loading .cp-loader {
 
     .cp-blog-categories {
         gap: 8px;
+    }
+
+    .cp-mag-section .cp-section-heading {
+        margin-bottom: 34px;
+    }
+
+    .cp-mag-title {
+        min-height: 72px;
+        width: 100%;
+        padding: 0 20px;
+        font-size: clamp(31px, 9vw, 42px) !important;
+    }
+
+    .cp-insurance-support-panel {
+        grid-template-columns: 1fr;
+        padding: 26px;
+    }
+
+    .cp-support-mini-grid {
+        grid-template-columns: 1fr;
     }
 }
 
