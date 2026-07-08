@@ -207,9 +207,9 @@ body.cp-loading .cp-loader {
 }
 
 .cp-philosophy-section .cp-section-heading h2 {
-    font-size: clamp(44px, 8vw, 88px);
-    font-weight: 900;
-    letter-spacing: 0;
+    font-size: clamp(40px, 7.2vw, 80px);
+    font-weight: 700;
+    letter-spacing: 0.01em;
 }
 
 .cp-philosophy-sub {
@@ -250,7 +250,7 @@ body.cp-loading .cp-loader {
 }
 
 .cp-top-category .cp-section-heading h2 {
-    font-size: clamp(30px, 4.4vw, 52px);
+    font-size: clamp(28px, 4vw, 48px);
 }
 
 .cp-flow-icon,
@@ -264,6 +264,14 @@ body.cp-loading .cp-loader {
 
 .cp-service-icon {
     font-size: 32px;
+}
+
+.cp-sell-flow {
+    background: #fff;
+}
+
+.cp-sell-flow-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
 .cp-line-cta {
@@ -482,6 +490,7 @@ body.cp-loading .cp-loader {
     .cp-featured-posts,
     .cp-check-grid,
     .cp-flow-grid,
+    .cp-sell-flow-grid,
     .cp-split {
         grid-template-columns: 1fr;
     }
@@ -511,7 +520,7 @@ body.cp-loading .cp-loader {
     }
 
     .cp-philosophy-section .cp-section-heading h2 {
-        font-size: clamp(40px, 12vw, 58px);
+        font-size: clamp(36px, 10.5vw, 54px);
     }
 
     .cp-category-card,
