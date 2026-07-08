@@ -95,7 +95,8 @@ body.cp-loading .cp-loader {
 .cp-feature-grid,
 .cp-service-grid,
 .cp-blog-grid,
-.cp-featured-posts {
+.cp-featured-posts,
+.cp-voice-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 18px;
@@ -347,6 +348,27 @@ body.cp-loading .cp-loader {
     background: #f1f1ea;
 }
 
+.cp-outline-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 50px;
+    padding: 0 26px;
+    border: 1px solid #161616;
+    border-radius: 999px;
+    background: #fff;
+    color: #161616;
+    font-weight: 700;
+    text-decoration: none;
+    transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+
+.cp-outline-btn:hover {
+    transform: translateY(-2px);
+    background: #161616;
+    color: #fff;
+}
+
 .cp-page-hero {
     padding: clamp(150px, 18vw, 230px) 24px clamp(84px, 10vw, 130px);
     background: #fff;
@@ -504,6 +526,91 @@ body.cp-loading .cp-loader {
     min-height: 190px;
 }
 
+.cp-voice-section {
+    background: #fff;
+}
+
+.cp-voice-section .cp-section-heading {
+    margin-bottom: clamp(28px, 4vw, 44px);
+}
+
+.cp-voice-section .cp-section-heading h2 {
+    font-size: clamp(30px, 4vw, 46px);
+}
+
+.cp-voice-card {
+    position: relative;
+    min-height: 300px;
+    padding: 30px;
+    border: 1px solid #dfdfd8;
+    border-radius: 8px;
+    background: #fff;
+}
+
+.cp-voice-card::after {
+    content: "";
+    position: absolute;
+    left: 34px;
+    bottom: -10px;
+    width: 18px;
+    height: 18px;
+    border-right: 1px solid #dfdfd8;
+    border-bottom: 1px solid #dfdfd8;
+    background: #fff;
+    transform: rotate(45deg);
+}
+
+.cp-voice-icon {
+    display: block;
+    margin-bottom: 22px;
+    font-size: 24px;
+    line-height: 1;
+}
+
+.cp-voice-card p {
+    margin: 0 0 16px;
+    color: #333;
+    font-size: 15px;
+    line-height: 1.9;
+}
+
+.cp-voice-card small {
+    display: block;
+    margin-top: 24px;
+    color: #777;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+}
+
+.cp-voice-action {
+    margin-top: clamp(34px, 5vw, 56px);
+    text-align: center;
+}
+
+.cp-thanks-section {
+    background: #fff;
+}
+
+.cp-thanks-box {
+    max-width: 780px;
+    padding: clamp(34px, 6vw, 72px);
+    border: 1px solid #dfdfd8;
+    border-radius: 8px;
+    background: #fff;
+}
+
+.cp-thanks-box h2 {
+    margin: 0 0 28px;
+    color: #161616;
+    font-size: clamp(34px, 5vw, 56px);
+    line-height: 1.12;
+}
+
+.cp-thanks-box .cp-readable-copy {
+    margin-bottom: 34px;
+}
+
 .cp-blog-shell {
     padding: 0 24px clamp(90px, 11vw, 150px);
 }
@@ -634,6 +741,7 @@ body.cp-loading .cp-loader {
     .cp-service-grid,
     .cp-blog-grid,
     .cp-featured-posts,
+    .cp-voice-grid,
     .cp-check-grid,
     .cp-flow-grid,
     .cp-sell-flow-grid,
