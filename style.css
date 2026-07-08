@@ -75,7 +75,6 @@ body.cp-loading .cp-loader {
 }
 
 .cp-section-heading h2,
-.cp-line-cta h2,
 .cp-page-hero h1 {
     margin: 0;
     font-size: clamp(32px, 5.4vw, 60px);
@@ -306,6 +305,10 @@ body.cp-loading .cp-loader {
 }
 
 .cp-line-cta h2 {
+    margin: 0;
+    font-size: clamp(30px, 4.2vw, 46px);
+    line-height: 1.18;
+    letter-spacing: 0;
     color: #fff;
 }
 
@@ -353,18 +356,35 @@ body.cp-loading .cp-loader {
 }
 
 .cp-insurance-hero {
-    background: linear-gradient(90deg, rgba(255,255,255,0.94) 0%, rgba(255,255,255,0.84) 45%, rgba(255,255,255,0.42) 100%), url('photo/insurance-hero-life.jpg') center right/cover;
+    background: linear-gradient(90deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.74) 46%, rgba(255,255,255,0.24) 100%), url('photo/insurance-hero-life.jpg') center right/cover;
 }
 
 .cp-insurance-hero h1 {
     max-width: 760px;
-    font-size: clamp(28px, 4.4vw, 52px);
-    line-height: 1.22;
+    line-height: 1.18;
+}
+
+.cp-insurance-title-main,
+.cp-insurance-title-sub {
+    display: block;
+}
+
+.cp-insurance-title-main {
+    margin-bottom: 18px;
+    font-size: clamp(42px, 5vw, 64px);
+}
+
+.cp-insurance-title-sub {
+    max-width: 720px;
+    font-size: clamp(30px, 3.8vw, 46px);
+    font-weight: 600;
+    line-height: 1.35;
 }
 
 .cp-insurance-hero .cp-hero-lead {
     max-width: 620px;
-    font-size: clamp(16px, 2vw, 21px);
+    font-size: clamp(16px, 2vw, 19px);
+    line-height: 1.9;
 }
 
 .cp-insurance-page .cp-section {
@@ -377,7 +397,7 @@ body.cp-loading .cp-loader {
 }
 
 .cp-insurance-page .cp-section-heading h2 {
-    font-size: clamp(28px, 4vw, 46px);
+    font-size: clamp(28px, 3.4vw, 40px);
     line-height: 1.18;
 }
 
@@ -387,7 +407,7 @@ body.cp-loading .cp-loader {
 }
 
 .cp-insurance-page .cp-line-cta h2 {
-    font-size: clamp(28px, 4.2vw, 46px);
+    font-size: clamp(25px, 3.4vw, 38px);
     line-height: 1.22;
 }
 
@@ -454,7 +474,7 @@ body.cp-loading .cp-loader {
 }
 
 .cp-insurance-closing h2 {
-    font-size: clamp(34px, 5vw, 62px);
+    font-size: clamp(30px, 4vw, 48px);
 }
 
 .cp-check-grid,
@@ -633,10 +653,14 @@ body.cp-loading .cp-loader {
     }
 
     .cp-section-heading h2,
-    .cp-line-cta h2,
     .cp-page-hero h1 {
         font-size: clamp(32px, 10vw, 46px);
         line-height: 1.14;
+    }
+
+    .cp-line-cta h2 {
+        font-size: clamp(28px, 7.6vw, 36px);
+        line-height: 1.2;
     }
 
     .cp-philosophy-section .cp-section-heading h2 {
@@ -699,12 +723,34 @@ body.cp-loading .cp-loader {
     }
 
     .cp-insurance-hero {
-        background: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), url('photo/insurance-hero-life.jpg') 62% center/cover;
+        background: linear-gradient(rgba(255,255,255,0.78), rgba(255,255,255,0.82)), url('photo/insurance-hero-life.jpg') 62% center/cover;
     }
 
     .cp-insurance-hero h1 {
-        font-size: clamp(30px, 8.4vw, 42px);
-        line-height: 1.24;
+        font-size: inherit;
+        line-height: 1.2;
+    }
+
+    .cp-insurance-title-main {
+        margin-bottom: 14px;
+        font-size: clamp(34px, 10vw, 44px);
+    }
+
+    .cp-insurance-title-sub {
+        font-size: clamp(24px, 6.6vw, 32px);
+        line-height: 1.38;
+    }
+
+    .cp-insurance-page .cp-section-heading h2 {
+        font-size: clamp(27px, 7.2vw, 34px);
+    }
+
+    .cp-insurance-page .cp-line-cta h2 {
+        font-size: clamp(24px, 6.5vw, 31px);
+    }
+
+    .cp-insurance-closing h2 {
+        font-size: clamp(28px, 7.4vw, 34px);
     }
 }
 
