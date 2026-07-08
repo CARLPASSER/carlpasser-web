@@ -78,7 +78,7 @@ body.cp-loading .cp-loader {
 .cp-line-cta h2,
 .cp-page-hero h1 {
     margin: 0;
-    font-size: clamp(34px, 6.4vw, 72px);
+    font-size: clamp(32px, 5.4vw, 60px);
     line-height: 1.08;
     letter-spacing: 0;
     color: #161616;
@@ -123,16 +123,11 @@ body.cp-loading .cp-loader {
 }
 
 .cp-card-icon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 48px;
-    height: 48px;
+    display: block;
     margin-bottom: 34px;
-    border: 1px solid #1f1f1f;
-    border-radius: 50%;
     color: #111;
-    font-size: 20px;
+    font-size: 34px;
+    line-height: 1;
 }
 
 .cp-category-card:hover,
@@ -203,19 +198,27 @@ body.cp-loading .cp-loader {
 }
 
 .cp-philosophy-layout {
-    display: grid;
-    grid-template-columns: 0.92fr 1.08fr;
-    gap: clamp(34px, 6vw, 76px);
-    align-items: center;
+    display: block;
 }
 
 .cp-philosophy-layout .cp-section-heading {
-    grid-column: 1 / -1;
-    margin-bottom: 0;
+    max-width: 880px;
+    margin-bottom: clamp(34px, 5vw, 62px);
+}
+
+.cp-philosophy-section .cp-section-heading h2 {
+    font-size: clamp(44px, 8vw, 88px);
+    font-weight: 900;
+    letter-spacing: 0;
 }
 
 .cp-philosophy-sub {
     font-weight: 700;
+    color: #222 !important;
+}
+
+.cp-philosophy-lead {
+    color: #555 !important;
 }
 
 .cp-philosophy-logo {
@@ -233,6 +236,34 @@ body.cp-loading .cp-loader {
 
 .cp-philosophy-copy {
     max-width: 620px;
+}
+
+.cp-about-philosophy {
+    display: grid;
+    grid-template-columns: 0.95fr 1.05fr;
+    gap: clamp(34px, 6vw, 72px);
+    align-items: center;
+}
+
+.cp-about-philosophy .cp-section-heading {
+    grid-column: 1 / -1;
+}
+
+.cp-top-category .cp-section-heading h2 {
+    font-size: clamp(30px, 4.4vw, 52px);
+}
+
+.cp-flow-icon,
+.cp-service-icon {
+    display: block;
+    margin: 0 0 20px;
+    color: #111;
+    font-size: 30px;
+    line-height: 1;
+}
+
+.cp-service-icon {
+    font-size: 32px;
 }
 
 .cp-line-cta {
@@ -253,8 +284,12 @@ body.cp-loading .cp-loader {
 
 .cp-line-cta p {
     max-width: 560px;
-    margin: 20px auto 32px;
+    margin: 20px auto 0;
     line-height: 1.9;
+}
+
+.cp-line-cta p:last-of-type {
+    margin-bottom: 32px;
 }
 
 .cp-primary-btn {
@@ -471,8 +506,12 @@ body.cp-loading .cp-loader {
     .cp-section-heading h2,
     .cp-line-cta h2,
     .cp-page-hero h1 {
-        font-size: clamp(34px, 11vw, 48px);
+        font-size: clamp(32px, 10vw, 46px);
         line-height: 1.14;
+    }
+
+    .cp-philosophy-section .cp-section-heading h2 {
+        font-size: clamp(40px, 12vw, 58px);
     }
 
     .cp-category-card,
@@ -491,6 +530,10 @@ body.cp-loading .cp-loader {
     }
 
     .cp-philosophy-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .cp-about-philosophy {
         grid-template-columns: 1fr;
     }
 
