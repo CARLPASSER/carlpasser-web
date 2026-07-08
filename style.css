@@ -262,19 +262,40 @@ body.cp-loading .cp-loader {
     margin-bottom: 0;
 }
 
+.cp-mag-heading {
+    margin: 0;
+}
+
 .cp-mag-title {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-height: clamp(76px, 9vw, 112px);
-    padding: 0 clamp(28px, 5vw, 56px);
+    min-height: clamp(88px, 10vw, 132px);
+    padding: 0 clamp(34px, 6vw, 68px);
     border: 2px solid #151515;
     border-radius: 8px;
     background: #fff;
-    font-size: clamp(34px, 5vw, 58px) !important;
+    color: #151515;
+    font-size: clamp(40px, 5.8vw, 68px) !important;
     font-weight: 800;
     line-height: 1;
     letter-spacing: 0.08em;
+    text-decoration: none;
+    transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+
+.cp-mag-title:hover {
+    transform: translateY(-2px);
+    background: #151515;
+    color: #fff;
+}
+
+.cp-mag-subtitle {
+    margin: 18px 0 0;
+    color: #555;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.18em;
 }
 
 .cp-flow-icon,
@@ -828,10 +849,10 @@ body.cp-loading .cp-loader {
     }
 
     .cp-mag-title {
-        min-height: 72px;
+        min-height: 84px;
         width: 100%;
         padding: 0 20px;
-        font-size: clamp(31px, 9vw, 42px) !important;
+        font-size: clamp(35px, 10vw, 48px) !important;
     }
 
     .cp-insurance-support-panel {
