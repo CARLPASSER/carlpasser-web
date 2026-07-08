@@ -370,13 +370,14 @@ body.cp-loading .cp-loader {
 }
 
 .cp-insurance-title-main {
-    margin-bottom: 18px;
-    font-size: clamp(42px, 5vw, 64px);
+    margin-bottom: 16px;
+    font-size: clamp(34px, 4.2vw, 52px);
+    font-weight: 700;
 }
 
 .cp-insurance-title-sub {
-    max-width: 720px;
-    font-size: clamp(30px, 3.8vw, 46px);
+    max-width: 760px;
+    font-size: clamp(28px, 3.2vw, 40px);
     font-weight: 600;
     line-height: 1.35;
 }
@@ -397,8 +398,8 @@ body.cp-loading .cp-loader {
 }
 
 .cp-insurance-page .cp-section-heading h2 {
-    font-size: clamp(28px, 3.4vw, 40px);
-    line-height: 1.18;
+    font-size: clamp(28px, 4vw, 42px);
+    line-height: 1.2;
 }
 
 .cp-insurance-page .cp-line-cta {
@@ -407,7 +408,7 @@ body.cp-loading .cp-loader {
 }
 
 .cp-insurance-page .cp-line-cta h2 {
-    font-size: clamp(25px, 3.4vw, 38px);
+    font-size: clamp(25px, 3vw, 34px);
     line-height: 1.22;
 }
 
@@ -434,7 +435,7 @@ body.cp-loading .cp-loader {
 .cp-insurance-closing h2 {
     margin: 0;
     color: #161616;
-    font-size: clamp(30px, 4.6vw, 54px);
+    font-size: clamp(28px, 3.8vw, 44px);
     line-height: 1.16;
     letter-spacing: 0;
 }
@@ -474,7 +475,7 @@ body.cp-loading .cp-loader {
 }
 
 .cp-insurance-closing h2 {
-    font-size: clamp(30px, 4vw, 48px);
+    font-size: clamp(28px, 3.4vw, 40px);
 }
 
 .cp-check-grid,
@@ -732,25 +733,26 @@ body.cp-loading .cp-loader {
     }
 
     .cp-insurance-title-main {
-        margin-bottom: 14px;
-        font-size: clamp(34px, 10vw, 44px);
+        margin-bottom: 12px;
+        font-size: clamp(30px, 8.6vw, 38px);
     }
 
     .cp-insurance-title-sub {
-        font-size: clamp(24px, 6.6vw, 32px);
-        line-height: 1.38;
+        font-size: clamp(22px, 6vw, 29px);
+        line-height: 1.42;
     }
 
     .cp-insurance-page .cp-section-heading h2 {
-        font-size: clamp(27px, 7.2vw, 34px);
+        font-size: clamp(26px, 6.6vw, 32px);
+        line-height: 1.22;
     }
 
     .cp-insurance-page .cp-line-cta h2 {
-        font-size: clamp(24px, 6.5vw, 31px);
+        font-size: clamp(24px, 6.2vw, 30px);
     }
 
     .cp-insurance-closing h2 {
-        font-size: clamp(28px, 7.4vw, 34px);
+        font-size: clamp(26px, 6.5vw, 31px);
     }
 }
 
