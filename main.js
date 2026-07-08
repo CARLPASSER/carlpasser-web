@@ -1,4 +1,18 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const loader = document.querySelector('.cp-loader');
+    if (loader) {
+        const shouldShowLoader = !sessionStorage.getItem('cpLoaderShown')
+            && !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        if (shouldShowLoader) {
+            document.body.classList.add('cp-loading');
+            sessionStorage.setItem('cpLoaderShown', '1');
+            window.setTimeout(() => {
+                document.body.classList.remove('cp-loading');
+            }, 1000);
+        }
+    }
+
     // Mobile Menu Toggle
     const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');

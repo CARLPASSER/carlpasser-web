@@ -34,6 +34,34 @@
     background: #f7f7f4;
 }
 
+.cp-loader {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: grid;
+    place-items: center;
+    background: #fff;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.45s ease, visibility 0s linear 0.45s;
+}
+
+.cp-loader img {
+    width: min(230px, 52vw);
+    height: auto;
+}
+
+body.cp-loading {
+    overflow: hidden;
+}
+
+body.cp-loading .cp-loader {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.45s ease;
+}
+
 .cp-kicker {
     margin: 0 0 18px;
     font-size: 12px;
@@ -88,6 +116,23 @@
     color: #191919;
     text-decoration: none;
     transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.cp-desk-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.cp-card-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    margin-bottom: 34px;
+    border: 1px solid #1f1f1f;
+    border-radius: 50%;
+    color: #111;
+    font-size: 20px;
 }
 
 .cp-category-card:hover,
@@ -151,6 +196,43 @@
 
 .cp-readable-copy p {
     margin: 0 0 22px;
+}
+
+.cp-philosophy-section {
+    padding-top: clamp(96px, 12vw, 170px);
+}
+
+.cp-philosophy-layout {
+    display: grid;
+    grid-template-columns: 0.92fr 1.08fr;
+    gap: clamp(34px, 6vw, 76px);
+    align-items: center;
+}
+
+.cp-philosophy-layout .cp-section-heading {
+    grid-column: 1 / -1;
+    margin-bottom: 0;
+}
+
+.cp-philosophy-sub {
+    font-weight: 700;
+}
+
+.cp-philosophy-logo {
+    padding: clamp(16px, 3vw, 28px);
+    border: 1px solid #e5e1d8;
+    border-radius: 8px;
+    background: #fff;
+}
+
+.cp-philosophy-logo img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.cp-philosophy-copy {
+    max-width: 620px;
 }
 
 .cp-line-cta {
@@ -358,6 +440,7 @@
 
 @media (max-width: 900px) {
     .cp-category-grid,
+    .cp-desk-grid,
     .cp-feature-grid,
     .cp-service-grid,
     .cp-blog-grid,
@@ -407,8 +490,26 @@
         margin-bottom: 24px;
     }
 
+    .cp-philosophy-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .cp-philosophy-logo {
+        padding: 12px;
+    }
+
+    .cp-card-icon {
+        margin-bottom: 26px;
+    }
+
     .cp-blog-categories {
         gap: 8px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .cp-loader {
+        display: none;
     }
 }
 

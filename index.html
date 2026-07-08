@@ -58,6 +58,10 @@
 </head>
 
 <body>
+    <div class="cp-loader" aria-hidden="true">
+        <img src="logo-black.png" alt="">
+    </div>
+
     <!-- Header -->
     <header class="header">
         <a href="index.html" class="logo header-logo" aria-label="CARL PASSER">
@@ -96,127 +100,70 @@
     </section>
 
     <!-- 2. Philosophy Block -->
-    <section class="top-philosophy fade-up">
-        <div class="phi-container">
-            <div class="phi-label">
-                <span>PHILOSOPHY</span>
-                <div class="phi-line"></div>
+    <section class="cp-section cp-philosophy-section fade-up">
+        <div class="cp-section-inner cp-philosophy-layout">
+            <div class="cp-section-heading">
+                <p class="cp-kicker">PHILOSOPHY</p>
+                <h2>10People10Cars</h2>
+                <p class="cp-philosophy-sub">10人いたら、10通りのカーライフがある。</p>
             </div>
-            <p class="phi-intro">クルマ選びに、正解はありません。</p>
-            <h2 class="phi-main">
-                10 PEOPLE 10 CARS<br>
-                <span
-                    style="display:block; font-size:15px; color:#777; margin-top:5px; margin-bottom:15px; font-weight:600; letter-spacing:0.1em; font-family: var(--font-body);">十人十車。</span>
-                <span class="phi-sub">暮らしの数だけ、カーライフがある。</span>
-            </h2>
-            <div class="phi-desc">
-                <p>
-                    車は、買った瞬間がゴールではなく、<br class="phi-mobile-br"><br class="pc-only">
-                    乗り続ける日々こそが本番。
-                </p>
-                <p>
-                    CARL PASSERは、<br class="pc-only">
-                    在庫をご提案するだけでなく、<br class="phi-mobile-br"><br class="pc-only">
-                    <span class="phi-bold">その人の“らしさ”から一台を考えます。</span>
-                </p>
-                <p>
-                    売って終わりにしない、<br class="pc-only">
-                    カーライフを届けます。
-                </p>
+            <div class="cp-philosophy-logo">
+                <img src="photo/philosophy-10people10cars.jpeg" alt="10 people 10 cars">
+            </div>
+            <div class="cp-readable-copy cp-philosophy-copy">
+                <p>CARL PASSERが大切にしている考え方です。</p>
+                <p>人それぞれ、暮らしも価値観も趣味も違う。だから、似合う車も違う。</p>
+                <p>私たちは車種や価格だけではなく、その人のライフスタイルに合う一台を一緒に考えます。</p>
+                <p>車を売ることではなく、その先のカーライフを支えること。それがCARL PASSERの考える10People10Carsです。</p>
+                <a href="about.html" class="cp-text-link">詳しく見る →</a>
             </div>
         </div>
     </section>
 
-    <!-- 3. Service Block -->
-    <section class="top-services fade-up">
-        <div class="srv-container">
-            <div class="srv-grid">
-                <!-- 買う -->
-                <div class="srv-card">
-                    <i class="fa-solid fa-car srv-icon"></i>
-                    <h3 class="srv-title">車を買う</h3>
-                    <p class="srv-desc">
-                        暮らしや価値観に合う一台を、かたちにする。<br>
-                        あなたの“らしさ”から、<br>
-                        一台を一緒に考えます。
-                    </p>
-                    <a href="sales.html" class="srv-link">詳しく見る &rarr;</a>
-                </div>
-                <!-- 整える -->
-                <div class="srv-card">
-                    <i class="fa-solid fa-wrench srv-icon"></i>
-                    <h3 class="srv-title">車を整える</h3>
-                    <p class="srv-desc">
-                        長く続くカーライフを、支える。<br>
-                        日常のメンテナンスから、<br>
-                        こだわりのカスタムまで。
-                    </p>
-                    <a href="maintenance.html" class="srv-link">詳しく見る &rarr;</a>
-                </div>
-                <!-- 売る -->
-                <div class="srv-card">
-                    <i class="fa-solid fa-rotate srv-icon"></i>
-                    <h3 class="srv-title">車を売る</h3>
-                    <p class="srv-desc">
-                        次のカーライフへ、つなぐ。<br>
-                        大切にしてきた一台を、<br>
-                        次の持ち主へ。
-                    </p>
-                    <a href="sell.html" class="srv-link">詳しく見る &rarr;</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Category Block -->
+    <!-- Car Life Desk Block -->
     <section class="cp-section cp-top-category fade-up">
         <div class="cp-section-inner">
             <div class="cp-section-heading">
-                <p class="cp-kicker">CATEGORY</p>
-                <h2>カーライフの相談口</h2>
+                <p class="cp-kicker">CAR LIFE DESK</p>
+                <h2>カーライフ相談窓口</h2>
                 <p>買う、整える、見直す、手放す。暮らしの変化に合わせて、必要なところから相談できます。</p>
             </div>
-            <div class="cp-category-grid">
+            <div class="cp-category-grid cp-desk-grid">
                 <a href="sales.html" class="cp-category-card">
-                    <span>BUY</span>
+                    <i class="fa-solid fa-car-side cp-card-icon" aria-hidden="true"></i>
+                    <span>BUY｜車を買う</span>
                     <h3>暮らしに合う一台を一緒に探す</h3>
-                    <p>車種やスペックだけではなく、毎日の使い方から考えます。</p>
                 </a>
                 <a href="maintenance.html" class="cp-category-card">
-                    <span>MAINTENANCE</span>
-                    <h3>長く気持ちよく乗るための整備</h3>
-                    <p>車検、オイル交換、タイヤ、バッテリーまで日常を支えます。</p>
+                    <i class="fa-solid fa-screwdriver-wrench cp-card-icon" aria-hidden="true"></i>
+                    <span>MAINTENANCE｜車を整える</span>
+                    <h3>車検・整備・日常メンテナンス</h3>
                 </a>
                 <a href="insurance.html" class="cp-category-card">
-                    <span>INSURANCE</span>
-                    <h3>今のカーライフに合っているか見てみる</h3>
-                    <p>保険を売る前に、まず今の暮らしに合う内容か確認します。</p>
+                    <i class="fa-solid fa-shield-halved cp-card-icon" aria-hidden="true"></i>
+                    <span>INSURANCE｜保険を見直す</span>
+                    <h3>今のカーライフに合っているか確認する</h3>
                 </a>
                 <a href="sell.html" class="cp-category-card">
-                    <span>SELL</span>
+                    <i class="fa-solid fa-rotate cp-card-icon" aria-hidden="true"></i>
+                    <span>SELL｜車を売る</span>
                     <h3>次のカーライフを考えるための査定</h3>
-                    <p>高く売るだけでなく、次の暮らしまで一緒に整理します。</p>
-                </a>
-                <a href="blog.html" class="cp-category-card cp-category-card-wide">
-                    <span>BLOG</span>
-                    <h3>車選び・整備・カーライフの読みもの</h3>
-                    <p>CARL PASSERらしい視点で、少しずつ知っておきたいことを書いていきます。</p>
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- First Visit Block -->
+    <!-- Blog Lead Block -->
     <section class="cp-section cp-soft-band fade-up">
         <div class="cp-section-inner cp-split">
             <div class="cp-section-heading">
-                <p class="cp-kicker">FIRST VISIT</p>
-                <h2>はじめての方へ</h2>
+                <p class="cp-kicker">BLOG</p>
+                <h2>読みもの</h2>
             </div>
             <div class="cp-readable-copy">
-                <p>CARL PASSERは、中古車を並べて売るだけのお店ではありません。</p>
-                <p>十人十車。暮らしの数だけ、ちょうどいいカーライフがあります。だから、いきなり車をすすめるのではなく、まずはどんな毎日を送りたいかを聞くことから始めます。</p>
-                <p>買う前も、乗っている間も、手放すときも。売って終わりにしない、相談しやすい地域のカーライフパートナーでありたいと考えています。</p>
+                <p>車選び、整備、カーライフのこと。</p>
+                <p>CARL PASSERらしく、少しずつ書いていきます。</p>
+                <a href="blog.html" class="cp-text-link">BLOG一覧へ →</a>
             </div>
         </div>
     </section>
@@ -225,9 +172,9 @@
     <section class="cp-line-cta fade-up">
         <div class="cp-section-inner cp-line-cta-inner">
             <p class="cp-kicker">LINE CONSULTATION</p>
-            <h2>車選びを相談する</h2>
+            <h2>まずは相談してみる</h2>
             <p>まだ具体的に決まっていなくても大丈夫です。暮らしのことから、一緒に整理しましょう。</p>
-            <a href="https://lin.ee/TLGhT3W" target="_blank" rel="noopener noreferrer" class="cp-primary-btn">LINEで相談する</a>
+            <a href="https://lin.ee/TLGhT3W" target="_blank" rel="noopener noreferrer" class="cp-primary-btn">車選びを相談する / LINEで相談する</a>
         </div>
     </section>
 
