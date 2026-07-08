@@ -353,7 +353,42 @@ body.cp-loading .cp-loader {
 }
 
 .cp-insurance-hero {
-    background: linear-gradient(rgba(255,255,255,0.86), rgba(255,255,255,0.92)), url('photo/Image (31).jpg') center/cover;
+    background: linear-gradient(90deg, rgba(255,255,255,0.94) 0%, rgba(255,255,255,0.84) 45%, rgba(255,255,255,0.42) 100%), url('photo/insurance-hero-life.jpg') center right/cover;
+}
+
+.cp-insurance-hero h1 {
+    max-width: 760px;
+    font-size: clamp(28px, 4.4vw, 52px);
+    line-height: 1.22;
+}
+
+.cp-insurance-hero .cp-hero-lead {
+    max-width: 620px;
+    font-size: clamp(16px, 2vw, 21px);
+}
+
+.cp-insurance-page .cp-section {
+    padding-top: clamp(78px, 9vw, 124px);
+    padding-bottom: clamp(78px, 9vw, 124px);
+}
+
+.cp-insurance-page .cp-section-heading {
+    margin-bottom: clamp(28px, 4vw, 48px);
+}
+
+.cp-insurance-page .cp-section-heading h2 {
+    font-size: clamp(28px, 4vw, 46px);
+    line-height: 1.18;
+}
+
+.cp-insurance-page .cp-line-cta {
+    padding-top: clamp(72px, 9vw, 118px);
+    padding-bottom: clamp(72px, 9vw, 118px);
+}
+
+.cp-insurance-page .cp-line-cta h2 {
+    font-size: clamp(28px, 4.2vw, 46px);
+    line-height: 1.22;
 }
 
 .cp-insurance-policy-grid .cp-info-card {
@@ -661,6 +696,15 @@ body.cp-loading .cp-loader {
 
     .cp-support-mini-grid {
         grid-template-columns: 1fr;
+    }
+
+    .cp-insurance-hero {
+        background: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), url('photo/insurance-hero-life.jpg') 62% center/cover;
+    }
+
+    .cp-insurance-hero h1 {
+        font-size: clamp(30px, 8.4vw, 42px);
+        line-height: 1.24;
     }
 }
 
