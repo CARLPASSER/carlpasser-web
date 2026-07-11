@@ -213,6 +213,10 @@ body.cp-loading .cp-loader {
 }
 
 .cp-brand-message {
+    font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+    font-weight: 400 !important;
+    letter-spacing: 0.01em !important;
+    line-height: 0.96 !important;
     white-space: nowrap;
     word-break: keep-all;
 }
@@ -3793,8 +3797,10 @@ textarea.form-control {
 }
 
 .about-eyebrow {
+    font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
     font-size: 0.78rem;
-    letter-spacing: 0.14em;
+    font-weight: 400;
+    letter-spacing: 0.03em;
     margin-bottom: 14px;
     color: #7a7a7a;
 }
@@ -4104,7 +4110,7 @@ textarea.form-control {
     }
 
     .about-eyebrow {
-        letter-spacing: 0.12em;
+        letter-spacing: 0.03em;
     }
 }
 
