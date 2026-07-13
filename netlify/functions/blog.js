@@ -2,7 +2,6 @@ exports.handler = async (event) => {
   try {
     const query = event.queryStringParameters || {};
     const id = query.id;
-    const slug = query.slug;
     const limit = query.limit || "12";
     const offset = query.offset || "0";
     const filters = query.filters;
@@ -17,7 +16,7 @@ exports.handler = async (event) => {
       };
     }
 
-    const baseUrl = `https://${serviceDomain}.microcms.io/api/v1/blog`;
+    const baseUrl = `https://${serviceDomain}.microcms.io/api/v1/blogs`;
     let endpoint = "";
 
     if (id) {
@@ -29,9 +28,7 @@ exports.handler = async (event) => {
         orders: "-publishedAt",
       });
 
-      if (slug) {
-        params.set("filters", `slug[equals]${slug}`);
-      } else if (filters) {
+      if (filters) {
         params.set("filters", filters);
       }
 

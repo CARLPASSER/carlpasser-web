@@ -340,12 +340,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     loadWeeklySelect();
 
-    const blogCategoryLabels = {
-        'car-life': 'CAR LIFE',
-        maintenance: 'MAINTENANCE',
-        'stock-delivery': 'STOCK & DELIVERY'
-    };
-
     const fetchBlogData = async (params = {}) => {
         const searchParams = new URLSearchParams(params);
         const queryString = searchParams.toString();
@@ -362,27 +356,61 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!item) return '';
         if (typeof item.category === 'string') return item.category;
         if (item.category && typeof item.category === 'object') {
-            return item.category.id || item.category.slug || item.category.name || '';
+            return item.category.name || item.category.title || item.category.id || item.category.slug || '';
         }
         return '';
     };
 
     const getBlogCategoryLabel = (item) => {
         const category = getBlogCategory(item);
-        if (item.category && typeof item.category === 'object' && item.category.name) {
-            return item.category.name;
-        }
-        return blogCategoryLabels[category] || 'BLOG';
+        return category || 'CARL MAG';
     };
 
     const getBlogUrl = (item) => {
-        const slug = item.slug || item.id;
-        return `blog-detail.html?slug=${encodeURIComponent(slug)}`;
+        return `blog-detail.html?id=${encodeURIComponent(item.id)}`;
     };
 
     const getBlogThumbnail = (item) => {
+        if (item.eyecatch && item.eyecatch.url) return item.eyecatch.url;
         if (item.thumbnail && item.thumbnail.url) return item.thumbnail.url;
         return 'photo/Image (25).jpg';
+    };
+
+    const getBlogTags = (item) => {
+        if (!item || !Array.isArray(item.tags)) return [];
+        return item.tags
+            .map((tag) => {
+                if (typeof tag === 'string') return tag;
+                if (tag && typeof tag === 'object') return tag.name || tag.title || tag.id || '';
+                return '';
+            })
+            .filter(Boolean);
+    };
+
+    const createBlogTagsHtml = (item) => {
+        const tags = getBlogTags(item);
+        if (!tags.length) return '';
+        return `<div class="cp-blog-tags">${tags.map((tag) => `<span>#${escapeHtml(tag)}</span>`).join('')}</div>`;
+    };
+
+    const updateMetaTag = (selector, attr, value) => {
+        const element = document.querySelector(selector);
+        if (element && value) element.setAttribute(attr, value);
+    };
+
+    const updateBlogSeo = (item) => {
+        const titleText = `${item.title || 'CARL MAG'} | CARL MAG | CARL PASSER`;
+        const description = item.excerpt || 'CARL PASSERのカーライフメディア CARL MAG の記事です。';
+        const image = getBlogThumbnail(item);
+        const url = `${window.location.origin}${window.location.pathname}?id=${encodeURIComponent(item.id)}`;
+
+        document.title = titleText;
+        updateMetaTag('meta[name="description"]', 'content', description);
+        updateMetaTag('meta[property="og:title"]', 'content', titleText);
+        updateMetaTag('meta[property="og:description"]', 'content', description);
+        updateMetaTag('meta[property="og:image"]', 'content', image);
+        updateMetaTag('meta[property="og:url"]', 'content', url);
+        updateMetaTag('link[rel="canonical"]', 'href', url);
     };
 
     const createBlogCard = (item, featured = false) => {
@@ -402,6 +430,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                     <h3>${escapeHtml(item.title || '')}</h3>
                     <p>${escapeHtml(item.excerpt || '')}</p>
+                    ${createBlogTagsHtml(item)}
                 </div>
             </a>
         `;
@@ -412,7 +441,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const renderBlogPosts = (container, posts, featured = false) => {
         if (!container) return;
         if (!posts.length) {
-            container.innerHTML = '<p class="cp-loading-text">記事はまだありません。</p>';
+            container.innerHTML = '<p class="cp-loading-text">記事を準備中です</p>';
             return;
         }
 
@@ -430,7 +459,7 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             const data = await fetchBlogData({ limit: '30' });
             const posts = Array.isArray(data.contents) ? data.contents : [];
-            const featuredPosts = posts.filter((post) => Boolean(post.featured)).slice(0, 3);
+            const featuredPosts = posts.slice(0, 1);
 
             renderBlogPosts(featuredContainer, featuredPosts.length ? featuredPosts : posts.slice(0, 1), true);
             renderBlogPosts(postsContainer, posts, false);
@@ -463,33 +492,46 @@ document.addEventListener('DOMContentLoaded', () => {
         const meta = document.getElementById('blog-detail-meta');
         const content = document.getElementById('blog-detail-content');
         const thumbnail = document.getElementById('blog-detail-thumbnail');
+        const tags = document.getElementById('blog-detail-tags');
+        const breadcrumbTitle = document.getElementById('blog-breadcrumb-title');
+        const related = document.getElementById('blog-related-posts');
         if (!title || !content) return;
 
-        const slug = new URLSearchParams(window.location.search).get('slug');
+        const id = new URLSearchParams(window.location.search).get('id');
 
-        if (!slug) {
+        if (!id) {
             title.textContent = '記事が見つかりません';
             content.innerHTML = '<p>記事が指定されていません。</p>';
             return;
         }
 
         try {
-            const data = await fetchBlogData({ slug });
-            const item = Array.isArray(data.contents) ? data.contents[0] : data;
+            const item = await fetchBlogData({ id });
 
             if (!item || !item.title) {
                 throw new Error('Blog post not found');
             }
 
             title.textContent = item.title;
+            if (breadcrumbTitle) breadcrumbTitle.textContent = item.title;
             if (category) category.textContent = getBlogCategoryLabel(item);
             if (meta) meta.textContent = formatDate(item.publishedAt);
+            if (tags) tags.innerHTML = createBlogTagsHtml(item);
             if (thumbnail) {
                 thumbnail.innerHTML = `<img src="${getBlogThumbnail(item)}" alt="${escapeHtml(item.title)}">`;
             }
 
             renderNewsBody(content, item.content || '');
-            document.title = `${item.title} | BLOG | CARL PASSER`;
+            updateBlogSeo(item);
+
+            if (related) {
+                const list = await fetchBlogData({ limit: '30' });
+                const posts = Array.isArray(list.contents) ? list.contents : [];
+                const relatedPosts = posts
+                    .filter((post) => post.id !== item.id && getBlogCategory(post) === getBlogCategory(item))
+                    .slice(0, 3);
+                renderBlogPosts(related, relatedPosts, false);
+            }
         } catch (error) {
             console.log('Error fetching blog detail:', error);
             title.textContent = '記事の読み込みに失敗しました';
