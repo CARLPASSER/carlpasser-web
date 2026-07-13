@@ -1,4 +1,62 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const siteOrigin = 'https://carlpasser.jp';
+    const publisherData = {
+        '@type': 'AutoDealer',
+        '@id': `${siteOrigin}/#organization`,
+        name: 'CARL PASSER（カール・パサー）',
+        alternateName: ['カールパサー', 'カール・パサー', 'CARL PASSER', 'CARLPASSER'],
+        url: siteOrigin,
+        logo: `${siteOrigin}/logo_square.png`,
+        image: `${siteOrigin}/logo_square.png`,
+        telephone: '+81-92-935-1510',
+        address: {
+            '@type': 'PostalAddress',
+            streetAddress: '南里2-17-2',
+            addressLocality: '志免町',
+            addressRegion: '福岡県',
+            postalCode: '811-2207',
+            addressCountry: 'JP'
+        },
+        areaServed: ['福岡県', '糟屋郡', '志免町'],
+        priceRange: '¥¥',
+        sameAs: [
+            'https://www.instagram.com/carl.passer',
+            'https://lin.ee/TLGhT3W'
+        ],
+        makesOffer: [
+            { '@type': 'Offer', name: '中古車販売' },
+            { '@type': 'Offer', name: '注文販売' },
+            { '@type': 'Offer', name: '車検・点検・整備' },
+            { '@type': 'Offer', name: '車買取・査定' },
+            { '@type': 'Offer', name: '自動車保険相談' }
+        ]
+    };
+
+    const appendJsonLd = (id, data) => {
+        if (document.getElementById(id)) return;
+        const script = document.createElement('script');
+        script.type = 'application/ld+json';
+        script.id = id;
+        script.textContent = JSON.stringify(data);
+        document.head.appendChild(script);
+    };
+
+    appendJsonLd('cp-site-structured-data', {
+        '@context': 'https://schema.org',
+        '@graph': [
+            publisherData,
+            {
+                '@type': 'WebSite',
+                '@id': `${siteOrigin}/#website`,
+                name: 'CARL PASSER',
+                alternateName: ['カール・パサー', 'カールパサー'],
+                url: siteOrigin,
+                publisher: { '@id': `${siteOrigin}/#organization` },
+                inLanguage: 'ja'
+            }
+        ]
+    });
+
     const loader = document.querySelector('.cp-loader');
     if (loader) {
         const shouldShowLoader = !sessionStorage.getItem('cpLoaderShown')
@@ -376,6 +434,15 @@ document.addEventListener('DOMContentLoaded', () => {
         return 'photo/Image (25).jpg';
     };
 
+    const toAbsoluteUrl = (url) => {
+        if (!url) return '';
+        try {
+            return new URL(url, siteOrigin).href;
+        } catch (error) {
+            return url;
+        }
+    };
+
     const getBlogTags = (item) => {
         if (!item || !Array.isArray(item.tags)) return [];
         return item.tags
@@ -401,7 +468,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const updateBlogSeo = (item) => {
         const titleText = `${item.title || 'CARL MAG'} | CARL MAG | CARL PASSER`;
         const description = item.excerpt || 'CARL PASSERのカーライフメディア CARL MAG の記事です。';
-        const image = getBlogThumbnail(item);
+        const image = toAbsoluteUrl(getBlogThumbnail(item));
         const url = `${window.location.origin}${window.location.pathname}?id=${encodeURIComponent(item.id)}`;
 
         document.title = titleText;
@@ -410,7 +477,47 @@ document.addEventListener('DOMContentLoaded', () => {
         updateMetaTag('meta[property="og:description"]', 'content', description);
         updateMetaTag('meta[property="og:image"]', 'content', image);
         updateMetaTag('meta[property="og:url"]', 'content', url);
+        updateMetaTag('meta[name="twitter:title"]', 'content', titleText);
+        updateMetaTag('meta[name="twitter:description"]', 'content', description);
+        updateMetaTag('meta[name="twitter:image"]', 'content', image);
         updateMetaTag('link[rel="canonical"]', 'href', url);
+    };
+
+    const stripHtml = (html) => {
+        const element = document.createElement('div');
+        element.innerHTML = html || '';
+        return (element.textContent || element.innerText || '').replace(/\s+/g, ' ').trim();
+    };
+
+    const updateBlogPostingJsonLd = (item) => {
+        const url = `${window.location.origin}${window.location.pathname}?id=${encodeURIComponent(item.id)}`;
+        const articleBody = stripHtml(item.content || '');
+        appendJsonLd('cp-blogposting-structured-data', {
+            '@context': 'https://schema.org',
+            '@type': 'BlogPosting',
+            '@id': `${url}#article`,
+            headline: item.title || 'CARL MAG',
+            description: item.excerpt || articleBody.slice(0, 120),
+            image: [toAbsoluteUrl(getBlogThumbnail(item))],
+            datePublished: item.publishedAt,
+            dateModified: item.updatedAt || item.revisedAt || item.publishedAt,
+            mainEntityOfPage: {
+                '@type': 'WebPage',
+                '@id': url
+            },
+            author: {
+                '@type': 'Organization',
+                name: 'CARL PASSER（カール・パサー）',
+                url: siteOrigin
+            },
+            publisher: {
+                '@id': `${siteOrigin}/#organization`
+            },
+            articleSection: getBlogCategoryLabel(item),
+            keywords: getBlogTags(item).join(', '),
+            articleBody,
+            inLanguage: 'ja'
+        });
     };
 
     const createBlogCard = (item, featured = false) => {
@@ -531,6 +638,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             renderNewsBody(content, item.content || '');
             updateBlogSeo(item);
+            updateBlogPostingJsonLd(item);
 
             if (related) {
                 const list = await fetchBlogData({ limit: '30' });
