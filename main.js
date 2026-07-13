@@ -454,15 +454,23 @@ document.addEventListener('DOMContentLoaded', () => {
     const loadBlogIndex = async () => {
         const postsContainer = document.getElementById('blog-posts');
         const featuredContainer = document.getElementById('blog-featured');
+        const pickupSection = document.getElementById('blog-pickup-section');
         if (!postsContainer && !featuredContainer) return;
 
         try {
             const data = await fetchBlogData({ limit: '30' });
             const posts = Array.isArray(data.contents) ? data.contents : [];
-            const featuredPosts = posts.slice(0, 1);
+            const pickupPosts = posts.filter((post) => post.pickup === true);
+            const newPosts = posts.filter((post) => post.pickup !== true);
 
-            renderBlogPosts(featuredContainer, featuredPosts.length ? featuredPosts : posts.slice(0, 1), true);
-            renderBlogPosts(postsContainer, posts, false);
+            if (pickupPosts.length) {
+                if (pickupSection) pickupSection.hidden = false;
+                renderBlogPosts(featuredContainer, pickupPosts.slice(0, 1), true);
+            } else if (pickupSection) {
+                pickupSection.hidden = true;
+            }
+
+            renderBlogPosts(postsContainer, newPosts, false);
 
             document.querySelectorAll('[data-blog-filter]').forEach((button) => {
                 button.addEventListener('click', () => {
@@ -471,8 +479,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     button.classList.add('is-active');
 
                     const filteredPosts = selected === 'all'
-                        ? posts
-                        : posts.filter((post) => getBlogCategory(post) === selected);
+                        ? newPosts
+                        : newPosts.filter((post) => getBlogCategory(post) === selected);
 
                     renderBlogPosts(postsContainer, filteredPosts, false);
                 });
