@@ -596,23 +596,16 @@ body.cp-loading .cp-loader {
     background: #fff;
 }
 
-.cp-voice-card::after {
-    content: "";
-    position: absolute;
-    left: 34px;
-    bottom: -10px;
-    width: 18px;
-    height: 18px;
-    border-right: 1px solid #dfdfd8;
-    border-bottom: 1px solid #dfdfd8;
-    background: #fff;
-    transform: rotate(45deg);
-}
-
 .cp-voice-icon {
-    display: block;
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
     margin-bottom: 22px;
-    font-size: 24px;
+    border: 1px solid #242424;
+    border-radius: 50%;
+    color: #242424;
+    font-size: 20px;
     line-height: 1;
 }
 
@@ -754,6 +747,83 @@ body.cp-loading .cp-loader {
     font-size: 12px;
     font-weight: 700;
     line-height: 1;
+}
+
+.cp-blog-detail-link {
+    display: inline-block;
+    margin-top: 22px;
+    color: #222;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+}
+
+.cp-top-pickup {
+    margin-top: clamp(52px, 7vw, 84px);
+}
+
+.cp-mag-action {
+    margin-top: clamp(34px, 5vw, 56px);
+    text-align: center;
+}
+
+.cp-category-filter-block .cp-blog-categories {
+    margin-bottom: 0;
+}
+
+.sales-hero-content h1 span {
+    display: block;
+}
+
+.sales-hero-en {
+    margin-bottom: 10px;
+    font-size: 0.34em;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+}
+
+.cp-floating-line {
+    position: fixed;
+    right: max(16px, env(safe-area-inset-right));
+    bottom: max(16px, env(safe-area-inset-bottom));
+    z-index: 900;
+    display: none;
+    align-items: center;
+    gap: 8px;
+    min-height: 48px;
+    padding: 0 18px;
+    border: 1px solid rgba(255, 255, 255, 0.38);
+    border-radius: 999px;
+    background: #06c755;
+    box-shadow: 0 8px 24px rgba(15, 60, 34, 0.2);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    text-decoration: none;
+}
+
+.cp-line-mark {
+    display: grid;
+    place-items: center;
+    width: 30px;
+    height: 22px;
+    border-radius: 7px;
+    background: #fff;
+    color: #06a847;
+    font-size: 8px;
+    font-weight: 900;
+    letter-spacing: -0.02em;
+}
+
+@media (max-width: 768px) {
+    .cp-floating-line {
+        display: inline-flex;
+    }
+
+    body:has(.cp-floating-line) footer {
+        padding-bottom: calc(92px + env(safe-area-inset-bottom));
+    }
 }
 
 .cp-blog-card-featured {

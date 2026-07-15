@@ -71,6 +71,22 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    const floatingLinePages = new Set([
+        'sales.html', 'maintenance.html', 'insurance.html', 'sell.html',
+        'about.html', 'blog.html', 'blog-detail.html', 'contact.html'
+    ]);
+    const currentPage = window.location.pathname.split('/').pop();
+    if (floatingLinePages.has(currentPage)) {
+        const floatingLine = document.createElement('a');
+        floatingLine.href = 'https://lin.ee/TLGhT3W';
+        floatingLine.target = '_blank';
+        floatingLine.rel = 'noopener noreferrer';
+        floatingLine.className = 'cp-floating-line';
+        floatingLine.setAttribute('aria-label', 'LINEで相談する');
+        floatingLine.innerHTML = '<span class="cp-line-mark" aria-hidden="true">LINE</span><span>LINEで相談</span>';
+        document.body.appendChild(floatingLine);
+    }
+
     // Mobile Menu Toggle
     const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
@@ -538,6 +554,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <h3>${escapeHtml(item.title || '')}</h3>
                     <p>${escapeHtml(item.excerpt || '')}</p>
                     ${createBlogTagsHtml(item)}
+                    <span class="cp-blog-detail-link">詳しく見る →</span>
                 </div>
             </a>
         `;
@@ -567,15 +584,13 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             const data = await fetchBlogData({ limit: '30' });
             const posts = Array.isArray(data.contents) ? data.contents : [];
-            const pickupPosts = posts.filter((post) => post.pickup === true);
-            const newPosts = posts.filter((post) => post.pickup !== true);
+            const pickupPost = posts.find((post) => post.pickup === true) || posts[0];
+            const newPosts = pickupPost ? posts.filter((post) => post.id !== pickupPost.id) : posts;
 
-            if (pickupPosts.length) {
+            if (pickupPost) {
                 if (pickupSection) pickupSection.hidden = false;
-                renderBlogPosts(featuredContainer, pickupPosts.slice(0, 1), true);
-            } else if (pickupSection) {
-                pickupSection.hidden = true;
-            }
+                renderBlogPosts(featuredContainer, [pickupPost], true);
+            } else if (pickupSection) pickupSection.hidden = true;
 
             renderBlogPosts(postsContainer, newPosts, false);
 
@@ -600,6 +615,22 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     loadBlogIndex();
+
+    const loadTopBlogPickup = async () => {
+        const container = document.getElementById('top-blog-featured');
+        if (!container) return;
+        try {
+            const data = await fetchBlogData({ limit: '30' });
+            const posts = Array.isArray(data.contents) ? data.contents : [];
+            const pickupPost = posts.find((post) => post.pickup === true) || posts[0];
+            renderBlogPosts(container, pickupPost ? [pickupPost] : [], true);
+        } catch (error) {
+            console.log('Error fetching top blog pickup:', error);
+            container.innerHTML = '<p class="cp-loading-text">記事の読み込みに失敗しました。</p>';
+        }
+    };
+
+    loadTopBlogPickup();
 
     const loadBlogDetail = async () => {
         const title = document.getElementById('blog-detail-title');
