@@ -23,52 +23,6 @@
     --heading-weight: 700;
 }
 
-/* CARL MAG pickup: keep the editorial split on desktop, stack cleanly on phones. */
-@media (max-width: 768px) {
-    .cp-blog-shell .cp-blog-card-featured a {
-        display: block;
-        min-height: 0;
-    }
-
-    .cp-blog-shell .cp-blog-card-featured .cp-blog-thumb {
-        width: 100%;
-        min-height: 0;
-        aspect-ratio: 16 / 10;
-    }
-
-    .cp-blog-shell .cp-blog-card-featured .cp-blog-thumb img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-
-    .cp-blog-shell .cp-blog-card-featured .cp-blog-card-body {
-        min-width: 0;
-        padding: 22px;
-    }
-
-    .cp-blog-shell .cp-blog-card-featured .cp-blog-meta {
-        flex-wrap: wrap;
-    }
-
-    .cp-blog-shell .cp-blog-card-featured h3 {
-        overflow-wrap: anywhere;
-        font-size: clamp(26px, 7.4vw, 30px);
-        line-height: 1.35;
-    }
-
-    .cp-blog-shell .cp-blog-card-featured p,
-    .cp-blog-shell .cp-blog-card-featured .cp-blog-tags {
-        min-width: 0;
-        max-width: 100%;
-        overflow-wrap: anywhere;
-    }
-
-    .cp-blog-shell .cp-blog-card-featured .cp-blog-detail-link {
-        display: none;
-    }
-}
-
 /* CARL PASSER editorial information blocks */
 .cp-section {
     padding: clamp(84px, 10vw, 140px) 24px;
@@ -919,6 +873,26 @@ body.cp-loading .cp-loader {
     color: #555;
     font-size: 14px;
     line-height: 1.8;
+}
+
+.cp-payment-title {
+    font-size: clamp(28px, 2.6vw, 36px) !important;
+}
+
+.cp-payment-copy {
+    max-width: 680px;
+    margin-top: 24px;
+}
+
+.cp-payment-copy p {
+    margin: 0 0 12px !important;
+    color: #555;
+    font-size: 16px;
+    line-height: 1.9;
+}
+
+.cp-payment-copy p:last-child {
+    margin-bottom: 0 !important;
 }
 
 .cp-assurance-grid {
@@ -4752,87 +4726,6 @@ textarea.form-control {
         --label-size: clamp(12px, 3.4vw, 14px);
     }
 
-    /* Explicit final override: the pickup card itself becomes a one-column grid. */
-    .cp-blog-shell .cp-featured-posts,
-    .cp-blog-shell .cp-blog-card-featured,
-    .cp-blog-shell .cp-blog-card-featured > a {
-        width: 100%;
-        min-width: 0;
-        max-width: 100%;
-    }
-
-    .cp-blog-shell .cp-blog-card-featured > a {
-        display: grid !important;
-        grid-template-columns: minmax(0, 1fr) !important;
-        grid-template-rows: auto auto;
-        min-height: 0 !important;
-    }
-
-    .cp-blog-shell .cp-blog-card-featured .cp-blog-thumb {
-        grid-column: 1;
-        width: 100% !important;
-        min-width: 0;
-        min-height: 0 !important;
-        aspect-ratio: 16 / 10 !important;
-    }
-
-    .cp-blog-shell .cp-blog-card-featured .cp-blog-thumb img {
-        display: block;
-        width: 100% !important;
-        height: 100% !important;
-        object-fit: cover;
-    }
-
-    .cp-blog-shell .cp-blog-card-featured .cp-blog-card-body {
-        grid-column: 1;
-        width: 100%;
-        min-width: 0;
-        max-width: 100%;
-        box-sizing: border-box;
-        padding: 22px;
-    }
-
-    .cp-blog-shell .cp-blog-card-featured .cp-blog-meta {
-        display: flex;
-        flex-flow: row nowrap;
-        align-items: center;
-        justify-content: space-between;
-        min-width: 0;
-        gap: 12px;
-    }
-
-    .cp-blog-shell .cp-blog-card-featured .cp-blog-meta span,
-    .cp-blog-shell .cp-blog-card-featured .cp-blog-meta time {
-        min-width: 0;
-        white-space: nowrap;
-    }
-
-    .cp-blog-shell .cp-blog-card-featured h3 {
-        max-width: 100%;
-        margin-right: 0;
-        overflow-wrap: anywhere;
-        font-size: clamp(24px, 7vw, 30px);
-        line-height: 1.35;
-    }
-
-    .cp-blog-shell .cp-blog-card-featured .cp-blog-card-body > p {
-        max-width: 100%;
-        font-size: clamp(15px, 4.2vw, 16px);
-        line-height: 1.8;
-        overflow-wrap: anywhere;
-    }
-
-    .cp-blog-shell .cp-blog-card-featured .cp-blog-tags {
-        display: flex;
-        flex-wrap: wrap;
-        min-width: 0;
-        max-width: 100%;
-    }
-
-    .cp-blog-shell .cp-blog-card-featured .cp-blog-detail-link {
-        display: inline-block;
-    }
-
     .cp-buy-intro .cp-section-heading h2,
     .cp-payment-section .cp-section-heading h2 {
         font-size: clamp(30px, 8vw, 38px);
@@ -4849,5 +4742,121 @@ textarea.form-control {
 
     .cp-insurance-title-sub {
         font-size: clamp(27px, 7.4vw, 36px);
+    }
+}
+
+/* CARL MAG index rhythm */
+.cp-blog-shell .cp-category-filter-block + .cp-blog-block {
+    margin-top: clamp(40px, 5.5vw, 64px);
+}
+
+.cp-blog-shell .cp-blog-block + .cp-blog-block {
+    margin-top: clamp(56px, 7vw, 88px);
+}
+
+.cp-blog-shell .cp-blog-block .cp-section-heading {
+    margin-bottom: clamp(28px, 4vw, 48px);
+}
+
+/* Shared featured-card behavior for the TOP page and CARL MAG index. */
+@media (max-width: 768px) {
+    .cp-editorial-card-scope .cp-featured-posts,
+    .cp-editorial-card-scope .cp-blog-card-featured,
+    .cp-editorial-card-scope .cp-blog-card-featured > a {
+        width: 100%;
+        min-width: 0;
+        max-width: 100%;
+    }
+
+    .cp-editorial-card-scope .cp-blog-card-featured > a {
+        display: grid !important;
+        grid-template-columns: minmax(0, 1fr) !important;
+        grid-template-rows: auto auto;
+        min-height: 0 !important;
+    }
+
+    .cp-editorial-card-scope .cp-blog-card-featured .cp-blog-thumb {
+        grid-column: 1;
+        width: 100% !important;
+        min-width: 0;
+        min-height: 0 !important;
+        aspect-ratio: 16 / 10 !important;
+    }
+
+    .cp-editorial-card-scope .cp-blog-card-featured .cp-blog-thumb img {
+        display: block;
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover;
+    }
+
+    .cp-editorial-card-scope .cp-blog-card-featured .cp-blog-card-body {
+        grid-column: 1;
+        width: 100%;
+        min-width: 0;
+        max-width: 100%;
+        box-sizing: border-box;
+        padding: 22px;
+    }
+
+    .cp-editorial-card-scope .cp-blog-card-featured .cp-blog-meta {
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+        justify-content: space-between;
+        min-width: 0;
+        gap: 12px;
+    }
+
+    .cp-editorial-card-scope .cp-blog-card-featured .cp-blog-meta span,
+    .cp-editorial-card-scope .cp-blog-card-featured .cp-blog-meta time {
+        min-width: 0;
+        white-space: nowrap;
+    }
+
+    .cp-editorial-card-scope .cp-blog-card-featured h3 {
+        max-width: 100%;
+        overflow-wrap: anywhere;
+        font-size: clamp(24px, 7vw, 30px);
+        line-height: 1.35;
+    }
+
+    .cp-editorial-card-scope .cp-blog-card-featured .cp-blog-card-body > p {
+        max-width: 100%;
+        font-size: clamp(15px, 4.2vw, 16px);
+        line-height: 1.8;
+        overflow-wrap: anywhere;
+    }
+
+    .cp-editorial-card-scope .cp-blog-card-featured .cp-blog-tags {
+        display: flex;
+        flex-wrap: wrap;
+        min-width: 0;
+        max-width: 100%;
+    }
+
+    .cp-editorial-card-scope .cp-blog-card-featured .cp-blog-detail-link {
+        display: inline-block;
+    }
+
+    .cp-payment-title {
+        font-size: clamp(24px, 7vw, 30px) !important;
+    }
+
+    .cp-payment-copy p {
+        font-size: 15px;
+        line-height: 1.85;
+    }
+
+    .cp-blog-shell .cp-category-filter-block + .cp-blog-block {
+        margin-top: 40px;
+    }
+
+    .cp-blog-shell .cp-blog-block + .cp-blog-block {
+        margin-top: 58px;
+    }
+
+    .cp-blog-shell .cp-blog-block .cp-section-heading {
+        margin-bottom: 26px;
     }
 }
