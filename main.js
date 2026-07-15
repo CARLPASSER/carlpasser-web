@@ -71,22 +71,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    const floatingLinePages = new Set([
-        'sales.html', 'maintenance.html', 'insurance.html', 'sell.html',
-        'about.html', 'blog.html', 'blog-detail.html', 'contact.html'
-    ]);
-    const currentPage = window.location.pathname.split('/').pop();
-    if (floatingLinePages.has(currentPage)) {
-        const floatingLine = document.createElement('a');
-        floatingLine.href = 'https://lin.ee/TLGhT3W';
-        floatingLine.target = '_blank';
-        floatingLine.rel = 'noopener noreferrer';
-        floatingLine.className = 'cp-floating-line';
-        floatingLine.setAttribute('aria-label', 'LINEで相談する');
-        floatingLine.innerHTML = '<span class="cp-line-mark" aria-hidden="true">LINE</span><span>LINEで相談</span>';
-        document.body.appendChild(floatingLine);
-    }
-
     // Mobile Menu Toggle
     const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
