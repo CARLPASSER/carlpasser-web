@@ -4756,12 +4756,18 @@ textarea.form-control {
 }
 
 /* CARL MAG index rhythm */
+.cp-blog-shell .cp-category-filter-block,
+.cp-blog-shell .cp-blog-block {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
 .cp-blog-shell .cp-category-filter-block + .cp-blog-block {
     margin-top: clamp(64px, 5vw, 80px);
 }
 
 .cp-blog-shell .cp-blog-block + .cp-blog-block {
-    margin-top: clamp(72px, 6vw, 96px);
+    margin-top: clamp(56px, 4.5vw, 72px);
 }
 
 .cp-blog-shell .cp-blog-block .cp-section-heading {
@@ -4863,11 +4869,59 @@ textarea.form-control {
     }
 
     .cp-blog-shell .cp-blog-block + .cp-blog-block {
-        margin-top: 56px;
+        margin-top: 48px;
     }
 
     .cp-blog-shell .cp-blog-block .cp-section-heading {
         margin-bottom: 24px;
+    }
+}
+
+/* SELL hero hierarchy: service label, page title, assessment context, brand copy. */
+.sell .service-hero-inner .sell-hero-label {
+    width: auto;
+    max-width: none;
+    margin: 0 0 8px;
+    color: #dededb;
+    font-size: clamp(12px, 1vw, 14px);
+    font-weight: 700;
+    line-height: 1.4;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+
+.sell .service-hero-inner .sell-hero-assessment {
+    width: auto;
+    max-width: none;
+    margin: 0 0 18px;
+    color: #e7e7e4;
+    font-size: clamp(20px, 2vw, 26px);
+    font-weight: 700;
+    line-height: 1.4;
+    letter-spacing: 0;
+}
+
+.sell .service-hero-inner .sell-hero-assessment span {
+    white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+    body.subpage .sell .service-hero-inner .sell-hero-label {
+        width: auto !important;
+        max-width: none !important;
+        margin: 0 auto 6px !important;
+        font-size: 12px !important;
+        line-height: 1.4 !important;
+        text-align: center !important;
+    }
+
+    body.subpage .sell .service-hero-inner .sell-hero-assessment {
+        width: auto !important;
+        max-width: none !important;
+        margin: 0 auto 16px !important;
+        font-size: clamp(18px, 5.4vw, 22px) !important;
+        line-height: 1.4 !important;
+        text-align: center !important;
     }
 }
 
