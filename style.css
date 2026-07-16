@@ -4860,3 +4860,36 @@ textarea.form-control {
         margin-bottom: 26px;
     }
 }
+
+/* Meaningful Japanese line breaks for long section headings. */
+.cp-heading-line {
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .cp-heading-lines {
+        width: 100%;
+        max-width: 100%;
+        letter-spacing: 0 !important;
+        overflow-wrap: normal !important;
+        word-break: keep-all !important;
+        text-wrap: wrap;
+    }
+
+    .cp-heading-line {
+        max-width: 100%;
+        white-space: nowrap;
+        overflow-wrap: normal;
+        word-break: keep-all;
+    }
+
+    .cp-heading-lines--buy-intro {
+        font-size: clamp(27px, 7.2vw, 34px) !important;
+        line-height: 1.3 !important;
+    }
+
+    .cp-heading-lines--long {
+        font-size: clamp(24px, 6.5vw, 30px) !important;
+        line-height: 1.35 !important;
+    }
+}
