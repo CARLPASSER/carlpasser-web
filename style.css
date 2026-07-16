@@ -5026,6 +5026,13 @@ textarea.form-control {
         padding: 32px 24px;
     }
 
+    .choice .container {
+        width: 100%;
+        max-width: 1120px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
     .service-cta .service-cta__copy,
     .cp-payment-copy p {
         font-size: 16px;
