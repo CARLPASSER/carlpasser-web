@@ -4905,6 +4905,14 @@ textarea.form-control {
     #blog-pickup-section .cp-blog-card-featured .cp-blog-thumb {
         aspect-ratio: 1200 / 630 !important;
     }
+
+    .cp-mag-section .cp-blog-card-featured .cp-blog-thumb {
+        aspect-ratio: 1200 / 630 !important;
+    }
+
+    .cp-mag-section .cp-blog-card-featured .cp-blog-thumb img {
+        object-fit: contain;
+    }
 }
 
 /* SELL hero hierarchy: service label, page title, assessment context, brand copy. */
