@@ -198,26 +198,17 @@ body.cp-loading .cp-loader {
     margin: 0 0 22px;
 }
 
-/* TOP / ABOUT brand story */
-.cp-brand-statement {
-    padding-top: clamp(82px, 8vw, 118px);
-    padding-bottom: clamp(82px, 8vw, 118px);
+/* TOP name origin / ABOUT brand essentials */
+.cp-brand-origin {
+    padding-top: clamp(78px, 7vw, 108px);
+    padding-bottom: clamp(78px, 7vw, 108px);
 }
 
-.cp-brand-statement-inner,
-.cp-about-copy-layout {
-    display: grid;
-    grid-template-columns: minmax(0, 0.96fr) minmax(0, 1.04fr);
-    gap: clamp(44px, 6vw, 82px);
-    align-items: start;
-}
-
-.cp-brand-statement-inner {
+.cp-brand-origin-inner {
     width: min(1040px, 100%);
-    align-items: center;
 }
 
-.cp-brand-statement-heading h2,
+.cp-brand-origin h2,
 .cp-about-principle h2 {
     margin: 0;
     font-family: var(--font-heading);
@@ -228,27 +219,21 @@ body.cp-loading .cp-loader {
     color: #161616;
 }
 
-.cp-brand-statement-heading h2 {
-    font-size: clamp(34px, 3.2vw, 44px);
+.cp-brand-origin h2 {
+    max-width: 760px;
+    font-size: clamp(32px, 3vw, 42px);
     line-height: 1.4;
 }
 
-.cp-brand-statement-copy {
-    max-width: 520px;
+.cp-brand-origin-inner > p:not(.cp-kicker) {
+    margin: 24px 0 0;
+    color: #454545;
     font-size: clamp(16px, 1.5vw, 17px);
-    line-height: 1.95;
+    line-height: 1.8;
 }
 
-.cp-brand-statement-vision {
-    margin-top: clamp(28px, 3vw, 40px) !important;
-    padding-top: 22px;
-    border-top: 1px solid #d9d9d2;
-    font-weight: 700;
-    color: #202020;
-}
-
-.cp-about-long-copy {
-    max-width: 610px;
+.cp-mobile-break {
+    display: none;
 }
 
 .cp-about-mvv > .cp-section-inner {
@@ -260,7 +245,7 @@ body.cp-loading .cp-loader {
     display: grid;
     grid-template-columns: minmax(250px, 0.8fr) minmax(0, 1.2fr);
     column-gap: clamp(44px, 8vw, 112px);
-    padding: clamp(6px, 1vw, 14px) 0 clamp(72px, 9vw, 116px);
+    padding: clamp(6px, 1vw, 14px) 0 clamp(56px, 7vw, 86px);
     border-bottom: 1px solid #dadad3;
 }
 
@@ -277,18 +262,13 @@ body.cp-loading .cp-loader {
 }
 
 .cp-about-principle-vision {
-    padding-top: clamp(72px, 9vw, 116px);
+    padding-top: clamp(56px, 7vw, 86px);
     padding-bottom: 0;
     border-bottom: 0;
 }
 
 .cp-about-principle-vision h2 {
     font-size: clamp(28px, 3.2vw, 42px);
-}
-
-.cp-about-quote {
-    font-weight: 700;
-    color: #202020;
 }
 
 .cp-about-values {
@@ -383,17 +363,6 @@ body.cp-loading .cp-loader {
 .cp-philosophy-copy {
     max-width: 500px;
     padding-top: clamp(50px, 5vw, 72px);
-}
-
-.cp-about-philosophy {
-    display: grid;
-    grid-template-columns: 0.95fr 1.05fr;
-    gap: clamp(34px, 6vw, 72px);
-    align-items: center;
-}
-
-.cp-about-philosophy .cp-section-heading {
-    grid-column: 1 / -1;
 }
 
 .cp-top-category .cp-section-heading h2 {
@@ -1323,15 +1292,12 @@ body.cp-loading .cp-loader {
 }
 
 @media (max-width: 900px) {
-    .cp-brand-statement-inner,
-    .cp-about-copy-layout,
     .cp-about-principle {
         grid-template-columns: 1fr;
     }
 
-    .cp-brand-statement-inner,
-    .cp-about-copy-layout {
-        gap: 38px;
+    .cp-mobile-break {
+        display: inline;
     }
 
     .cp-about-principle {
@@ -1420,7 +1386,6 @@ body.cp-loading .cp-loader {
     }
 
     .cp-philosophy-section .cp-brand-message,
-    .cp-about-philosophy .cp-brand-message,
     .cp-brand-message {
         font-size: clamp(30px, 8.5vw, 42px);
         white-space: nowrap;
@@ -1448,10 +1413,6 @@ body.cp-loading .cp-loader {
 
     .cp-philosophy-copy {
         padding-top: 0;
-    }
-
-    .cp-about-philosophy {
-        grid-template-columns: 1fr;
     }
 
     .cp-philosophy-logo {
