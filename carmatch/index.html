@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>CAR MATCH｜あなたに似合うクルマ、どんなクルマ？｜CARL PASSER</title>
+<meta name="description" content="10の質問で、あなたらしい一台を見つけよう。全10問・約1分。福岡県志免町のクルマ屋 CARL PASSERの診断コンテンツです。">
+<meta name="format-detection" content="telephone=no">
+<meta name="theme-color" content="#f4f2ed">
+<link rel="canonical" href="https://carlpasser.jp/carmatch/">
+<link rel="icon" type="image/png" href="/logo_square.png">
+<link rel="apple-touch-icon" href="/logo_square.png">
+<meta property="og:site_name" content="CARL PASSER">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:type" content="website">
+<meta property="og:title" content="CAR MATCH｜あなたに似合うクルマ、どんなクルマ？">
+<meta property="og:description" content="10の質問で、あなたらしい一台を見つけよう。全10問・約1分">
+<meta property="og:url" content="https://carlpasser.jp/carmatch/">
+<meta property="og:image" content="https://carlpasser.jp/carmatch/ogp.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="CAR MATCH｜8タイプのカード">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="CAR MATCH｜あなたに似合うクルマ、どんなクルマ？">
+<meta name="twitter:description" content="10の質問で、あなたらしい一台を見つけよう。全10問・約1分">
+<meta name="twitter:image" content="https://carlpasser.jp/carmatch/ogp.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@1,100..125,800..900&family=Outfit:wght@500;600;700;800&family=Noto+Sans+JP:wght@400;500;700;800&display=swap">
+<style>
+/* Layout: modern 70 / retro 30. Light cream page with lots of air; the CAR MATCH italic logo,
+   the little road and the collectible card carry the play. Royal blue is the only accent;
+   each type gets one harmonised colour that lives inside its card. Single light theme by choice. */
+:root {
+  color-scheme: light;
+  --bg: #f4f2ed;
+  --paper: #fdfcf9;
+  --white: #ffffff;
+  --ink: #1d1d1f;
+  --ink-2: #3c3b39;
+  --muted: #78756e;
+  --line: #e3dfd6;
+  --blue: #2451b5;
+  --blue-deep: #18357d;
+  --sky: #e4ebf8;
+  --sun: #ffc94a;
+  --skin: #ffd7b5;
+  --logo: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --latin: "Outfit", "Helvetica Neue", Arial, sans-serif;
+  --jp: "Noto Sans JP", "Hiragino Sans", "Yu Gothic", sans-serif;
+}
+* { box-sizing: border-box; }
+html, body { overflow-x: clip; }
+[hidden] { display: none !important; }
+body { background: var(--bg); color: var(--ink); font-family: var(--jp); font-size: 16px; line-height: 1.8; }
+p, h1, h2, h3 { margin: 0; }
+p { text-wrap: pretty; }
+button { font: inherit; color: inherit; cursor: pointer; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
+.lat { font-family: var(--latin); }
+.wrap {
+  max-width: 600px; margin: 0 auto;
+  padding-left: max(20px, env(safe-area-inset-left, 0px));
+  padding-right: max(20px, env(safe-area-inset-right, 0px));
+  padding-block: 20px 72px;
+  display: flex; flex-direction: column; gap: 32px;
+}
+.top { display: flex; justify-content: space-between; align-items: center; gap: 12px; min-height: 30px; }
+.brand { height: 26px; width: auto; display: block; align-self: flex-start; flex: none; }
+.brand.lg { height: 34px; }
+
+/* ---------- CAR MATCH logo ---------- */
+.logo { font-family: var(--logo); font-style: italic; font-weight: 900; font-stretch: 112%;
+  font-size: clamp(54px, 16vw, 88px); line-height: .88; letter-spacing: -.03em; }
+.logo span { color: var(--blue); }
+.logo.sm { font-size: 17px; line-height: 1; letter-spacing: -.01em; }
+.stripes { display: flex; flex-direction: column; gap: 4px; margin-top: 14px; }
+.stripes i { display: block; height: 3px; border-radius: 2px; background: var(--blue); transform: skewX(-24deg); }
+.stripes i:nth-child(1) { width: 56%; } .stripes i:nth-child(2) { width: 42%; opacity: .7; } .stripes i:nth-child(3) { width: 28%; opacity: .4; }
+
+/* ---------- start ---------- */
+.hero { display: flex; flex-direction: column; gap: 22px; }
+.title { font-weight: 800; font-size: clamp(26px, 7vw, 36px); line-height: 1.45; letter-spacing: -.005em; text-wrap: balance; word-break: keep-all; }
+.title em { font-style: normal; color: var(--blue); }
+.sub { font-size: 16px; color: var(--ink-2); word-break: keep-all; overflow-wrap: anywhere; }
+.chips { display: flex; gap: 8px; flex-wrap: wrap; }
+.chip { background: var(--white); border: 1px solid var(--line); border-radius: 999px; padding: 4px 14px; font-size: 13px; font-weight: 500; }
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 14px;
+  background: var(--blue); color: var(--white); border: 0; border-radius: 999px; text-decoration: none;
+  padding: 18px 30px; font-weight: 700; font-size: 17px; box-shadow: 0 10px 24px -10px rgba(36,81,181,.7);
+  transition: transform .15s, box-shadow .15s, background .15s;
+}
+.btn:hover { transform: translateY(-2px); background: var(--blue-deep); }
+.btn:active { transform: translateY(1px); }
+.btn .arr { font-family: var(--logo); font-style: italic; font-weight: 900; letter-spacing: .02em; }
+.btn.wide { width: 100%; }
+.btn.big { padding: 22px 30px; font-size: 20px; }
+.btn.line { background: var(--white); color: var(--ink); border: 1.5px solid var(--ink); box-shadow: none; }
+.btn.line:hover { background: var(--sky); }
+.teaser { display: flex; flex-direction: column; gap: 14px; }
+.teaser h2 { font-size: 15px; font-weight: 700; }
+.fan { position: relative; height: 0; padding-bottom: 60%; }
+@media (min-width: 560px) { .fan { padding-bottom: 0; height: 260px; } }
+.fan .mini { position: absolute; top: 10px; width: 40%; max-width: 190px; box-shadow: 0 12px 26px -12px rgba(29,29,31,.35); }
+.fan .mini:nth-child(1) { left: 6%; transform: rotate(-8deg); }
+.fan .mini:nth-child(2) { left: 30%; top: 0; z-index: 2; transform: rotate(1deg); }
+.fan .mini:nth-child(3) { left: 54%; transform: rotate(9deg); }
+.foot { display: flex; justify-content: space-between; align-items: center; gap: 14px; flex-wrap: wrap; border-top: 1px solid var(--line); padding-top: 18px; }
+.foot p { font-size: 12px; color: var(--muted); max-width: 30em; }
+.motto { font-family: var(--latin); font-weight: 700; font-size: 11px; letter-spacing: .18em; }
+
+/* ---------- road + pop car ---------- */
+.stage { position: relative; height: 122px; }
+.road { position: absolute; left: 0; right: 0; bottom: 0; height: 26px; border-radius: 13px; background: var(--ink); overflow: hidden; }
+.road::before { content: ""; position: absolute; left: 0; right: 0; top: 11px; height: 3px;
+  background: repeating-linear-gradient(90deg, var(--paper) 0 18px, transparent 18px 36px); animation: dash .45s linear infinite; }
+.road .flag { position: absolute; right: 0; top: 0; bottom: 0; width: 16px;
+  background: repeating-conic-gradient(var(--paper) 0 25%, var(--ink) 0 50%) 0 0 / 8px 8px; }
+.pole { position: absolute; right: 8px; bottom: 26px; width: 2.5px; height: 64px; background: var(--ink); border-radius: 2px; }
+.pole::after { content: ""; position: absolute; right: 2.5px; top: 0; width: 30px; height: 20px; border-radius: 2px;
+  background: repeating-conic-gradient(var(--ink) 0 25%, var(--paper) 0 50%) 0 0 / 10px 10px;
+  transform-origin: right center; animation: wave 1s ease-in-out infinite alternate; }
+@keyframes wave { from { transform: skewY(-6deg); } to { transform: skewY(6deg); } }
+@keyframes dash { to { background-position: -36px 0; } }
+.rider { position: absolute; bottom: 10px; left: 0; width: 140px; transition: left .7s cubic-bezier(.3,.7,.25,1); }
+.rider svg { display: block; width: 100%; height: auto; overflow: visible; }
+.wheel { transform-box: fill-box; transform-origin: center; animation: spin .45s linear infinite; }
+.bob { animation: bob .32s ease-in-out infinite alternate; }
+.speed line { animation: whoosh .6s linear infinite; }
+.speed line:nth-child(2) { animation-delay: .2s; } .speed line:nth-child(3) { animation-delay: .4s; }
+.note { animation: float 1.6s ease-in-out infinite; } .note.n2 { animation-delay: .8s; }
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes bob { to { transform: translateY(-2px); } }
+@keyframes whoosh { from { transform: translateX(0); opacity: 1; } to { transform: translateX(-18px); opacity: 0; } }
+@keyframes float { 0% { transform: translateY(4px); opacity: 0; } 30% { opacity: 1; } 100% { transform: translateY(-14px); opacity: 0; } }
+.goal { position: absolute; left: 50%; top: 0; transform: translateX(-50%) rotate(-5deg) scale(.4); opacity: 0;
+  font-family: var(--logo); font-style: italic; font-weight: 900; font-stretch: 115%; font-size: 44px; color: var(--blue); letter-spacing: -.02em; pointer-events: none; }
+.stage.done .goal { animation: stamp .45s cubic-bezier(.2,1.6,.4,1) forwards; }
+@keyframes stamp { to { opacity: 1; transform: translateX(-50%) rotate(-5deg) scale(1); } }
+
+/* ---------- GOAL overlay ---------- */
+.goal-ov { position: fixed; inset: 0; z-index: 25; background: rgba(244,242,237,.95); cursor: pointer;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px;
+  padding: max(20px, env(safe-area-inset-top, 0px)) max(20px, env(safe-area-inset-right, 0px)) max(20px, env(safe-area-inset-bottom, 0px)) max(20px, env(safe-area-inset-left, 0px)); }
+.goal-ov .checker { width: min(64%, 240px); height: 20px; border-radius: 4px;
+  background: repeating-conic-gradient(var(--ink) 0 25%, var(--white) 0 50%) 0 0 / 20px 20px; animation: sweep .45s ease-out both; }
+.goal-ov .goal-big { font-family: var(--logo); font-style: italic; font-weight: 900; font-stretch: 115%; letter-spacing: -.03em;
+  font-size: clamp(64px, 21vw, 140px); line-height: .9; color: var(--blue); padding-right: .08em; animation: zoomin .6s cubic-bezier(.2,1.6,.4,1) .05s both; }
+.goal-ov .goal-next { font-weight: 700; font-size: 18px; opacity: 0; transform: translateY(8px); transition: opacity .3s, transform .3s; }
+.goal-ov.next .goal-next { opacity: 1; transform: none; }
+.goal-ov .skip { position: absolute; right: max(20px, env(safe-area-inset-right, 0px)); bottom: max(24px, calc(env(safe-area-inset-bottom, 0px) + 12px)); }
+@keyframes zoomin { 0% { transform: scale(.2); opacity: 0; } 65% { transform: scale(1.1); opacity: 1; } 82% { transform: scale(.96); } 100% { transform: scale(1); } }
+@keyframes sweep { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+/* ---------- quiz ---------- */
+.qcount { font-family: var(--latin); font-weight: 600; font-size: 14px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.qcount b { font-family: var(--logo); font-style: italic; font-weight: 900; font-size: 26px; color: var(--blue); margin-right: 2px; }
+.segs { display: grid; grid-template-columns: repeat(10, 1fr); gap: 4px; }
+.segs i { height: 5px; border-radius: 3px; background: var(--line); transition: background .3s; }
+.segs i.on { background: var(--blue); }
+.qhead { display: flex; flex-direction: column; gap: 12px; }
+.cat { align-self: flex-start; font-size: 12px; font-weight: 700; color: var(--blue); background: var(--sky); border-radius: 999px; padding: 3px 12px; }
+.cat .lat { letter-spacing: .14em; margin-right: 6px; font-weight: 700; }
+.checkpoint { display: flex; align-items: center; gap: 12px; background: var(--white); border: 1px solid var(--line); border-radius: 14px; padding: 12px 14px;
+  animation: pop .5s cubic-bezier(.2,1.5,.4,1) both; }
+.checkpoint .f { flex: none; width: 34px; height: 24px; border-radius: 3px; background: repeating-conic-gradient(var(--ink) 0 25%, var(--white) 0 50%) 0 0 / 12px 12px; }
+.checkpoint b { font-family: var(--latin); font-size: 11px; letter-spacing: .18em; color: var(--blue); display: block; line-height: 1.4; }
+.checkpoint span { font-size: 14px; font-weight: 700; word-break: keep-all; overflow-wrap: anywhere; }
+@keyframes pop { from { opacity: 0; transform: translateY(-8px) scale(.96); } to { opacity: 1; transform: none; } }
+.qtext { font-weight: 700; font-size: clamp(22px, 5.8vw, 28px); line-height: 1.55; text-wrap: balance; word-break: keep-all; overflow-wrap: anywhere; }
+.opts { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+@media (max-width: 540px) { .opts { grid-template-columns: 1fr; } }
+.opt { text-align: left; background: var(--white); border: 1.5px solid var(--line); border-radius: 16px;
+  padding: 14px 16px; display: flex; gap: 14px; align-items: center; min-width: 0;
+  box-shadow: 0 1px 2px rgba(29,29,31,.04); transition: border-color .15s, transform .15s, background .15s; }
+.opt:hover { border-color: var(--blue); transform: translateY(-1px); }
+.opt .k { flex: none; width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center;
+  background: var(--sky); color: var(--blue); font-family: var(--latin); font-weight: 700; font-size: 14px; }
+.opt .t { font-weight: 700; font-size: 15.5px; line-height: 1.5; min-width: 0; }
+.opt .s { display: block; font-size: 12.5px; color: var(--muted); font-weight: 400; }
+.opt.picked { background: var(--blue); border-color: var(--blue); color: var(--white); animation: tap .32s ease-out; }
+@keyframes tap { 0% { transform: scale(.97); } 60% { transform: scale(1.015); } 100% { transform: scale(1); } }
+.opt.picked .k { font-size: 0; }
+.opt.picked .k::after { content: ""; width: 10px; height: 6px; border: solid var(--blue); border-width: 0 0 2.5px 2.5px; transform: translateY(-1px) rotate(-45deg); }
+.rider.hop svg { animation: hop .35s ease-out; }
+@keyframes hop { 40% { transform: translateY(-6px); } 100% { transform: none; } }
+.opt.picked .k { background: var(--white); }
+.opt.picked .s { color: var(--sky); }
+.nav { display: flex; justify-content: space-between; }
+.link { background: none; border: 0; padding: 6px 0; color: var(--muted); font-size: 14px; }
+.link:hover { color: var(--blue); }
+.link[disabled] { visibility: hidden; }
+
+/* ---------- collection card ---------- */
+.flipbox { width: min(100%, 380px); align-self: center; perspective: 1200px; }
+.tilt { transition: transform .25s ease-out; transform-style: preserve-3d; }
+.flip { display: grid; transform-style: preserve-3d; animation: flipin 1s cubic-bezier(.3,1.25,.45,1) .2s both; }
+@keyframes flipin { from { transform: rotateY(180deg) scale(.92); } to { transform: rotateY(0) scale(1); } }
+.flip > * { grid-area: 1 / 1; backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+.card { position: relative; background: var(--white); border: 1.5px solid var(--ink); border-radius: 20px; overflow: hidden;
+  box-shadow: 0 24px 48px -20px rgba(29,29,31,.35); display: flex; flex-direction: column; }
+.card::after { content: ""; position: absolute; inset: 0; pointer-events: none; mix-blend-mode: soft-light;
+  background: linear-gradient(115deg, transparent 30%, rgba(255,255,255,.8) 46%, rgba(255,214,120,.45) 52%, transparent 66%) var(--sx, 120%) 0 / 260% 100% no-repeat;
+  animation: shine 1.4s ease-out 1s both; }
+.tilt.live .card::after { animation: none; }
+@keyframes shine { from { background-position: 120% 0; } to { background-position: -40% 0; } }
+.back { transform: rotateY(180deg); background: var(--blue); color: var(--white); border-radius: 20px; position: relative; overflow: hidden;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; }
+.back::before { content: ""; position: absolute; inset: 12px; border: 1.5px solid rgba(255,255,255,.35); border-radius: 12px; }
+.back .logo { font-size: 54px; text-align: center; }
+.back .logo span { color: var(--sun); }
+.card-head { display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; border-bottom: 1.5px solid var(--ink); }
+.card-head .no { font-family: var(--latin); font-weight: 700; font-size: 12px; letter-spacing: .12em; }
+.art { position: relative; aspect-ratio: 4 / 3; max-width: 100%; background: var(--tc); overflow: hidden; border-bottom: 1.5px solid var(--ink); }
+.art .scene { position: absolute; inset: 0; width: 100%; height: 100%; }
+.art .bignum { position: absolute; right: 12px; top: -4px; font-family: var(--logo); font-style: italic; font-weight: 900; font-stretch: 100%;
+  font-size: 112px; line-height: 1; color: transparent; -webkit-text-stroke: 1.5px var(--white); opacity: .6; }
+.art .typetag { position: absolute; left: 14px; top: 14px; font-family: var(--latin); font-weight: 700; font-size: 11px; letter-spacing: .14em;
+  color: var(--ink); background: var(--white); border-radius: 999px; padding: 3px 10px; }
+.art .lane { position: absolute; left: 0; right: 0; bottom: 0; height: 17%; background: var(--ink); }
+.art .lane::before { content: ""; position: absolute; left: 0; right: 0; top: 45%; height: 3px;
+  background: repeating-linear-gradient(90deg, var(--paper) 0 16px, transparent 16px 32px); animation: dash .45s linear infinite; }
+.art .car { position: absolute; left: 50%; bottom: 8%; width: 66%; transform: translateX(-46%); }
+.art .car svg { display: block; width: 100%; height: auto; overflow: visible; }
+.card-body { padding: 18px 18px 12px; display: flex; flex-direction: column; gap: 6px; }
+.card-body .en { font-family: var(--latin); font-weight: 700; font-size: 12px; letter-spacing: .16em; color: var(--tcd); }
+.card-body h1 { font-weight: 800; font-size: clamp(25px, 7vw, 30px); line-height: 1.35; word-break: keep-all; overflow-wrap: anywhere; }
+.card-body .punch { font-weight: 500; font-size: 15px; color: var(--ink-2); word-break: keep-all; overflow-wrap: anywhere; text-wrap: balance; }
+.stats { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 18px; padding: 4px 18px 14px; }
+.stat { display: flex; justify-content: space-between; align-items: center; gap: 8px; font-size: 12px; font-weight: 500; }
+.pips { display: flex; gap: 3px; }
+.pips i { width: 9px; height: 9px; border-radius: 50%; background: var(--line); }
+.pips i.on { background: var(--tc); }
+.card-foot { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 12px 16px 14px; border-top: 1px dashed var(--line); }
+.card-foot .left { display: flex; flex-direction: column; gap: 6px; }
+.card-foot .brand { height: 18px; }
+.plate { display: grid; justify-items: center; background: #fbfbf7; color: #1d6b43; border: 1.5px solid #1d6b43;
+  border-radius: 5px; padding: 1px 10px 0; line-height: 1; box-shadow: inset 0 0 0 1.5px #fbfbf7, inset 0 0 0 2.5px #1d6b43; }
+.plate .p1 { font-size: 8px; font-weight: 700; letter-spacing: .1em; padding-top: 3px; }
+.plate .p2 { display: flex; align-items: center; gap: 4px; }
+.plate .p2 span { font-size: 9px; font-weight: 700; }
+.plate .p2 b { font-family: var(--latin); font-weight: 600; font-size: 20px; }
+
+/* ---------- result ---------- */
+.share { display: flex; flex-direction: column; gap: 10px; align-items: center; }
+.share .row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; width: min(100%, 380px); }
+.share > .btn { width: min(100%, 380px); }
+.share-q { font-weight: 800; font-size: 18px; margin-top: 6px; }
+.share .small { margin-top: -6px; margin-bottom: 4px; }
+.share .btn { padding: 14px 18px; font-size: 15px; }
+.small { font-size: 13px; color: var(--muted); }
+.toast { color: var(--blue); font-weight: 700; font-size: 13px; min-height: 1.4em; text-align: center; white-space: pre-line; }
+.block { display: flex; flex-direction: column; gap: 14px; }
+.block > h2 { display: flex; flex-direction: column; gap: 2px; font-size: 20px; font-weight: 800; }
+.block > h2 .lat { font-size: 11px; letter-spacing: .2em; color: var(--blue); font-weight: 700; }
+.reasons { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.reasons li { display: flex; gap: 12px; align-items: baseline; background: var(--white); border-radius: 12px; padding: 10px 14px; }
+.reasons li .q { flex: none; font-family: var(--latin); font-weight: 700; font-size: 12px; color: var(--blue); }
+.dir { background: var(--white); border-radius: 16px; padding: 18px; display: flex; flex-direction: column; gap: 12px; }
+.dir .body { font-weight: 800; font-size: 19px; }
+.balance .ends { display: flex; justify-content: space-between; font-weight: 700; font-size: 14px; }
+.balance .ends b { font-family: var(--latin); font-size: 22px; margin-left: 4px; }
+.bar { display: flex; height: 10px; border-radius: 999px; overflow: hidden; background: var(--sun); margin-top: 4px; }
+.bar .like { background: var(--blue); }
+.picks { display: flex; flex-direction: column; gap: 10px; }
+.pick { background: var(--white); border: 1.5px solid transparent; border-radius: 16px; padding: 14px 16px; display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.pick.rec { border-color: var(--blue); }
+.pick .lbl { display: flex; align-items: center; flex-wrap: wrap; gap: 4px 8px; font-size: 13px; font-weight: 700; color: var(--ink-2); }
+.pick .lbl .n { font-family: var(--latin); font-weight: 700; color: var(--blue); }
+.pick .badge { white-space: nowrap; margin-left: auto; font-size: 11px; font-weight: 700; color: var(--white); background: var(--blue); border-radius: 999px; padding: 1px 10px; }
+.pick .car-name { font-weight: 800; font-size: 18px; line-height: 1.45; }
+.pick .car-name small { display: block; font-size: 12px; color: var(--muted); font-weight: 500; }
+.pick .why { font-size: 14px; color: var(--ink-2); }
+.surprise { background: var(--ink); color: var(--paper); border-radius: 16px; padding: 16px 18px; display: flex; flex-direction: column; gap: 4px; }
+.surprise .lat { color: var(--sun); font-weight: 700; font-size: 11px; letter-spacing: .2em; }
+.surprise .car-name { font-weight: 800; font-size: 18px; }
+.surprise p { font-size: 14px; }
+.caution { background: var(--sky); border-radius: 12px; padding: 12px 14px; font-size: 13.5px; }
+.deck { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+@media (max-width: 560px) { .deck { grid-template-columns: repeat(2, 1fr); } }
+/* 新カード（コレクション用・結果カード共通）。サイズは cqw でカード幅に合わせて伸び縮み */
+.nc { position: relative; container-type: inline-size; background: var(--white); border-radius: 18px; overflow: hidden; display: flex; flex-direction: column; min-width: 0;
+  box-shadow: 0 1px 0 rgba(29,29,31,.06), 0 14px 30px -20px rgba(29,29,31,.45); }
+.nc .na { position: relative; aspect-ratio: 1 / 1; background: var(--main); overflow: hidden; }
+.nc .na > svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.nc .num { position: absolute; left: 5.3cqw; top: 3.3cqw; font-family: var(--logo); font-style: italic; font-weight: 900; font-stretch: 100%;
+  font-size: 60px; font-size: 37cqw; line-height: .9; letter-spacing: -.05em; color: var(--num); }
+.nc .wm { position: absolute; right: 5.3cqw; top: 5.3cqw; font-family: var(--logo); font-style: italic; font-weight: 900; font-size: 8px; font-size: max(7px, 3.7cqw); color: var(--num); opacity: .9; }
+.nc .nm { padding: 9px 11px 11px; padding: 4cqw 5.3cqw 5cqw; display: flex; flex-direction: column; gap: 2px; }
+.nc .nm .t { display: flex; justify-content: space-between; gap: 6px; font-family: var(--latin); font-weight: 700; font-size: 10px; font-size: clamp(9px, 3.7cqw, 11px); letter-spacing: .14em; color: var(--deep); }
+.nc .nm .t span:last-child { color: var(--muted); letter-spacing: .08em; }
+.nc .nm b { font-size: 13px; font-size: clamp(12px, 6.3cqw, 19px); font-weight: 800; line-height: 1.4; word-break: keep-all; overflow-wrap: anywhere; }
+.mini.hidden .nm b { letter-spacing: .3em; color: var(--muted); }
+.mini.you { outline: 3px solid var(--blue); outline-offset: 2px; }
+.mini.you .wm { display: none; }
+.mini.you::after { content: "YOU"; position: absolute; top: 6px; right: 6px; font-family: var(--latin); font-weight: 800; font-size: 10px; letter-spacing: .1em;
+  background: var(--blue); color: var(--white); border-radius: 999px; padding: 0 7px; }
+.card.nf { border: 0; border-radius: 24px; box-shadow: 0 1px 0 rgba(29,29,31,.06), 0 24px 44px -20px rgba(29,29,31,.45); }
+.nf .nc { border-radius: 0; box-shadow: none; }
+.nf .bd { padding: 16px 18px 10px; display: flex; flex-direction: column; gap: 4px; }
+.nf .bd .en { font-family: var(--latin); font-weight: 700; font-size: 11px; letter-spacing: .16em; color: var(--deep); }
+.nf .bd h1 { font-weight: 800; font-size: clamp(24px, 7vw, 29px); line-height: 1.35; word-break: keep-all; overflow-wrap: anywhere; }
+.nf .bd .punch { font-weight: 500; font-size: 15px; color: var(--ink-2); word-break: keep-all; overflow-wrap: anywhere; text-wrap: balance; }
+.nf .stats { padding: 6px 18px 14px; }
+.nf .pips i.on { background: var(--deep); }
+.nf .ft { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 12px 18px 14px; border-top: 1px solid var(--line); }
+.nf .ft .brand { height: 16px; }
+.nf .ft .motto { font-family: var(--latin); font-weight: 700; font-size: 10px; letter-spacing: .16em; color: var(--muted); }
+.next { background: var(--white); border-radius: 20px; padding: 24px 20px; display: flex; flex-direction: column; gap: 14px; }
+.next h2 { font-size: 20px; font-weight: 800; line-height: 1.5; text-wrap: balance; word-break: keep-all; }
+.next p { font-size: 15px; color: var(--ink-2); }
+.next .btns { display: flex; flex-direction: column; gap: 10px; }
+
+/* ---------- save modal ---------- */
+.modal { position: fixed; inset: 0; z-index: 30; background: rgba(20,20,22,.92); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px;
+  padding: max(20px, env(safe-area-inset-top, 0px)) max(20px, env(safe-area-inset-right, 0px)) max(20px, env(safe-area-inset-bottom, 0px)) max(20px, env(safe-area-inset-left, 0px)); }
+.modal img { max-height: 64vh; max-width: 100%; border-radius: 14px; box-shadow: 0 20px 50px rgba(0,0,0,.4); background: var(--bg); }
+.modal p { color: var(--white); font-size: 13px; line-height: 1.7; text-align: center; max-width: 30em; word-break: keep-all; overflow-wrap: anywhere; }
+.modal .btn { padding: 12px 26px; font-size: 15px; }
+
+.fade { animation: fade .4s ease both; }
+@keyframes fade { from { opacity: .001; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .fade, .wheel, .bob, .speed line, .note, .road::before, .art .lane::before, .pole::after, .flip, .card::after, .checkpoint, .opt.picked, .rider.hop svg, .goal-ov .checker, .goal-ov .goal-big { animation: none; }
+  .goal-ov .goal-next { transition: none; }
+  .rider, .tilt { transition: none; }
+  .stage.done .goal { animation: none; opacity: 1; transform: translateX(-50%) rotate(-5deg); }
+}
+</style>
+</head>
+
+<body>
+<div id="app"></div>
+
+<script>
+/* CARL PASSER ロゴ（透過PNG） */
+const LOGO = "data:image/png;base64,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";
+
+/* 公開時に設定する値（未確定のものは空のまま。空なら代わりの動きをする）
+   SHARE_URL   : 診断ページの公開URL。空なら今開いているページのURLを使う
+   CONSULT_URL : 公式LINEなど相談先のURL。空なら「クルマ選びを相談する」ボタンを出さない */
+const SHARE_URL = "https://carlpasser.jp/carmatch/";
+const CONSULT_URL = "";
+const pageURL = () => SHARE_URL || location.href.split("#")[0];
+
+/* SNS共有時のプレビュー（og:〜）は <head> に設定済み。画像は /carmatch/ogp.png（1200×630） */
+
+/* =========================================================
+   8タイプ
+   name の「|」は改行してよい位置
+   stats = [遊び心, 実用性, 走り, こだわり]
+   ========================================================= */
+const TYPES = {
+  wander: { no: 1, shape: "suv", color: "#4f97a5", dark: "#2f6a75", stats: [5, 3, 3, 3],
+    name: "寄り道|しすぎ派", en: "THE DETOUR LOVER", punch: "まっすぐ帰るの、ちょっともったいない。",
+    life: "目的地はあるけど、寄り道のほうが楽しみ。気になる看板を見つけたら、ついハンドルを切ってしまう。気軽に出かけられて、ちょっとの砂利道も気にならないクルマが似合いそう。",
+    body: "SUV・クロスオーバー",
+    ideal: [["スズキ", "ジムニーシエラ"], ["トヨタ", "ランドクルーザープラド"], ["MINI", "クロスオーバー"]],
+    surprise: [["ホンダ", "N-VAN"], "荷室がまるごとフラットになる軽バン。車中泊しながらの寄り道旅も、意外と似合います。"],
+    balance: { FAMILY: [["三菱", "デリカD:5"], "ミニバンの広さと、SUVっぽい頼もしさ。家族と一緒に寄り道できる一台。"],
+               GEAR:   [["スバル", "フォレスター"], "荷物をしっかり積めて、遠出も得意。寄り道の行き先が広がります。"],
+               CITY:   [["スズキ", "ハスラー"], "街で扱いやすいサイズのまま、遊び心はそのまま。"] } },
+  family: { no: 2, shape: "van", color: "#e2a63a", dark: "#996a10", stats: [3, 5, 2, 2], natural: "FAMILY",
+    name: "うちのクルマは|リビング派", en: "THE FAMILY CREW", punch: "車内がいちばん落ち着く場所かも。",
+    life: "おやつも、しりとりも、帰り道の寝顔も、だいたい車内。乗り降りしやすくて、みんながくつろげる「動くリビング」みたいなクルマが似合いそう。",
+    body: "ミニバン",
+    ideal: [["日産", "セレナ"], ["トヨタ", "ヴォクシー"], ["ホンダ", "ステップワゴン"]],
+    surprise: [["ルノー", "カングー"], "両側スライドドアのフランス車。家族の時間が、ちょっとおしゃれになります。"],
+    balance: { GEAR: [["三菱", "デリカD:5"], "家族も道具もまとめて乗せて、キャンプ場の砂利道へ。"],
+               CITY: [["トヨタ", "シエンタ"], "ミニバンなのにコンパクト。狭い道の送り迎えもラク。"] } },
+  style: { no: 3, shape: "coupe", color: "#d2583d", dark: "#9a3420", stats: [4, 2, 5, 4],
+    name: "見た目も走りも|ゆずれない派", en: "THE STYLE DRIVER", punch: "どうせ乗るなら、気分が上がるほうで。",
+    life: "コンビニに行くだけでも、エンジンをかけるとちょっと気分が上がる。見た目と運転の楽しさ、どっちもあきらめないクルマが似合いそう。",
+    body: "スポーツカー・スポーツハッチ",
+    ideal: [["マツダ", "ロードスター"], ["トヨタ", "GR86"], ["フォルクスワーゲン", "ゴルフGTI"]],
+    surprise: [["BMW", "3シリーズ ツーリング"], "走りの気持ちよさはそのまま、荷物も積めるワゴン。大人のスポーツの答えです。"],
+    balance: { FAMILY: [["マツダ", "CX-5"], "家族を乗せても、運転する楽しさは手放さない。"],
+               GEAR:   [["スバル", "レヴォーグ"], "荷室の広さと、気持ちいい走りを両立。"],
+               CITY:   [["スズキ", "スイフトスポーツ"], "街で扱いやすいサイズで、走りは本格派。"] } },
+  gear: { no: 4, shape: "truck", color: "#6a8a52", dark: "#465f34", stats: [4, 5, 3, 4], natural: "GEAR",
+    name: "とりあえず|全部積む派", en: "THE GEAR HAULER", punch: "いつか使うかもしれないので。",
+    life: "使うかわからない道具も、とりあえず積んでおく。泥や砂も気にせず、遊びにも仕事にも使い倒せるクルマが似合いそう。",
+    body: "ピックアップ・バン",
+    ideal: [["トヨタ", "ハイラックス"], ["トヨタ", "ハイエース"], ["スズキ", "エブリイ"]],
+    surprise: [["ボルボ", "V70（少し前の年式）"], "たっぷり積めて、どこに停めても絵になる。道具好きにこそ似合うワゴン。"],
+    balance: { FAMILY: [["トヨタ", "ハイエース ワゴン"], "家族も道具もまるごと。使い倒すなら、やっぱりこれ。"],
+               CITY:   [["ホンダ", "N-VAN"], "軽なのに自転車も積める。街の道具箱。"] } },
+  vintage: { no: 5, shape: "classic", color: "#9a4b50", dark: "#6b2b31", stats: [4, 2, 3, 5], old: true,
+    name: "古いものに|弱い派", en: "THE VINTAGE LOVER", punch: "新しいだけが正解じゃない。",
+    life: "新品より、ちょっと味が出てきたものが好き。少し手がかかるところも含めて付き合える、年季の入った名車が似合いそう。",
+    body: "ネオクラシック（少し古い名車）",
+    ideal: [["トヨタ", "ランドクルーザープラド 78系"], ["ボルボ", "240 ワゴン"], ["メルセデス・ベンツ", "W124"]],
+    surprise: [["スズキ", "ジムニー（現行）"], "新しいのに、どこか懐かしい。古いクルマの雰囲気を気軽に楽しめます。"],
+    balance: { FAMILY: [["ルノー", "カングー"], "レトロな顔つきで、中身は使いやすいファミリーカー。"],
+               GEAR:   [["トヨタ", "ランドクルーザー 70系（再販モデル）"], "昔ながらの姿で、中身は新しめ。道具としても頼れます。"],
+               CITY:   [["フィアット", "500"], "小さくてレトロ。街なかでも味わいを楽しめます。"] } },
+  city: { no: 6, shape: "round", color: "#e3876f", dark: "#a8503a", stats: [4, 3, 3, 4], natural: "CITY",
+    name: "近所でも|おしゃれしたい派", en: "THE CITY STYLIST", punch: "近所のパン屋も、ちょっとしたおでかけ。",
+    life: "パン屋に行くだけでも、ちょっとごきげんでいたい。停めた姿までかわいくて、街なかでも扱いやすいクルマが似合いそう。",
+    body: "おしゃれコンパクト・輸入コンパクト",
+    ideal: [["MINI", "クーパー"], ["フィアット", "500"], ["ルノー", "トゥインゴ"]],
+    surprise: [["ボルボ", "XC40"], "SUVなのに、街に溶け込むデザイン。おしゃれ派の「ちょっと大きめ」の選択肢。"],
+    balance: { FAMILY: [["トヨタ", "シエンタ"], "かわいい顔のコンパクトミニバン。おしゃれも家族もあきらめない。"],
+               GEAR:   [["MINI", "クロスオーバー"], "MINIらしさはそのまま、荷物も積める。"] } },
+  smart: { no: 7, shape: "liftback", color: "#2f5fc4", dark: "#18357d", stats: [2, 5, 3, 2], natural: "CITY",
+    name: "比べてから|決める派", en: "THE SMART PLANNER", punch: "納得してから選びたい。",
+    life: "燃費も維持費も、ちゃんと比べてから決めたい。毎日気持ちよく使えて、長く乗るほど「いい買い物だった」と思えるクルマが似合いそう。",
+    body: "コンパクト・ハイブリッド",
+    ideal: [["トヨタ", "アクア"], ["ホンダ", "フィット"], ["トヨタ", "プリウス"]],
+    surprise: [["スバル", "クロストレック"], "比べ上手が選ぶ、ちょっと遊べる一台。山にも雪にも出かけたくなる、4WDを選べるSUVです。"],
+    balance: { FAMILY: [["ホンダ", "フリード"], "ちょうどいいサイズのミニバン。燃費も維持費もおさえやすい。"],
+               GEAR:   [["トヨタ", "カローラツーリング"], "ワゴンの積載とハイブリッドの燃費を両立。"] } },
+  cruise: { no: 8, shape: "wagon", color: "#26406a", dark: "#26406a", stats: [3, 4, 4, 3],
+    name: "気づけば|県外派", en: "THE LONG CRUISER", punch: "ちょっとそこまで、が300km。",
+    life: "「ちょっとそこまで」が、気づけば県外。静かで疲れにくくて、音楽や会話が気持ちいいクルマが似合いそう。",
+    body: "ステーションワゴン・上質SUV",
+    ideal: [["スバル", "レヴォーグ"], ["ボルボ", "V60"], ["トヨタ", "ハリアー"]],
+    surprise: [["メルセデス・ベンツ", "Eクラス ワゴン（少し前の年式）"], "長距離の快適さは折り紙つき。年式を選べば、手の届く上質です。"],
+    balance: { FAMILY: [["ホンダ", "オデッセイ"], "低くて静かなミニバン。家族旅行の長距離もラク。"],
+               GEAR:   [["ボルボ", "XC60"], "荷物もしっかり積めて、ロングドライブも快適。"],
+               CITY:   [["マツダ", "CX-30"], "街で扱いやすいサイズで、長距離も疲れにくい。"] } },
+};
+const ORDER = ["wander", "family", "style", "gear", "vintage", "city", "smart", "cruise"];
+const STAT_LABELS = ["遊び心", "実用性", "走り", "こだわり"];
+
+// 「今の暮らしに合う一台」：使い方・誰と・荷物・道 の回答から決まる
+const NEEDS = {
+  FAMILY: { body: "スライドドアのミニバン", cars: [["トヨタ", "シエンタ"], ["日産", "セレナ"]],
+            why: "家族や大人数で乗ると答えたので、乗り降りしやすいスライドドアと室内の広さを優先しました。" },
+  GEAR:   { body: "荷室の広いSUV・ワゴン", cars: [["スバル", "フォレスター"], ["トヨタ", "カローラツーリング"]],
+            why: "荷物や道具をたくさん積むと答えたので、荷室の広さと積みやすさを優先しました。" },
+  CITY:   { body: "小回りの利く軽・コンパクト", cars: [["ホンダ", "N-BOX"], ["トヨタ", "ヤリス"]],
+            why: "送り迎えや日常の買い物が中心なので、小回りと維持のしやすさを優先しました。" },
+  FREE:   { body: "条件はゆるやか", cars: null,
+            why: "乗る人数も荷物も身軽なので、暮らしの制約は少なめ。好きな一台をそのまま選んでも大丈夫そうです。" },
+};
+
+/* =========================================================
+   10問（前半4問＝好きなもの / 後半6問＝暮らしとクルマ）
+   w = 8タイプへの加点 / r = 結果に出す理由
+   ========================================================= */
+const QUESTIONS = [
+  { id: "holiday", part: 1, q: "休みの日、気づいたら何してる？", opts: [
+    { t: "自然の中でキャンプ・釣り", s: "道具がどんどん増える", w: { gear: 3, wander: 1 }, r: "休みの日は自然の中で遊ぶ" },
+    { t: "カフェや古着屋をはしご", s: "寄り道が本番", w: { city: 3, vintage: 1 }, r: "カフェや古着屋めぐりが好き" },
+    { t: "家族と公園やモールへ", s: "帰りは後ろが全員寝てる", w: { family: 3 }, r: "休日は家族とおでかけ" },
+    { t: "行き先を決めずにドライブ", s: "気になる道は曲がる", w: { wander: 2, style: 1, cruise: 1 }, r: "あてもなくドライブするのが好き" },
+  ]},
+  { id: "space", part: 1, q: "クルマの中、どんな空間が好き？", opts: [
+    { t: "好きな音楽を楽しめる、自分だけの空間", s: "ボリュームは自分で決めたい", w: { vintage: 2, style: 1, cruise: 1 }, r: "好きな音楽を楽しめる自分だけの空間が好き" },
+    { t: "家族や友達とワイワイできる空間", s: "車内がいちばん盛り上がる", w: { family: 2, city: 1 }, r: "みんなでワイワイできる車内が好き" },
+    { t: "静かで落ち着ける、居心地のいい空間", s: "乗ったらほっとしたい", w: { cruise: 2, smart: 2 }, r: "静かで落ち着ける車内が好き" },
+    { t: "景色を楽しみながら、気持ちよく走れる空間", s: "窓の外も楽しみのうち", w: { wander: 2, style: 1 }, r: "景色を楽しみながら走るのが好き" },
+  ]},
+  { id: "design", part: 1, q: "つい目がいくデザインは？", opts: [
+    { t: "シンプルで飽きない", s: "10年後も好きでいられる", w: { smart: 3, cruise: 1 }, r: "シンプルで飽きないデザインが好き" },
+    { t: "角ばっていて無骨", s: "道具っぽさがたまらない", w: { gear: 2, vintage: 2 }, r: "角ばった無骨なカタチに惹かれる" },
+    { t: "丸くてちょっとレトロ", s: "見てるだけで和む", w: { city: 2, vintage: 2 }, r: "丸くてレトロなデザインが好き" },
+    { t: "低くてシュッとしてる", s: "止まってても速そう", w: { style: 3 }, r: "低くてシュッとしたカタチに惹かれる" },
+  ]},
+  { id: "oldnew", part: 1, q: "新しいものと古いもの、惹かれるのは？", opts: [
+    { t: "最新のもの", s: "アップデートにワクワク", w: { smart: 2, cruise: 1, style: 1 }, r: "新しい機能にワクワクする" },
+    { t: "新しいのに懐かしいもの", s: "レトロ風がちょうどいい", w: { city: 2, vintage: 1 }, r: "新しいのに懐かしいものが好き" },
+    { t: "古着・中古・ヴィンテージ", s: "育ってきた味がいい", w: { vintage: 3 }, r: "時間が育てた味のあるものが好き" },
+    { t: "どっちでもいい", s: "使えればそれでいい", w: { smart: 2, gear: 1, family: 1 }, r: "モノは使い勝手で選ぶ" },
+  ]},
+  { id: "use", part: 2, q: "クルマ、いちばん何に使いそう？", opts: [
+    { t: "通勤・通学", s: "毎日の相棒", w: { smart: 3, cruise: 1 }, r: "毎日の足としてよく乗る" },
+    { t: "送り迎えと買い物", s: "近所をぐるぐる", w: { family: 2, city: 1 }, r: "送り迎えと買い物でこまめに乗る" },
+    { t: "週末のおでかけ", s: "平日はお休み", w: { wander: 2, cruise: 1 }, r: "週末のおでかけに使う" },
+    { t: "仕事や趣味の道具運び", s: "積めるかがすべて", w: { gear: 3 }, r: "仕事や趣味の道具を運ぶ" },
+  ]},
+  { id: "who", part: 2, q: "助手席や後ろの席には、だいたい誰がいる？", opts: [
+    { t: "ひとりで気ままに", s: "自分だけの時間", w: { style: 2, vintage: 1 }, r: "ひとりで乗ることが多い" },
+    { t: "パートナーか友だち", s: "だいたい2人", w: { city: 1, style: 1, cruise: 1 }, r: "2人で乗ることが多い" },
+    { t: "子ども・家族", s: "チャイルドシートあり", w: { family: 3 }, r: "子どもや家族と乗る" },
+    { t: "仲間がたくさん", s: "運転はたいてい自分", w: { family: 1, gear: 1 }, r: "仲間と大勢で乗る" },
+  ]},
+  { id: "luggage", part: 2, q: "荷物はどれくらい積みそう？", opts: [
+    { t: "バッグひとつ", s: "身軽がいちばん", w: { city: 2, style: 1 }, r: "荷物は身軽" },
+    { t: "買い物袋やベビーカー", s: "日常の荷物そこそこ", w: { family: 2, smart: 1 }, r: "買い物袋やベビーカーを積む" },
+    { t: "キャンプ道具をがっつり", s: "積み込みの腕が上がる", w: { gear: 3, wander: 1 }, r: "キャンプ道具をがっつり積む" },
+    { t: "趣味の道具や大きな荷物を積みたい", s: "自転車もサーフボードも", w: { wander: 2, gear: 1 }, r: "趣味の道具や大きな荷物を積みたい" },
+  ]},
+  { id: "custom", part: 2, q: "クルマは自分好みにしたい？", opts: [
+    { t: "そのままのデザインを楽しみたい", s: "完成されたカタチが好き", w: { smart: 2, family: 1, cruise: 1 }, r: "そのままのデザインを楽しみたい" },
+    { t: "色や内装にはこだわりたい", s: "シートの色まで選びたい", w: { city: 2, vintage: 1, cruise: 1 }, r: "色や内装にこだわりたい" },
+    { t: "ホイールやパーツも自分好みにしたい", s: "いじるのも楽しみのうち", w: { style: 2, gear: 1, vintage: 1 }, r: "ホイールやパーツも自分好みにしたい" },
+    { t: "便利な装備を充実させたい", s: "ないと困るものから", w: { family: 1, cruise: 2, smart: 1 }, r: "便利な装備を充実させたい" },
+  ]},
+  { id: "time", part: 2, q: "クルマに乗っているとき、何してることが多そう？", opts: [
+    { t: "運転そのものを楽しんでいる", s: "カーブが来るとうれしい", w: { style: 3 }, r: "運転そのものを楽しみたい" },
+    { t: "寄り道先を探している", s: "気になる店は、とりあえず寄る", w: { wander: 3 }, r: "寄り道先を探しながら走りたい" },
+    { t: "気づけば県外まで走っている", s: "休憩はサービスエリアのグルメ", w: { cruise: 3 }, r: "気づけば遠くまで走っている" },
+    { t: "車内でごはんや昼寝", s: "ほぼ秘密基地", w: { vintage: 2, gear: 1 }, r: "車内を秘密基地みたいに使いたい" },
+  ]},
+  { id: "honne", part: 2, q: "最後に本音。クルマ選びで大事なのは？", opts: [
+    { t: "好きなら、多少の不便はOK", s: "好き100%", w: { style: 1, vintage: 2, city: 1 }, r: "好きなら多少の不便はOK", like: 3, life: 0 },
+    { t: "好き寄り。でも使いやすさも", s: "好き70%", w: { wander: 1 }, r: "好き寄りだけど使いやすさも気になる", like: 2, life: 1 },
+    { t: "暮らし寄り。でも好きも少し", s: "暮らし70%", w: { family: 1, cruise: 1 }, r: "暮らし寄りだけど好きな部分もほしい", like: 1, life: 2 },
+    { t: "使いやすさがいちばん", s: "暮らし100%", w: { smart: 2 }, r: "使いやすさがいちばん", like: 0, life: 3 },
+  ]},
+];
+const Q_INDEX = Object.fromEntries(QUESTIONS.map((q, i) => [q.id, i]));
+const PART_LABEL = { 1: ["ABOUT YOU", "あなたの好きなもの"], 2: ["CAR LIFE", "暮らしとクルマ"] };
+
+/* =========================================================
+   判定
+   1) タイプ  : 8タイプの合計点が最も高いもの。同点は「好きな時間」→「休日」で選んだタイプを優先、それでも同点ならORDER順。
+   2) 暮らし  : 子ども・仲間 → FAMILY / 大荷物・道具運び → GEAR / 送迎・日常の買い物 → CITY / それ以外 → FREE
+   3) 好き:暮らし : 最後の本音（like/life）に、FAMILY・大荷物を暮らし側に+1ずつ。エンタメ上の目安。
+   ========================================================= */
+function diagnose(ans) {
+  const A = id => ans[Q_INDEX[id]];
+  const tot = Object.fromEntries(ORDER.map(k => [k, 0]));
+  ans.forEach((a, i) => { const w = QUESTIONS[i].opts[a].w; for (const k in w) tot[k] += w[k]; });
+  const pref = ["time", "holiday"].map(id => QUESTIONS[Q_INDEX[id]].opts[A(id)].w);
+  const prio = k => (pref[0][k] || 0) * 100 + (pref[1][k] || 0) * 10;
+  const ranked = [...ORDER].sort((a, b) => tot[b] - tot[a] || prio(b) - prio(a) || ORDER.indexOf(a) - ORDER.indexOf(b));
+  const type = ranked[0];
+
+  const need = (A("who") === 2 || A("who") === 3) ? "FAMILY"
+    : (A("luggage") >= 2 || A("use") === 3) ? "GEAR"
+    : (A("use") === 1 || A("luggage") === 1) ? "CITY" : "FREE";
+
+  const h = QUESTIONS[Q_INDEX.honne].opts[A("honne")];
+  const like = h.like, life = h.life + (need === "FAMILY" ? 1 : 0) + (A("luggage") >= 2 ? 1 : 0);
+  const likePct = Math.round((1 + like) / (2 + like + life) * 20) * 5;
+  const rec = likePct >= 65 ? 1 : likePct <= 35 ? 2 : 3;
+
+  const reasons = ans.map((a, i) => ({ i, o: QUESTIONS[i].opts[a] }))
+    .filter(x => (x.o.w[type] || 0) > 0)
+    .sort((x, y) => (y.o.w[type] || 0) - (x.o.w[type] || 0) || x.i - y.i)
+    .slice(0, 3);
+  return { type, need, likePct, rec, reasons };
+}
+
+/* =========================================================
+   ポップなクルマ（人が乗っていて、タイヤが回る）
+   ========================================================= */
+const SHAPES = {
+  suv:      { xs: 6,  xe: 154, bt: 38, rt: 11, cr: 28, cf: 132, sr: 6,  sf: 12 },
+  van:      { xs: 6,  xe: 154, bt: 40, rt: 4,  cr: 10, cf: 130, sr: 3,  sf: 24 },
+  coupe:    { xs: 4,  xe: 156, bt: 44, rt: 23, cr: 40, cf: 118, sr: 20, sf: 26, wr: 12 },
+  wagon:    { xs: 4,  xe: 156, bt: 42, rt: 16, cr: 14, cf: 120, sr: 4,  sf: 24 },
+  truck:    { xs: 6,  xe: 154, bt: 40, rt: 11, cr: 70, cf: 134, sr: 3,  sf: 12 },
+  classic:  { xs: 12, xe: 152, bt: 36, rt: 8,  cr: 24, cf: 126, sr: 2,  sf: 5 },
+  round:    { xs: 22, xe: 142, bt: 40, rt: 12, cr: 28, cf: 112, sr: 14, sf: 16 },
+  liftback: { xs: 10, xe: 150, bt: 41, rt: 16, cr: 24, cf: 114, sr: 18, sf: 28 },
+};
+let svgSeq = 0;
+function carSVG(shape, color, opt = {}) {
+  const { anim = true, fx = false, riders = true, label = "CARL", labelColor = "var(--white)" } = opt;
+  const S = SHAPES[shape], id = "c" + (svgSeq++);
+  const { xs, xe, bt, rt, cr, cf, sr, sf } = S, wr = S.wr || 13;
+  const mid = (cr + cf) / 2, wt = rt + 5, wb = bt - 2;
+  const rearWin = `M${cr + 5} ${wb} L${cr + sr + 5} ${wt} H${mid - 2} V${wb} Z`;
+  const frontWin = `M${mid + 2} ${wt} H${cf - sf - 4} L${cf - 5} ${wb} H${mid + 2} Z`;
+  const wh = wb - wt, r = Math.min(7.5, wh * 0.4), hy = wb - wh * 0.42;
+  const px = (cr + sr + 5 + mid - 2) / 2, dx = (mid + 2 + cf - sf - 4) / 2 - 1;
+  const ink = "var(--ink)", sw = 2.6;
+  const passenger = `
+    <ellipse cx="${px}" cy="${wb + r * 0.3}" rx="${r * 1.4}" ry="${r * 1.1}" fill="var(--sun)"/>
+    <path d="M${px - r * 1.1} ${hy + r * 0.9} Q${px - r * 1.35} ${hy - r * 1.35} ${px} ${hy - r * 1.3} Q${px + r * 1.35} ${hy - r * 1.35} ${px + r * 1.1} ${hy + r * 0.9} Z" fill="#5a3a2a"/>
+    <circle cx="${px}" cy="${hy}" r="${r}" fill="var(--skin)"/>
+    <path d="M${px - r} ${hy - r * 0.1} Q${px - r} ${hy - r * 1.12} ${px} ${hy - r * 1.12} Q${px + r} ${hy - r * 1.12} ${px + r} ${hy - r * 0.1} Q${px + r * 0.1} ${hy - r * 0.65} ${px - r} ${hy - r * 0.1} Z" fill="#5a3a2a"/>
+    <circle cx="${px - r * 0.2}" cy="${hy + r * 0.1}" r="${r * 0.13}" fill="${ink}"/><circle cx="${px + r * 0.45}" cy="${hy + r * 0.1}" r="${r * 0.13}" fill="${ink}"/>
+    <path d="M${px - r * 0.25} ${hy + r * 0.48} Q${px + r * 0.12} ${hy + r * 0.82} ${px + r * 0.5} ${hy + r * 0.48}" stroke="${ink}" stroke-width="1.1" fill="none" stroke-linecap="round"/>
+    <circle cx="${px - r * 0.45}" cy="${hy + r * 0.45}" r="${r * 0.18}" fill="#ff9d8a" opacity=".75"/>`;
+  const driver = `
+    <ellipse cx="${dx}" cy="${wb + r * 0.3}" rx="${r * 1.4}" ry="${r * 1.1}" fill="var(--blue-deep)"/>
+    <circle cx="${dx}" cy="${hy}" r="${r}" fill="var(--skin)"/>
+    <path d="M${dx - r * 1.02} ${hy - r * 0.15} Q${dx - r} ${hy - r * 1.2} ${dx} ${hy - r * 1.2} Q${dx + r} ${hy - r * 1.2} ${dx + r * 1.02} ${hy - r * 0.15} Z" fill="var(--blue-deep)"/>
+    <path d="M${dx + r * 0.6} ${hy - r * 0.32} H${dx + r * 1.65} Q${dx + r * 1.75} ${hy - r * 0.05} ${dx + r * 1.4} ${hy} H${dx + r * 0.6} Z" fill="var(--blue-deep)"/>
+    <circle cx="${dx + r * 0.05}" cy="${hy + r * 0.15}" r="${r * 0.13}" fill="${ink}"/><circle cx="${dx + r * 0.62}" cy="${hy + r * 0.15}" r="${r * 0.13}" fill="${ink}"/>
+    <path d="M${dx - r * 0.05} ${hy + r * 0.5} Q${dx + r * 0.38} ${hy + r * 0.9} ${dx + r * 0.8} ${hy + r * 0.5}" stroke="${ink}" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+    <path d="M${dx + r * 1.3} ${wb + 0.5} Q${dx + r * 1.8} ${wb - r * 0.9} ${dx + r * 2.3} ${wb + 0.5}" stroke="${ink}" stroke-width="2.2" fill="none" stroke-linecap="round"/>`;
+  const wheel = x => `<g transform="translate(${x} 66)"><g class="${anim ? "wheel" : ""}">
+      <circle r="${wr}" fill="${ink}"/><circle r="${wr * 0.54}" fill="var(--white)"/>
+      <path d="M0 ${-wr * 0.54} V${wr * 0.54} M${-wr * 0.54} 0 H${wr * 0.54}" stroke="var(--blue)" stroke-width="2.2"/><circle r="2" fill="${ink}"/></g></g>`;
+  const lower = `M${xs} ${bt + 7} Q${xs} ${bt} ${xs + 8} ${bt} H${xe - 14} Q${xe - 1} ${bt} ${xe} ${bt + 11} V62 Q${xe} 66 ${xe - 5} 66 H${xs + 5} Q${xs} 66 ${xs} 61 Z`;
+  const cabin = `M${cr} ${bt + 1} L${cr + sr} ${rt + 5} Q${cr + sr + 1} ${rt} ${cr + sr + 6} ${rt} H${cf - sf - 4} Q${cf - sf + 1} ${rt} ${cf - sf + 3} ${rt + 4} L${cf} ${bt + 1} Z`;
+  const extra = shape === "truck"
+      ? `<path d="M${xs + 2} ${bt + 1} V${bt - 9} H${cr - 3} V${bt + 1}" fill="${color}" stroke="${ink}" stroke-width="${sw}" stroke-linejoin="round"/>`
+    : shape === "classic"
+      ? `<circle cx="${xs - 3}" cy="${bt + 12}" r="10" fill="${ink}"/><circle cx="${xs - 3}" cy="${bt + 12}" r="4.5" fill="var(--white)"/>`
+    : "";
+  return `<svg viewBox="-26 -28 194 112" aria-hidden="true">
+    <defs><clipPath id="${id}r"><path d="${rearWin}"/></clipPath><clipPath id="${id}f"><path d="${frontWin}"/></clipPath></defs>
+    ${fx ? `<g class="speed" stroke="var(--blue)" stroke-width="3" stroke-linecap="round" opacity=".7">
+      <line x1="-6" y1="34" x2="-20" y2="34"/><line x1="-2" y1="46" x2="-22" y2="46"/><line x1="-6" y1="58" x2="-16" y2="58"/></g>
+      <text class="note" x="${px - 6}" y="${rt - 8}" font-size="14" font-weight="700" fill="var(--blue)">♪</text>
+      <text class="note n2" x="${px + 12}" y="${rt - 16}" font-size="11" font-weight="700" fill="var(--blue)">♫</text>` : ""}
+    <ellipse cx="80" cy="79" rx="72" ry="4" fill="${ink}" opacity=".12"/>
+    <g class="${anim ? "bob" : ""}">
+      ${extra}
+      <path d="${cabin}" fill="${color}" stroke="${ink}" stroke-width="${sw}" stroke-linejoin="round"/>
+      <path d="${lower}" fill="${color}" stroke="${ink}" stroke-width="${sw}" stroke-linejoin="round"/>
+      <path d="${rearWin}" fill="var(--sky)"/><path d="${frontWin}" fill="var(--sky)"/>
+      ${riders ? `<g clip-path="url(#${id}r)">${passenger}</g><g clip-path="url(#${id}f)">${driver}</g>` : ""}
+      <path d="${rearWin} ${frontWin}" fill="none" stroke="${ink}" stroke-width="2" stroke-linejoin="round"/>
+      <line x1="${mid}" y1="${bt + 2}" x2="${mid}" y2="62" stroke="${ink}" stroke-width="1.6"/>
+      <rect x="${mid + 6}" y="${bt + 6}" width="9" height="2.6" rx="1.3" fill="${ink}"/>
+      ${label ? `<text x="${cr + 8}" y="${bt + 18}" font-family="Archivo, Arial, sans-serif" font-style="italic" font-weight="900" font-size="9.5" fill="${labelColor}">${label}</text>` : ""}
+      <circle cx="${xe - 5}" cy="${bt + 9}" r="4" fill="var(--sun)" stroke="${ink}" stroke-width="2"/>
+      <rect x="${xs - 1}" y="${bt + 6}" width="4.5" height="7.5" rx="1.5" fill="#ff5a4e" stroke="${ink}" stroke-width="1.6"/>
+    </g>
+    ${wheel(xs + 30)}${wheel(xe - 32)}
+  </svg>`;
+}
+
+/* =========================================================
+   コレクションカードの絵（明るいメイン色＋アクセント1色・背景モチーフは1〜2個）
+   ========================================================= */
+/* main＝背景、acc＝アクセント、deep＝文字・指標の色、num＝番号の色、body/lower＝車体色（なければ白） */
+const LOOK = {
+  wander:  { main: "#1fc2bb", acc: "#efff4f", deep: "#0a6f6a", num: "#ffffff" },
+  family:  { main: "#ffa53d", acc: "#fff1d6", deep: "#b35a00", num: "#ffffff" },
+  style:   { main: "#ff5c8a", acc: "#efff4f", deep: "#c8205a", num: "#ffffff" },
+  gear:    { main: "#bde63c", acc: "#2337a6", deep: "#2337a6", num: "#2337a6" },
+  vintage: { main: "#ff8f86", acc: "#ff9a3c", cream: "#fff1d6", tint: "#ffb8ad", deep: "#c9433b", num: "#ffffff", body: "#fff1d6" },
+  city:    { main: "#f0ff5a", acc: "#ff5c8a", deep: "#d2316a", num: "#ff5c8a", lower: "#ff5c8a" },
+  smart:   { main: "#a6e8cf", acc: "#2337a6", deep: "#2337a6", num: "#2337a6" },
+  cruise:  { main: "#3b6cf2", acc: "#efff4f", deep: "#2f55d4", num: "#ffffff" },
+};
+
+/* クルマ：既存アイコンの線と形を引き継ぎ、タイプごとに装備を足す */
+let carSeq = 0;
+function cardCar(shape, P, opt = {}) {
+  const { riders = true, kit = "" } = opt;
+  const S = SHAPES[shape], id = "n" + (carSeq++);
+  const { xs, xe, bt, rt, cr, cf, sr, sf } = S, wr = S.wr || 13;
+  const mid = (cr + cf) / 2, wt = rt + 5, wb = bt - 2;
+  const rearWin = `M${cr + 5} ${wb} L${cr + sr + 5} ${wt} H${mid - 2} V${wb} Z`;
+  const frontWin = `M${mid + 2} ${wt} H${cf - sf - 4} L${cf - 5} ${wb} H${mid + 2} Z`;
+  const I = "#1d1d1f", W = "#ffffff", sw = 2.4;
+  const body = P.body || W, lowerFill = P.lower || body;
+  // 乗っている人は既存 carSVG から流用（窓だけ切り出す）
+  const people = riders ? carSVG(shape, W, { anim: false, label: "" }).match(/<g clip-path="url\(#c\d+r\)">[\s\S]*?<\/g><g clip-path="url\(#c\d+f\)">[\s\S]*?<\/g>/)?.[0]
+      .replace(/url\(#c(\d+)r\)/, `url(#${id}r)`).replace(/url\(#c(\d+)f\)/, `url(#${id}f)`) : "";
+  const wheel = x => `<g transform="translate(${x} 66)"><circle r="${wr}" fill="${I}"/>
+      ${kit === "classic" ? `<circle r="${wr * 0.74}" fill="${W}"/><circle r="${wr * 0.56}" fill="${I}"/>` : ""}
+      <circle r="${wr * 0.46}" fill="${kit === "classic" ? "#d8d8de" : W}"/>
+      <path d="M0 ${-wr * 0.46} V${wr * 0.46} M${-wr * 0.46} 0 H${wr * 0.46}" stroke="${P.deep}" stroke-width="2"/><circle r="1.8" fill="${I}"/></g>`;
+  const lower = `M${xs} ${bt + 7} Q${xs} ${bt} ${xs + 8} ${bt} H${xe - 14} Q${xe - 1} ${bt} ${xe} ${bt + 11} V62 Q${xe} 66 ${xe - 5} 66 H${xs + 5} Q${xs} 66 ${xs} 61 Z`;
+  const cabin = `M${cr} ${bt + 1} L${cr + sr} ${rt + 5} Q${cr + sr + 1} ${rt} ${cr + sr + 6} ${rt} H${cf - sf - 4} Q${cf - sf + 1} ${rt} ${cf - sf + 3} ${rt + 4} L${cf} ${bt + 1} Z`;
+  let back = "", front = "";
+  if (kit === "rails") {          // 01：背面スペアタイヤ＋空のルーフレール（どこへでも寄り道できる身軽さ）
+    back = `<circle cx="${xs - 3}" cy="${bt + 12}" r="10" fill="${I}"/><circle cx="${xs - 3}" cy="${bt + 12}" r="4.6" fill="${P.acc}"/>
+      <path d="M${cr + sr + 10} ${rt} V${rt - 5} M${cf - sf - 8} ${rt} V${rt - 5} M${cr + sr + 4} ${rt - 5} H${cf - sf - 2}" stroke="${I}" stroke-width="2.4" stroke-linecap="round"/>`;
+  } else if (kit === "sport") {   // 03：2本のレーシングストライプ＋小さなリアスポイラー
+    back = `<path d="M${xs + 4} ${bt - 2} V${bt - 8} M${xs + 1} ${bt - 8} H${xs + 18}" stroke="${I}" stroke-width="2.6" stroke-linecap="round"/>`;
+    front = `<path d="M${xs + 10} ${bt + 9} H${xe - 10} M${xs + 10} ${bt + 14} H${xe - 10}" stroke="${P.acc}" stroke-width="2.6"/>`;
+  } else if (kit === "family") {  // 02：スライドドアのレール
+    front = `<line x1="${cr + 6}" y1="${bt + 8}" x2="${(cr + cf) / 2 - 4}" y2="${bt + 8}" stroke="${I}" stroke-width="1.5" stroke-linecap="round"/>`;
+  } else if (kit === "haul") {    // 04：荷台のクーラーボックスと寝袋＋キャブ上のルーフボックス
+    back = `<path d="M${xs + 2} ${bt + 1} V${bt - 9} H${cr - 3} V${bt + 1}" fill="${body}" stroke="${I}" stroke-width="${sw}" stroke-linejoin="round"/>
+      <rect x="${xs + 6}" y="${bt - 25}" width="26" height="17" rx="3" fill="${P.acc}" stroke="${I}" stroke-width="2"/><rect x="${xs + 13}" y="${bt - 29}" width="12" height="5" rx="2" fill="none" stroke="${I}" stroke-width="2"/>
+      <line x1="${xs + 6}" y1="${bt - 19}" x2="${xs + 32}" y2="${bt - 19}" stroke="${W}" stroke-width="1.6"/>
+      <rect x="${xs + 35}" y="${bt - 21}" width="24" height="13" rx="6.5" fill="${W}" stroke="${I}" stroke-width="2"/><path d="M${xs + 42} ${bt - 21} V${bt - 8} M${xs + 50} ${bt - 21} V${bt - 8}" stroke="${P.acc}" stroke-width="2"/>
+      <path d="M${cr + sr + 9} ${rt} V${rt - 4} M${cf - sf - 7} ${rt} V${rt - 4}" stroke="${I}" stroke-width="2.2" stroke-linecap="round"/>
+      <path d="M${cr + sr + 2} ${rt - 4} Q${cr + sr + 2} ${rt - 14} ${cr + sr + 14} ${rt - 14} H${cf - sf - 4} Q${cf - sf + 4} ${rt - 14} ${cf - sf + 4} ${rt - 4} Z" fill="${P.acc}" stroke="${I}" stroke-width="2" stroke-linejoin="round"/>`;
+  } else if (kit === "classic") { // 05：丸目・メッキバンパー・ホワイトリボン・2トーン
+    back = `<circle cx="${xs - 3}" cy="${bt + 12}" r="10" fill="${I}"/><circle cx="${xs - 3}" cy="${bt + 12}" r="5" fill="${W}"/>`;
+    front = `<rect x="${xs - 5}" y="${bt + 19}" width="10" height="4.5" rx="2.2" fill="#d8d8de" stroke="${I}" stroke-width="1.6"/>
+      <rect x="${xe - 6}" y="${bt + 19}" width="11" height="4.5" rx="2.2" fill="#d8d8de" stroke="${I}" stroke-width="1.6"/>
+      <line x1="${xs + 8}" y1="${bt + 4}" x2="${xe - 12}" y2="${bt + 4}" stroke="${P.acc}" stroke-width="2.6"/>`;
+  }
+  return `<svg viewBox="-26 -28 194 112" aria-hidden="true">
+    <defs><clipPath id="${id}r"><path d="${rearWin}"/></clipPath><clipPath id="${id}f"><path d="${frontWin}"/></clipPath></defs>
+    <ellipse cx="80" cy="80" rx="74" ry="3.5" fill="${I}" opacity=".18"/>
+    ${back}
+    <path d="${cabin}" fill="${body}" stroke="${I}" stroke-width="${sw}" stroke-linejoin="round"/>
+    <path d="${lower}" fill="${lowerFill}" stroke="${I}" stroke-width="${sw}" stroke-linejoin="round"/>
+    <path d="${rearWin}" fill="#e3ecff"/><path d="${frontWin}" fill="#e3ecff"/>
+    ${people}
+    <path d="${rearWin} ${frontWin}" fill="none" stroke="${I}" stroke-width="2" stroke-linejoin="round"/>
+    <line x1="${mid}" y1="${bt + 2}" x2="${mid}" y2="62" stroke="${I}" stroke-width="1.5"/>
+    <rect x="${mid + 6}" y="${bt + 6}" width="9" height="2.6" rx="1.3" fill="${I}"/>
+    ${front}
+    <circle cx="${xe - 5}" cy="${bt + 9}" r="${kit === "classic" ? 5 : 4}" fill="${kit === "classic" ? "#fff6c9" : P.acc}" stroke="${I}" stroke-width="2"/>
+    <rect x="${xs - 1}" y="${bt + 6}" width="4.5" height="7.5" rx="1.5" fill="#ff5a4e" stroke="${I}" stroke-width="1.5"/>
+    ${wheel(xs + 30)}${wheel(xe - 32)}
+  </svg>`;
+}
+
+/* 背景：モチーフは1〜2個まで。余白を残して、クルマと番号を主役に */
+function cardScene(k, P) {
+  const W = "#ffffff", I = "#1d1d1f";
+  const road = `<rect x="0" y="262" width="320" height="58" fill="${I}"/>
+    <g fill="${W}">${Array.from({ length: 9 }, (_, i) => `<rect x="${i * 40 - 6}" y="289" width="22" height="4" rx="2"/>`).join("")}</g>`;
+  const g = {
+    // 太陽＋小さな「CAFE」の道しるべ
+    wander: `<circle cx="226" cy="150" r="48" fill="${P.acc}"/>
+      <rect x="0" y="218" width="320" height="44" fill="#17b2ab"/>
+      <rect x="293" y="166" width="4" height="96" fill="${W}"/>
+      <path d="M266 168 H306 L314 176 L306 184 H266 Z" fill="${W}"/>
+      <text x="288" y="180" text-anchor="middle" font-size="9.5" font-weight="700" fill="${I}" font-family="Outfit, Arial, sans-serif" letter-spacing=".5">CAFE</text>`,
+    // 家ひとつ＋小さな雲（帰る場所がある）
+    family: `<path d="M226 262 V184 L264 152 L302 184 V262 Z" fill="${P.acc}"/>
+      <rect x="252" y="190" width="24" height="20" rx="3" fill="${P.main}" opacity=".55"/>
+      <g fill="${W}"><circle cx="150" cy="128" r="11"/><circle cx="164" cy="122" r="14"/><circle cx="180" cy="129" r="10"/><rect x="150" y="128" width="30" height="11"/></g>`,
+    // 峠の稜線（淡いピンク）＋スピードライン
+    style: `<path d="M-10 262 L70 214 L130 240 L214 184 L330 252 V262 Z" fill="#ff86a8"/>
+      <g fill="${P.acc}"><rect x="-8" y="190" width="56" height="6" rx="3"/><rect x="-8" y="206" width="40" height="6" rx="3"/><rect x="-8" y="222" width="50" height="6" rx="3"/></g>`,
+    // 小さな山ひとつ＋白い太陽
+    gear: `<path d="M190 262 L250 176 L310 262 Z" fill="${P.acc}"/>
+      <path d="M236 196 L250 176 L264 196 L257 192 L250 199 L243 192 Z" fill="${W}"/>
+      <circle cx="168" cy="140" r="11" fill="${W}"/>`,
+    // 古いガレージの入口（アーチ）＋オレンジの太陽
+    vintage: `<path d="M150 262 V172 A64 64 0 0 1 278 172 V262 Z" fill="${P.tint}"/>
+      <circle cx="132" cy="146" r="13" fill="${P.acc}"/>`,
+    // 白いビル＋ピンクの日よけの小さな店
+    city: `<rect x="222" y="138" width="38" height="124" fill="${W}"/>
+      <g fill="${P.acc}"><rect x="232" y="152" width="7" height="9" rx="1.5"/><rect x="244" y="152" width="7" height="9" rx="1.5"/><rect x="232" y="168" width="7" height="9" rx="1.5"/></g>
+      <rect x="264" y="186" width="44" height="76" fill="${W}" opacity=".75"/>
+      <g>${Array.from({ length: 6 }, (_, i) => `<rect x="${260 + i * 8.67}" y="178" width="8.67" height="14" fill="${i % 2 ? W : P.acc}"/>`).join("")}</g>`,
+    // 比べて選んだチェックリスト
+    smart: `<rect x="214" y="104" width="70" height="84" rx="12" fill="${W}"/>
+      <g stroke="${P.acc}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none">
+        <path d="M226 124 l4 4 l8 -9"/><path d="M226 146 l4 4 l8 -9"/></g>
+      <g fill="${P.main}"><rect x="246" y="121" width="28" height="5" rx="2.5"/><rect x="246" y="143" width="22" height="5" rx="2.5"/><rect x="246" y="165" width="26" height="5" rx="2.5"/></g>
+      <rect x="226" y="161" width="12" height="12" rx="3" fill="none" stroke="${P.main}" stroke-width="2.4"/>`,
+    // 三日月と星（夜のロングドライブ）
+    cruise: `<path d="M244 102 a46 46 0 1 0 40 66 a36 36 0 1 1 -40 -66 Z" fill="${P.acc}"/>
+      <g fill="${W}"><circle cx="172" cy="122" r="2.6"/><circle cx="296" cy="96" r="2"/><circle cx="196" cy="168" r="1.8"/><circle cx="300" cy="196" r="2.4"/></g>`,
+  }[k];
+  return g + road;
+}
+
+const KIT = { wander: "rails", family: "family", style: "sport", gear: "haul", vintage: "classic" };
+/* カードの絵（320×320）。vb で上側を切り落とすと保存画像用の横長になる */
+function cardArt(k, riders, vb = "0 0 320 320") {
+  const T = TYPES[k], L = LOOK[k];
+  return `<svg viewBox="${vb}" aria-hidden="true">${cardScene(k, L)}
+    <svg x="16" y="134" width="272" height="157" viewBox="-26 -28 194 112" overflow="visible">${cardCar(T.shape, L, { riders, kit: KIT[k] }).replace(/^<svg[^>]*>|<\/svg>$/g, "")}</svg></svg>`;
+}
+const lookVars = k => { const L = LOOK[k]; return `--main:${L.main};--acc:${L.acc};--deep:${L.deep};--num:${L.num}`; };
+
+/* =========================================================
+   計測（GA4が入っていれば送信。個人情報・回答内容は送らない）
+   ========================================================= */
+/* イベント名：car_match_view（表示）/ car_match_start（開始）/ car_match_answer（各問）/ car_match_complete（完了・type別）
+   car_match_save_click / car_match_copy_click / car_match_share_click / car_match_consult_click（いずれも「押した数」で、保存・投稿の完了ではない）
+   car_match_retry（もう一度） */
+function track(name, params = {}) {
+  try {
+    if (typeof window.gtag === "function") window.gtag("event", name, params);
+    else if (Array.isArray(window.dataLayer)) window.dataLayer.push({ event: name, ...params });
+  } catch (e) {}
+}
+
+/* =========================================================
+   画面
+   ========================================================= */
+const app = document.getElementById("app");
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const pad = n => String(n).padStart(2, "0");
+const carName = ([mk, md]) => `${mk} ${md}`;
+const plainName = n => n.replace("|", "");
+const nameHTML = n => esc(n).replace("|", "<wbr>");
+const reduce = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
+const BRAND = cls => `<img class="brand ${cls || ""}" src="${LOGO}" alt="CARL PASSER">`;
+const N = QUESTIONS.length;
+let viewed = false;
+let state = { screen: "start", idx: 0, answers: [] };
+let locked = false;
+
+function render() { ({ start: renderStart, quiz: renderQuiz, result: renderResult })[state.screen](); window.scrollTo({ top: 0 }); }
+function reset() { state = { screen: "start", idx: 0, answers: [] }; render(); }
+
+function miniCard(k, opts = {}) {
+  const T = TYPES[k];
+  return `<div class="mini nc${opts.you ? " you" : ""}${opts.hidden ? " hidden" : ""}" style="${lookVars(k)}">
+    <div class="na">${cardArt(k, !opts.hidden)}<span class="num">${pad(T.no)}</span><span class="wm">CAR MATCH</span></div>
+    <div class="nm"><span class="t"><span>TYPE ${pad(T.no)}</span><span>${pad(T.no)} / 08</span></span><b>${opts.hidden ? "？？？" : nameHTML(T.name)}</b></div>
+  </div>`;
+}
+
+function renderStart() {
+  app.innerHTML = `
+  <div class="wrap fade">
+    <div class="top">${BRAND("lg")}</div>
+    <section class="hero">
+      <div><p class="logo">CAR <span>MATCH</span></p><div class="stripes"><i></i><i></i><i></i></div></div>
+      <h1 class="title">あなたに似合うクルマ、<br><em>どんなクルマ？</em></h1>
+      <p class="sub">10の質問で、<wbr>あなたらしい一台を<wbr>見つけよう。</p>
+      <div class="chips"><span class="chip">全10問</span><span class="chip">約1分</span></div>
+    </section>
+    <div class="stage"><div class="pole"></div><div class="road"><div class="flag"></div></div>
+      <div class="rider" style="left:calc(50% - 86px)">${carSVG("suv", "var(--blue)", { fx: true })}</div></div>
+    <button class="btn wide big" id="go">START <span class="arr">▶</span></button>
+    <section class="teaser">
+      <h2>結果は、8種類のカードのどれか。</h2>
+      <div class="fan" aria-hidden="true">${["vintage", "wander", "cruise"].map(k => miniCard(k, { hidden: true })).join("")}</div>
+    </section>
+    <div class="foot"><span class="motto">10 PEOPLE 10 CARS.</span></div>
+  </div>`;
+  document.getElementById("go").onclick = () => { state = { screen: "quiz", idx: 0, answers: [] }; track("car_match_start"); render(); };
+}
+
+const riderLeft = p => `calc((100% - 146px) * ${p})`;
+
+function renderQuiz() {
+  const i = state.idx, Q = QUESTIONS[i];
+  const [catEn, catJ] = PART_LABEL[Q.part];
+  const checkpoint = i > 0 && QUESTIONS[i - 1].part !== Q.part;
+  app.innerHTML = `
+  <div class="wrap">
+    <div class="top"><span class="logo sm">CAR <span>MATCH</span></span><span class="qcount"><b>${pad(i + 1)}</b>/ ${N}</span></div>
+    <div class="segs" aria-hidden="true">${QUESTIONS.map((_, k) => `<i class="${k < i ? "on" : ""}"></i>`).join("")}</div>
+    <div class="stage" id="stage" role="progressbar" aria-label="進み具合" aria-valuemin="0" aria-valuemax="${N}" aria-valuenow="${i}">
+      <div class="pole"></div><div class="road"><div class="flag"></div></div>
+      <div class="rider" id="rider" style="left:${riderLeft(Math.max(0, i - 1) / N)}">${carSVG("suv", "var(--blue)", { fx: true })}</div>
+    </div>
+    <section class="fade qhead">
+      ${checkpoint ? `<div class="checkpoint"><i class="f"></i><div><b>CHECKPOINT</b><span>好きなものの話はここまで。<wbr>ここからは、暮らしの話。</span></div></div>` : ""}
+      <span class="cat"><span class="lat">${catEn}</span>${catJ}</span>
+      <h2 class="qtext">${esc(Q.q)}</h2>
+      <div class="opts">${Q.opts.map((o, k) => `
+        <button class="opt${state.answers[i] === k ? " picked" : ""}" id="opt-${k}" data-k="${k}">
+          <span class="k">${k + 1}</span><span class="t">${esc(o.t)}<span class="s">${esc(o.s)}</span></span>
+        </button>`).join("")}</div>
+    </section>
+    <div class="nav">
+      <button class="link" id="back" ${i === 0 ? "disabled" : ""}>← ひとつ戻る</button>
+      <button class="link" id="quit">はじめから</button>
+    </div>
+  </div>
+  <div class="goal-ov" id="goalOv" hidden role="status" aria-live="polite">
+    <i class="checker" aria-hidden="true"></i>
+    <p class="goal-big">GOAL!</p>
+    <p class="goal-next">あなたのタイプは…</p>
+    <button class="link skip" id="skipGoal">スキップ ›</button>
+  </div>`;
+  requestAnimationFrame(() => { const r = document.getElementById("rider"); if (r) r.style.left = riderLeft(i / N); });
+  app.querySelectorAll(".opt").forEach(b => b.onclick = () => pick(+b.dataset.k));
+  document.getElementById("back").onclick = () => { if (state.idx > 0) { state.idx--; render(); } };
+  document.getElementById("quit").onclick = reset;
+  locked = false;
+}
+
+function pick(k) {
+  if (locked) return;
+  locked = true;
+  const i = state.idx, last = i + 1 === N;
+  state.answers[i] = k;
+  state.answers = state.answers.slice(0, i + 1);
+  track("car_match_answer", { question: i + 1 });
+  app.querySelectorAll(".opt").forEach(b => b.classList.toggle("picked", +b.dataset.k === k));
+  const segs = app.querySelectorAll(".segs i"); if (segs[i]) segs[i].classList.add("on");
+  const r = document.getElementById("rider");
+  if (last) { goalSequence(r); return; }
+  if (r) { r.style.left = riderLeft((i + 1) / N); r.classList.remove("hop"); void r.offsetWidth; r.classList.add("hop"); }
+  setTimeout(() => { state.idx++; render(); }, reduce() ? 80 : 400);
+}
+
+/* 10問目のあと：クルマが加速してフラッグを通過 → GOAL! → 「あなたのタイプは…」→ 結果（約1.9秒、タップでスキップ） */
+function goalSequence(r) {
+  const ov = document.getElementById("goalOv"), rm = reduce(), timers = [];
+  const finish = () => {
+    timers.forEach(clearTimeout);
+    if (state.screen !== "quiz") return;
+    state.screen = "result"; render();
+  };
+  if (r && !rm) { r.style.transition = "left .6s cubic-bezier(.6,0,.9,.5)"; r.style.left = "calc(100% + 40px)"; }
+  ov.onclick = finish;
+  timers.push(setTimeout(() => { ov.hidden = false; }, rm ? 0 : 560));
+  timers.push(setTimeout(() => ov.classList.add("next"), rm ? 0 : 1080));
+  timers.push(setTimeout(finish, rm ? 900 : 1900));
+}
+
+document.addEventListener("keydown", e => {
+  if (state.screen !== "quiz") return;
+  const n = parseInt(e.key, 10);
+  if (n >= 1 && n <= 4) pick(n - 1);
+});
+
+function cardHTML(k) {
+  const T = TYPES[k];
+  return `<article class="card nf" style="${lookVars(k)}" aria-label="診断結果カード">
+      <div class="nc"><div class="na">${cardArt(k, true)}<span class="num">${pad(T.no)}</span><span class="wm">CAR MATCH</span></div></div>
+      <div class="bd">
+        <p class="en">TYPE ${pad(T.no)} — ${esc(T.en)}</p>
+        <h1>${nameHTML(T.name)}</h1>
+        <p class="punch">${esc(T.punch)}</p>
+      </div>
+      <div class="stats">${STAT_LABELS.map((l, j) => `<span class="stat">${l}<span class="pips" aria-label="${l} 5段階中${T.stats[j]}">${[0, 1, 2, 3, 4].map(x => `<i class="${x < T.stats[j] ? "on" : ""}"></i>`).join("")}</span></span>`).join("")}</div>
+      <div class="ft">${BRAND()}<span class="motto">10 PEOPLE 10 CARS</span></div>
+    </article>`;
+}
+
+function renderResult() {
+  const d = diagnose(state.answers), T = TYPES[d.type];
+  const need = NEEDS[d.need];
+  const matched = d.need === "FREE" || T.natural === d.need;
+  const p1 = { car: T.ideal[0], sub: T.body, why: "前半の「好きなもの」の答えから選んだ、気分が上がる一台。" };
+  const p2 = need.cars
+    ? { car: need.cars[0], sub: need.body, also: need.cars[1], why: need.why }
+    : { car: T.ideal[0], sub: need.body, why: need.why };
+  const p3 = matched
+    ? { car: T.ideal[1], sub: "好きと暮らしが同じ方向", why: "好きなものと今の暮らしが、きれいに重なっています。①の仲間から選べば、どちらもあきらめずに済みそう。" }
+    : { car: T.balance[d.need][0], sub: "好きと暮らしのあいだ", why: T.balance[d.need][1] };
+  const msg = d.rec === 1 ? "好き優先タイプ。①を軸に、暮らしの工夫を足していくのがあなたらしい選び方かも。"
+            : d.rec === 2 ? "暮らし優先タイプ。②を軸に、好きな要素をひとつ足すとクルマがもっと楽しくなりそう。"
+            : "好きと暮らしのちょうど真ん中。③がいちばんしっくりくるかもしれません。";
+  const name = plainName(T.name);
+  const shareText = () => `CAR MATCHやってみた🚙\n結果は「${name}」でした。笑\n「${T.punch}」\nあなたは何派？\n${pageURL()}`;
+  track("car_match_complete", { type: d.type });
+
+  const pickHTML = (n, label, p) => `
+    <div class="pick${d.rec === n ? " rec" : ""}">
+      <span class="lbl"><span class="n">${["①", "②", "③"][n - 1]}</span>${label}${d.rec === n ? `<span class="badge">いまのあなたに</span>` : ""}</span>
+      <p class="car-name"><small>${esc(p.sub)}</small>${esc(carName(p.car))}${p.also ? ` <small>ほかに：${esc(carName(p.also))}</small>` : ""}</p>
+      <p class="why">${esc(p.why)}</p>
+    </div>`;
+
+  app.innerHTML = `
+  <div class="wrap fade">
+    <div class="top">${BRAND()}<span class="logo sm">CAR <span>MATCH</span></span></div>
+
+    <div class="flipbox"><div class="tilt" id="tilt"><div class="flip">
+      ${cardHTML(d.type)}
+      <div class="back" aria-hidden="true"><p class="logo">CAR<br><span>MATCH</span></p><span class="motto">10 PEOPLE 10 CARS</span></div>
+    </div></div></div>
+
+    <section class="share">
+      <p class="share-q">この結果、誰かに見せてみる？</p>
+      <p class="small">友達は何派？診断を送ってみよう。</p>
+      <button class="btn wide" id="save">画像を保存</button>
+      <div class="row">
+        <button class="btn line" id="shareBtn">友達にシェア</button>
+        <button class="btn line" id="copy">結果をコピー</button>
+      </div>
+      <p class="toast" id="toast" aria-live="polite"></p>
+    </section>
+
+    <section class="block">
+      <h2><span class="lat">YOUR TYPE</span>あなたのタイプの特徴</h2>
+      <p>${esc(T.life)}</p>
+      <div class="dir">
+        <p class="small">似合いそうなクルマの方向性</p>
+        <p class="body">${esc(T.body)}</p>
+        <div class="balance">
+          <div class="ends"><span>好き<b>${d.likePct}</b></span><span>暮らし<b>${100 - d.likePct}</b></span></div>
+          <div class="bar" role="img" aria-label="好き${d.likePct}、暮らし${100 - d.likePct}"><span class="like" style="width:${d.likePct}%"></span></div>
+        </div>
+        <p>${msg}</p>
+        <p class="small">最後の質問の本音と、家族・荷物の条件から出した目安です。正解・不正解はありません。</p>
+      </div>
+      <div class="picks">
+        ${pickHTML(1, "あなたの好きな一台", p1)}
+        ${pickHTML(2, "今の暮らしに合う一台", p2)}
+        ${pickHTML(3, "その両方を叶える、ちょうどいい一台", p3)}
+      </div>
+      <div class="surprise">
+        <span class="lat">SURPRISE PICK</span>
+        <p style="font-weight:700">意外と似合う一台</p>
+        <p class="car-name">${esc(carName(T.surprise[0]))}</p>
+        <p>${esc(T.surprise[1])}</p>
+      </div>
+      ${T.old ? `<p class="caution">年式の古いクルマは、整備記録と状態の見きわめが大切です。気になる一台があれば、点検のことも気軽に聞いてください。</p>` : ""}
+      <p class="small">車種は雰囲気をつかむためのイメージ例です。価格や在庫を保証するものではありません。</p>
+    </section>
+
+    <section class="block">
+      <h2><span class="lat">WHY</span>そう診断された理由</h2>
+      <ul class="reasons">${d.reasons.map(x => `<li><span class="q">Q${x.i + 1}</span>${esc(x.o.r)}</li>`).join("")}</ul>
+    </section>
+
+    <section class="block">
+      <h2><span class="lat">COLLECTION</span>8タイプのコレクション</h2>
+      <div class="deck">${ORDER.map(k => miniCard(k, { you: k === d.type })).join("")}</div>
+      <button class="btn line wide" id="again">もう一度あそぶ</button>
+    </section>
+
+    <section class="next">
+      <h2>実際のクルマ選びも、好きと暮らしの両方から。</h2>
+      <p>診断は、あくまでひとつのヒント。「こんなクルマもアリかも」と思ったら、実際のクルマ選びも一緒に考えましょう。</p>
+      ${CONSULT_URL ? `<a class="btn line wide" id="consult" href="${esc(CONSULT_URL)}" target="_blank" rel="noopener">クルマ選びを相談する</a>` : ""}
+    </section>
+
+    <div class="foot">${BRAND()}<p>CAR MATCHは、回答から自動で選ぶ遊びの診断です。性格や適性を判定するものではありません。</p></div>
+  </div>
+  <div class="modal" id="modal" hidden role="dialog" aria-label="保存用の画像">
+    <img id="storyImg" alt="診断結果の画像">
+    <p>画像を長押し（パソコンは右クリック）で保存できます。<br>ストーリーズに載せるときは、保存した画像を選んでください。</p>
+    <button class="btn line" id="closeModal">閉じる</button>
+  </div>`;
+
+  const toast = document.getElementById("toast");
+  const copyText = (okMsg) => navigator.clipboard.writeText(shareText()).then(
+    () => { toast.textContent = okMsg; },
+    () => { toast.textContent = shareText(); });
+  document.getElementById("again").onclick = () => { track("car_match_retry"); reset(); };
+  document.getElementById("copy").onclick = () => {
+    track("car_match_copy_click", { type: d.type });
+    copyText("コピーしました。トークやSNSに貼り付けて使えます。");
+  };
+  document.getElementById("shareBtn").onclick = async () => {
+    track("car_match_share_click", { type: d.type });
+    if (navigator.share) {
+      try { await navigator.share({ title: "CAR MATCH", text: shareText().replace(`\n${pageURL()}`, ""), url: pageURL() }); return; }
+      catch (e) { if (e && e.name === "AbortError") return; }
+    }
+    copyText("共有メニューが使えないため、診断のURLつきの文章をコピーしました。");
+  };
+  document.getElementById("save").onclick = async () => {
+    track("car_match_save_click", { type: d.type });
+    toast.textContent = "画像をつくっています…";
+    try {
+      const url = await makeStory(d.type);
+      document.getElementById("storyImg").src = url;
+      document.getElementById("modal").hidden = false;
+      toast.textContent = "";
+    } catch (e) {
+      toast.textContent = "画像をつくれませんでした。お手数ですが、カードをスクショして保存してください。";
+    }
+  };
+  document.getElementById("closeModal").onclick = () => { document.getElementById("modal").hidden = true; };
+  document.getElementById("consult")?.addEventListener("click", () => track("car_match_consult_click", { type: d.type }));
+
+  const tilt = document.getElementById("tilt");
+  if (!reduce() && matchMedia("(hover: hover)").matches) {
+    tilt.addEventListener("pointermove", e => {
+      const r = tilt.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+      tilt.classList.add("live");
+      tilt.style.transform = `rotateY(${x * 14}deg) rotateX(${-y * 10}deg)`;
+      tilt.style.setProperty("--sx", `${(0.5 - x) * 160}%`);
+    });
+    tilt.addEventListener("pointerleave", () => { tilt.style.transform = ""; });
+  }
+}
+
+/* =========================================================
+   ストーリーズ用の縦長画像（1080×1920）をcanvasで描く
+   ========================================================= */
+const COL = { paper: "#fdfcf9", white: "#ffffff", ink: "#1d1d1f", "ink-2": "#3c3b39", muted: "#78756e", line: "#e3dfd6",
+  blue: "#2451b5", "blue-deep": "#18357d", sky: "#e4ebf8", sun: "#ffc94a", skin: "#ffd7b5", bg: "#f4f2ed" };
+function svgImage(svg, w, h, T) {
+  const vars = { ...COL, tc: T.color, tcd: T.dark };
+  const src = svg.replace(/var\(--([a-z0-9-]+)\)/g, (m, n) => vars[n] || "#000")
+    .replace("<svg ", `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" `);
+  return loadImg("data:image/svg+xml;charset=utf-8," + encodeURIComponent(src));
+}
+function loadImg(src) {
+  return new Promise((ok, ng) => { const im = new Image(); im.onload = () => ok(im); im.onerror = ng; im.src = src; });
+}
+function rr(x, X, Y, W, H, R) { x.beginPath(); x.roundRect ? x.roundRect(X, Y, W, H, R) : x.rect(X, Y, W, H); }
+function wrapLines(x, text, maxW) {
+  const out = []; let line = "";
+  for (const ch of text) { if (x.measureText(line + ch).width > maxW && line) { out.push(line); line = ch; } else line += ch; }
+  if (line) out.push(line);
+  return out;
+}
+async function makeStory(k) {
+  const T = TYPES[k], W = 1080, H = 1920;
+  try {
+    await Promise.all([
+      document.fonts.load('italic 900 60px "Archivo"'), document.fonts.load('700 30px "Outfit"'),
+      document.fonts.load('800 70px "Noto Sans JP"', plainName(T.name) + "あなたは何タイプ？"),
+      document.fonts.load('500 36px "Noto Sans JP"', T.punch + STAT_LABELS.join("")),
+    ]);
+  } catch (e) {}
+  const c = document.createElement("canvas"); c.width = W; c.height = H;
+  const x = c.getContext("2d");
+  x.fillStyle = COL.bg; x.fillRect(0, 0, W, H);
+
+  const logo = await loadImg(LOGO);
+  x.drawImage(logo, 90, 110, 220, 220 * logo.height / logo.width);
+  x.font = 'italic 900 58px "Archivo", sans-serif'; x.textAlign = "right"; x.textBaseline = "alphabetic";
+  x.fillStyle = COL.blue; x.fillText("MATCH", 990, 206);
+  const mw = x.measureText("MATCH").width;
+  x.fillStyle = COL.ink; x.fillText("CAR ", 990 - mw, 206);
+
+  // card（画面のカードと同じ構成：絵・番号・ロゴ／タイプ名・ひとこと・指標／フッター）
+  const L = LOOK[k], cx = 90, cy = 270, cw = 900, ch = 1420;
+  x.save(); x.shadowColor = "rgba(29,29,31,.22)"; x.shadowBlur = 60; x.shadowOffsetY = 26;
+  rr(x, cx, cy, cw, ch, 48); x.fillStyle = COL.white; x.fill(); x.restore();
+  x.save(); rr(x, cx, cy, cw, ch, 48); x.clip();
+  const ay = cy, ah = cw * 280 / 320;
+  x.fillStyle = L.main; x.fillRect(cx, ay, cw, ah);
+  const art = await svgImage(cardArt(k, true, "0 40 320 280"), cw, ah, T);
+  x.drawImage(art, cx, ay);
+  x.fillStyle = L.num; x.textBaseline = "top"; x.textAlign = "left";
+  x.font = 'italic 900 300px "Archivo", sans-serif';
+  if ("letterSpacing" in x) x.letterSpacing = "-14px";
+  x.fillText(pad(T.no), cx + 44, ay + 4);
+  if ("letterSpacing" in x) x.letterSpacing = "0px";
+  x.font = 'italic 900 32px "Archivo", sans-serif'; x.textAlign = "right"; x.fillText("CAR MATCH", cx + cw - 48, ay + 48);
+  x.textBaseline = "alphabetic"; x.textAlign = "left";
+  // body
+  let y = ay + ah + 78;
+  x.fillStyle = L.deep; x.font = '700 28px "Outfit", sans-serif';
+  if ("letterSpacing" in x) x.letterSpacing = "5px";
+  x.fillText(`TYPE ${pad(T.no)} — ${T.en}`, cx + 48, y);
+  if ("letterSpacing" in x) x.letterSpacing = "0px";
+  x.fillStyle = COL.ink; x.font = '800 68px "Noto Sans JP", sans-serif';
+  const full = plainName(T.name);
+  const nameLines = x.measureText(full).width <= cw - 96 ? [full] : T.name.split("|");
+  y += 18;
+  for (const l of nameLines) { y += 86; x.fillText(l, cx + 48, y); }
+  x.fillStyle = COL["ink-2"]; x.font = '500 36px "Noto Sans JP", sans-serif';
+  y += 18;
+  for (const l of wrapLines(x, T.punch, cw - 96)) { y += 54; x.fillText(l, cx + 48, y); }
+  // stats
+  y += 36;
+  STAT_LABELS.forEach((l, j) => {
+    const sx = cx + 48 + (j % 2) * 420, sy = y + Math.floor(j / 2) * 56 + 30;
+    x.fillStyle = COL["ink-2"]; x.font = '500 28px "Noto Sans JP", sans-serif'; x.fillText(l, sx, sy);
+    for (let p = 0; p < 5; p++) { x.beginPath(); x.arc(sx + 190 + p * 34, sy - 10, 11, 0, Math.PI * 2); x.fillStyle = p < T.stats[j] ? L.deep : "#ebe8e1"; x.fill(); }
+  });
+  // foot
+  const fy = cy + ch - 110;
+  x.fillStyle = COL.line; x.fillRect(cx, fy, cw, 2);
+  x.drawImage(logo, cx + 48, fy + 34, 110, 110 * logo.height / logo.width);
+  x.fillStyle = COL.muted; x.font = '700 22px "Outfit", sans-serif'; x.textAlign = "right";
+  if ("letterSpacing" in x) x.letterSpacing = "4px";
+  x.fillText("10 PEOPLE 10 CARS", cx + cw - 48, fy + 66);
+  if ("letterSpacing" in x) x.letterSpacing = "0px";
+  x.restore();
+
+  // bottom
+  x.textAlign = "center"; x.fillStyle = COL.ink; x.font = '800 50px "Noto Sans JP", sans-serif';
+  x.fillText("あなたは何タイプ？", W / 2, 1772);
+  x.fillStyle = COL.muted; x.font = '600 30px "Outfit", sans-serif';
+  x.fillText("CAR MATCH  |  carlpasser.jp", W / 2, 1828);
+  x.fillStyle = COL.blue; x.font = '600 26px "Outfit", sans-serif';
+  x.fillText("#CARMATCH  #10PEOPLE10CARS", W / 2, 1870);
+
+  return await new Promise((ok, ng) => c.toBlob(b => b ? ok(URL.createObjectURL(b)) : ng(new Error("blob")), "image/png"));
+}
+
+window.claude?.hot?.snapshot?.(() => state);
+function start(data) {
+  if (data && data.screen) state = data;
+  if (!viewed) { viewed = true; track("car_match_view"); }
+  render();
+}
+window.claude?.hot?.ready ? window.claude.hot.ready(start) : start(window.claude?.hot?.data ?? {});
+</script>
+</body>
+
+</html>
