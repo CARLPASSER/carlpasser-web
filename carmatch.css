@@ -18,8 +18,9 @@
 .cp-match-card--01 { margin-top: 0; }
 .cp-match-card img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: contain; border-radius: 8px; }
 .cp-match-action { align-self: start; padding-top: 28px; }
-.cp-match-duration { margin: 0 0 14px; color: #595959; font-size: 13px; }
-.cp-match .cp-match-cta { font-family: inherit; font-size: 14px; min-height: 54px; }
+.cp-match .cp-match-cta { font-family: inherit; font-size: 14px; min-height: 54px; gap: 14px; background: #161616; color: #fff; border-color: #161616; }
+.cp-match .cp-match-cta:hover { background: #353535; border-color: #353535; color: #fff; transform: none; }
+.cp-match .cp-match-arrow { color: inherit; line-height: 1; }
 .cp-match .cp-match-cta:disabled { cursor: not-allowed; opacity: .65; transform: none; background: #fff; color: #161616; }
 .cp-match-controls { display: none; }
 .cp-match :is(a, button, [tabindex]):focus-visible { outline: 2px solid #161616; outline-offset: 5px; }
