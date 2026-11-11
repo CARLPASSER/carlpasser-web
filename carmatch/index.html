@@ -817,6 +817,12 @@ const lookVars = k => { const L = LOOK[k]; return `--main:${L.main};--acc:${L.ac
 /* イベント名：car_match_view（表示）/ car_match_start（開始）/ car_match_answer（各問）/ car_match_complete（完了・type別）
    car_match_save_click / car_match_copy_click / car_match_share_click / car_match_consult_click（いずれも「押した数」で、保存・投稿の完了ではない）
    car_match_retry（もう一度） */
+/* 自社の集計（Netlify Functions）：開始と結果（タイプ・もうひとつの顔・暮らしの条件）だけを送る。
+   個人情報・回答の中身・Cookieは使わない。集計は /carmatch/stats.html（合言葉つき）で見る */
+function count(body) {
+  if (!/(^|\.)carlpasser\.jp$/.test(location.hostname)) return; // 本番以外（プレビュー・確認用）は数えない
+  try { fetch("/.netlify/functions/carmatch-count", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body), keepalive: true }).catch(() => {}); } catch (e) {}
+}
 function track(name, params = {}) {
   try {
     if (typeof window.gtag === "function") window.gtag("event", name, params);
@@ -870,7 +876,7 @@ function renderStart() {
     </section>
     <div class="foot"><span class="motto">10 PEOPLE 10 CARS.</span></div>
   </div>`;
-  document.getElementById("go").onclick = () => { state = { screen: "quiz", idx: 0, answers: [] }; track("car_match_start"); render(); };
+  document.getElementById("go").onclick = () => { state = { screen: "quiz", idx: 0, answers: [] }; track("car_match_start"); count({ e: "start" }); render(); };
 }
 
 const riderLeft = p => `calc((100% - 146px) * ${p})`;
@@ -935,6 +941,8 @@ function goalSequence(r) {
   const finish = () => {
     timers.forEach(clearTimeout);
     if (state.screen !== "quiz") return;
+    const d = diagnose(state.answers);
+    count({ e: "done", type: d.type, sub: subOf(state.answers, d.need) || d.second, need: d.need });
     state.screen = "result"; render();
   };
   if (r && !rm) { r.style.transition = "left .6s cubic-bezier(.6,0,.9,.5)"; r.style.left = "calc(100% + 40px)"; }

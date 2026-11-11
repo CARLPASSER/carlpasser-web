@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>CAR MATCH 集計</title>
+<link rel="icon" type="image/png" href="/logo_square.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@1,100..125,800..900&family=Outfit:wght@500;600;700;800&family=Noto+Sans+JP:wght@400;500;700;800&display=swap">
+<!-- CAR MATCH の社内向け集計ページ。データは合言葉（Netlifyの環境変数 CARMATCH_STATS_KEY）がないと読めない -->
+<style>
+:root {
+  color-scheme: light;
+  --bg: #f4f2ed; --white: #ffffff; --ink: #1d1d1f; --ink-2: #3c3b39; --muted: #78756e; --line: #e3dfd6;
+  --blue: #2451b5; --blue-deep: #18357d; --sky: #e4ebf8; --track: #ece8de;
+  --logo: "Archivo", "Helvetica Neue", Arial, sans-serif; --latin: "Outfit", "Helvetica Neue", Arial, sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--bg); color: var(--ink); font-family: "Noto Sans JP", sans-serif; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 760px; margin: 0 auto; padding: 28px 16px 64px; display: flex; flex-direction: column; gap: 20px; }
+.logo { font-family: var(--logo); font-style: italic; font-weight: 900; font-size: 22px; letter-spacing: -.01em; }
+.logo span { color: var(--blue); }
+h1 { font-size: 24px; font-weight: 800; line-height: 1.4; }
+.lead { color: var(--ink-2); font-size: 14px; }
+.box { background: var(--white); border-radius: 20px; padding: 20px; display: flex; flex-direction: column; gap: 14px; }
+.box h2 { font-size: 17px; font-weight: 800; }
+.box h2 small { display: block; font-size: 12px; font-weight: 500; color: var(--muted); }
+.note { font-size: 12px; color: var(--muted); }
+form { display: flex; gap: 8px; flex-wrap: wrap; }
+input { flex: 1 1 200px; font: inherit; padding: 12px 14px; border: 1.5px solid var(--line); border-radius: 12px; background: var(--white); }
+input:focus { outline: 2px solid var(--blue); outline-offset: 1px; }
+button { font: inherit; font-weight: 700; cursor: pointer; border: 0; border-radius: 999px; padding: 12px 22px; background: var(--blue); color: var(--white); }
+button:hover { background: var(--blue-deep); }
+.err { color: #c8205a; font-size: 14px; font-weight: 700; }
+.tabs { display: flex; gap: 6px; flex-wrap: wrap; }
+.tabs button { background: var(--white); color: var(--ink); border: 1.5px solid var(--line); padding: 8px 16px; font-size: 14px; }
+.tabs button[aria-pressed="true"] { background: var(--ink); color: var(--white); border-color: var(--ink); }
+.kpis { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.kpi { background: var(--white); border-radius: 16px; padding: 14px 16px; }
+.kpi .l { font-size: 12px; color: var(--muted); font-weight: 700; }
+.kpi .v { font-family: var(--latin); font-weight: 800; font-size: 30px; line-height: 1.2; font-variant-numeric: tabular-nums; }
+.kpi .v small { font-size: 14px; margin-left: 2px; }
+.bars { display: flex; flex-direction: column; gap: 10px; }
+.bar { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 10px; align-items: end; }
+.bar .name { font-size: 14px; }
+.bar .name b { font-weight: 700; }
+.bar .name small { display: block; color: var(--muted); font-weight: 500; font-size: 12px; line-height: 1.5; }
+.bar .num { font-family: var(--latin); font-weight: 700; font-size: 14px; font-variant-numeric: tabular-nums; text-align: right; }
+.bar .num small { color: var(--muted); font-weight: 500; margin-left: 6px; }
+.bar .track { grid-column: 1 / -1; height: 10px; border-radius: 6px; background: var(--track); overflow: hidden; }
+.bar .fill { display: block; height: 100%; border-radius: 6px; background: var(--blue); }
+.bar.top .name b::after { content: "いちばん多い"; display: inline-block; white-space: nowrap; margin-left: 8px; font-size: 11px; font-weight: 700; color: var(--blue); background: var(--sky); border-radius: 999px; padding: 1px 8px; vertical-align: 1px; }
+.sub-detail { padding-left: 14px; border-left: 2px solid var(--line); }
+table { width: 100%; border-collapse: collapse; font-size: 14px; font-variant-numeric: tabular-nums; }
+th, td { padding: 8px 6px; border-bottom: 1px solid var(--line); text-align: right; }
+th:first-child, td:first-child { text-align: left; }
+th { font-size: 12px; color: var(--muted); font-weight: 700; }
+.empty { color: var(--muted); font-size: 14px; }
+[hidden] { display: none !important; }
+@media (max-width: 480px) { .kpi .v { font-size: 24px; } .kpi { padding: 12px; } }
+</style>
+</head>
+
+<body>
+<div class="wrap">
+  <p class="logo">CAR <span>MATCH</span></p>
+  <div>
+    <h1>遊んでくれた人の集計</h1>
+    <p class="lead">どのタイプ、どんなクルマのカテゴリーが多いかを見るための社内用ページです。</p>
+  </div>
+
+  <section class="box" id="login">
+    <h2>合言葉を入力</h2>
+    <form id="keyForm">
+      <input id="key" type="password" autocomplete="current-password" placeholder="合言葉" aria-label="合言葉" required>
+      <button type="submit">見る</button>
+    </form>
+    <p class="err" id="err" role="alert"></p>
+  </section>
+
+  <div id="view" hidden style="display:flex;flex-direction:column;gap:20px">
+    <div class="tabs" role="group" aria-label="期間">
+      <button data-days="0" aria-pressed="true">全期間</button>
+      <button data-days="30" aria-pressed="false">直近30日</button>
+      <button data-days="7" aria-pressed="false">直近7日</button>
+    </div>
+
+    <div class="kpis">
+      <div class="kpi"><p class="l">遊び始めた</p><p class="v" id="kStart">0</p></div>
+      <div class="kpi"><p class="l">最後まで診断</p><p class="v" id="kDone">0</p></div>
+      <div class="kpi"><p class="l">完了率</p><p class="v" id="kRate">–</p></div>
+    </div>
+
+    <section class="box">
+      <h2>タイプ別<small>似合うクルマのカテゴリー（結果の8タイプ）</small></h2>
+      <div class="bars" id="byType"></div>
+    </section>
+
+    <section class="box">
+      <h2>もうひとつの顔<small>走り・軽・旧車の好みと、2番目に近いタイプ</small></h2>
+      <div class="bars" id="bySub"></div>
+      <div class="sub-detail">
+        <p class="note">「2番目のタイプ」の内訳</p>
+        <div class="bars" id="bySecond"></div>
+      </div>
+    </section>
+
+    <section class="box">
+      <h2>暮らしの条件<small>乗る人数や荷物から決まる「今の暮らしに合う一台」の条件</small></h2>
+      <div class="bars" id="byNeed"></div>
+    </section>
+
+    <section class="box">
+      <h2>日別</h2>
+      <div id="byDay"></div>
+    </section>
+
+    <p class="note">同じ人が何回も遊ぶと、その分も数に入ります。人数の正確な数ではなく、傾向を見るための数字です。名前・連絡先などの個人情報は集めていません。日付は日本時間です。</p>
+  </div>
+</div>
+
+<script>
+const TYPE_INFO = {
+  wander:  ["01 寄り道しすぎ派", "SUV・クロスオーバー"],
+  family:  ["02 うちのクルマはリビング派", "ミニバン"],
+  style:   ["03 見た目も走りもゆずれない派", "スポーツカー・スポーツハッチ"],
+  gear:    ["04 とりあえず全部積む派", "ピックアップ・バン"],
+  vintage: ["05 古いものに弱い派", "ネオクラシック"],
+  city:    ["06 近所でもおしゃれしたい派", "おしゃれコンパクト・輸入コンパクト"],
+  smart:   ["07 比べてから決める派", "コンパクト・ハイブリッド"],
+  cruise:  ["08 気づけば県外派", "ステーションワゴン・上質SUV"],
+};
+const SUB_INFO = { SPORT: ["走り好き", "スポーツカー"], KEI: ["軽でちょうどいい", "軽自動車"], NEO: ["旧車好き", "ネオクラシック"], SECOND: ["2番目のタイプ", "下に内訳"] };
+const NEED_INFO = { FAMILY: ["家族・大人数", "乗り降りと広さを優先"], GEAR: ["荷物・道具が多い", "積みやすさを優先"], CITY: ["街乗り中心", "小回りと維持費を優先"], FREE: ["身軽", "条件はゆるやか"] };
+
+const $ = id => document.getElementById(id);
+let rows = [], days = 0;
+
+function esc(s) { return String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c])); }
+function storedKey() { try { return sessionStorage.getItem("cmStatsKey") || ""; } catch (e) { return ""; } }
+function storeKey(k) { try { sessionStorage.setItem("cmStatsKey", k); } catch (e) {} }
+
+async function load(key) {
+  $("err").textContent = "";
+  try {
+    const r = await fetch("/.netlify/functions/carmatch-stats", { headers: { "x-stats-key": key }, cache: "no-store" });
+    const body = await r.json().catch(() => ({}));
+    if (!r.ok) { $("err").textContent = body.message || `読み込めませんでした（${r.status}）`; return; }
+    storeKey(key);
+    rows = body.rows || [];
+    $("login").hidden = true; $("view").hidden = false;
+    draw();
+  } catch (e) {
+    $("err").textContent = "読み込めませんでした。通信状況を確認してください。";
+  }
+}
+
+function since() {
+  if (!days) return "";
+  const d = new Date(Date.now() + 9 * 3600e3 - (days - 1) * 864e5);
+  return d.toISOString().slice(0, 10);
+}
+
+function bars(el, entries, total) {
+  if (!total) { el.innerHTML = `<p class="empty">まだデータがありません</p>`; return; }
+  const max = Math.max(...entries.map(e => e.n));
+  el.innerHTML = entries.map(e => {
+    const pct = Math.round(e.n / total * 100);
+    return `<div class="bar${e.n === max && e.n > 0 && entries.length > 1 ? " top" : ""}">
+      <span class="name"><b>${esc(e.name)}</b><small>${esc(e.sub)}</small></span>
+      <span class="num">${e.n}<small>${pct}%</small></span>
+      <span class="track"><span class="fill" style="width:${max ? e.n / max * 100 : 0}%"></span></span>
+    </div>`;
+  }).join("");
+}
+
+function draw() {
+  const from = since();
+  const inRange = rows.filter(r => !from || r[1] >= from);
+  const starts = inRange.filter(r => r[0] === "start").reduce((a, r) => a + r[r.length - 1], 0);
+  const done = inRange.filter(r => r[0] === "done");
+  const total = done.reduce((a, r) => a + r[5], 0);
+  $("kStart").textContent = starts;
+  $("kDone").textContent = total;
+  $("kRate").innerHTML = starts ? `${Math.min(100, Math.round(total / starts * 100))}<small>%</small>` : "–";
+
+  const sum = (pick) => { const m = {}; done.forEach(r => { const k = pick(r); m[k] = (m[k] || 0) + r[5]; }); return m; };
+  const sorted = (m, info) => Object.keys(info).map(k => ({ k, n: m[k] || 0, name: info[k][0], sub: info[k][1] })).sort((a, b) => b.n - a.n);
+
+  bars($("byType"), sorted(sum(r => r[2]), TYPE_INFO), total);
+  bars($("bySub"), sorted(sum(r => SUB_INFO[r[3]] ? r[3] : "SECOND"), SUB_INFO), total);
+  const sec = sum(r => r[3]);
+  const secTotal = Object.keys(TYPE_INFO).reduce((a, k) => a + (sec[k] || 0), 0);
+  bars($("bySecond"), sorted(sec, TYPE_INFO).filter(e => e.n > 0), secTotal);
+  bars($("byNeed"), sorted(sum(r => r[4]), NEED_INFO), total);
+
+  const dayMap = {};
+  inRange.forEach(r => { const d = dayMap[r[1]] ??= { s: 0, d: 0 }; r[0] === "start" ? d.s += r[r.length - 1] : d.d += r[5]; });
+  const list = Object.keys(dayMap).sort().reverse().slice(0, 31);
+  $("byDay").innerHTML = list.length
+    ? `<table><thead><tr><th>日付</th><th>遊び始めた</th><th>最後まで診断</th></tr></thead><tbody>${list.map(d => `<tr><td>${d}</td><td>${dayMap[d].s}</td><td>${dayMap[d].d}</td></tr>`).join("")}</tbody></table>`
+    : `<p class="empty">まだデータがありません</p>`;
+}
+
+$("keyForm").addEventListener("submit", e => { e.preventDefault(); load($("key").value.trim()); });
+document.querySelectorAll(".tabs button").forEach(b => b.addEventListener("click", () => {
+  days = +b.dataset.days;
+  document.querySelectorAll(".tabs button").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
+  draw();
+}));
+if (storedKey()) load(storedKey());
+</script>
+</body>
+
+</html>
