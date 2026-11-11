@@ -1,3 +1,5 @@
 # Local Netlify folder
 .netlify
 .env
+# Netlify Functions の依存パッケージ
+node_modules
