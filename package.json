@@ -1,0 +1,8 @@
+{
+  "name": "carlpasser-web",
+  "private": true,
+  "description": "Netlify Functions の依存パッケージ（CAR MATCH の集計で Netlify Blobs を使う）",
+  "dependencies": {
+    "@netlify/blobs": "^8.1.0"
+  }
+}
