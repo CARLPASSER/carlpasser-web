@@ -179,7 +179,7 @@ a { color: inherit; }
 .opt:hover { border-color: var(--blue); transform: translateY(-1px); }
 .opt .k { flex: none; width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center;
   background: var(--sky); color: var(--blue); font-family: var(--latin); font-weight: 700; font-size: 14px; }
-.opt .t { font-weight: 700; font-size: 15.5px; line-height: 1.5; min-width: 0; }
+.opt .t { font-weight: 700; font-size: 15.5px; line-height: 1.5; min-width: 0; word-break: keep-all; overflow-wrap: anywhere; }
 .opt .s { display: block; font-size: 12.5px; color: var(--muted); font-weight: 400; }
 .opt.picked { background: var(--blue); border-color: var(--blue); color: var(--white); animation: tap .32s ease-out; }
 @keyframes tap { 0% { transform: scale(.97); } 60% { transform: scale(1.015); } 100% { transform: scale(1); } }
@@ -314,6 +314,7 @@ a { color: inherit; }
 .next { background: var(--white); border-radius: 20px; padding: 24px 20px; display: flex; flex-direction: column; gap: 14px; }
 .next h2 { font-size: 20px; font-weight: 800; line-height: 1.5; text-wrap: balance; word-break: keep-all; overflow-wrap: anywhere; }
 .next p { font-size: 15px; color: var(--ink-2); }
+.next .cta-lead { margin-top: 4px; font-weight: 800; color: var(--ink); text-align: center; }
 .next .btns { display: flex; flex-direction: column; gap: 10px; }
 
 /* ---------- save modal ---------- */
@@ -343,9 +344,9 @@ const LOGO = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABNIAAAJeCAYAAABxrShK
 
 /* 公開時に設定する値（未確定のものは空のまま。空なら代わりの動きをする）
    SHARE_URL   : 診断ページの公開URL。空なら今開いているページのURLを使う
-   CONSULT_URL : 公式LINEなど相談先のURL。空なら「クルマ選びを相談する」ボタンを出さない */
+   CONSULT_URL : 公式LINEのURL（サイト共通の https://lin.ee/TLGhT3W）。空なら「LINEで話してみる」ボタンを出さない */
 const SHARE_URL = "https://carlpasser.jp/carmatch/";
-const CONSULT_URL = "";
+const CONSULT_URL = "https://lin.ee/TLGhT3W";
 const pageURL = () => SHARE_URL || location.href.split("#")[0];
 
 /* SNS共有時のプレビュー（og:〜）は <head> に設定済み。画像は /carmatch/ogp.png（1200×630） */
@@ -494,18 +495,18 @@ const NEEDS = {
 
 /* =========================================================
    10問（前半4問＝好きなもの / 後半6問＝暮らしとクルマ）
-   w = 8タイプへの加点 / r = 結果に出す理由
+   w = 8タイプへの加点 / r = 結果に出す理由 / t の「|」はスマホで改行してよい位置
    ========================================================= */
 const QUESTIONS = [
   { id: "holiday", part: 1, q: "休みの日、クルマでどこへ行く？", opts: [
-    { t: "自然の中でキャンプ・釣り", s: "道具がどんどん増える", w: { gear: 3, wander: 1 }, r: "休みの日は自然の中で遊ぶ" },
-    { t: "カフェやショッピングをはしご", s: "寄り道が本番", w: { city: 3, vintage: 1 }, r: "カフェめぐりやショッピングが好き" },
-    { t: "家族と公園やモールへ", s: "帰りは後ろが全員寝てる", w: { family: 3 }, r: "休日は家族とおでかけ" },
-    { t: "行き先を決めずにドライブ", s: "気になる道は曲がる", w: { wander: 2, style: 1, cruise: 1 }, r: "あてもなくドライブするのが好き" },
+    { t: "自然の中で|キャンプ・釣り", s: "道具がどんどん増える", w: { gear: 3, wander: 1 }, r: "休みの日は自然の中で遊ぶ" },
+    { t: "カフェや|ショッピングをはしご", s: "寄り道が本番", w: { city: 3, vintage: 1 }, r: "カフェめぐりやショッピングが好き" },
+    { t: "家族と|公園やモールへ", s: "帰りは後ろが全員寝てる", w: { family: 3 }, r: "休日は家族とおでかけ" },
+    { t: "行き先を決めずに|ドライブ", s: "気になる道は曲がる", w: { wander: 2, style: 1, cruise: 1 }, r: "あてもなくドライブするのが好き" },
   ]},
   { id: "space", part: 1, q: "クルマの中、どんな空間が好き？", opts: [
     { t: "好きな音楽を楽しめる、自分だけの空間", s: "ボリュームは自分で決めたい", w: { vintage: 2, style: 1, cruise: 1 }, r: "好きな音楽を楽しめる自分だけの空間が好き" },
-    { t: "家族や友達とワイワイできる空間", s: "車内がいちばん盛り上がる", w: { family: 2, city: 1 }, r: "みんなでワイワイできる車内が好き" },
+    { t: "家族や友達と|ワイワイできる空間", s: "車内がいちばん盛り上がる", w: { family: 2, city: 1 }, r: "みんなでワイワイできる車内が好き" },
     { t: "静かで落ち着ける、居心地のいい空間", s: "乗ったらほっとしたい", w: { cruise: 2, smart: 2 }, r: "静かで落ち着ける車内が好き" },
     { t: "景色を楽しみながら、気持ちよく走れる空間", s: "窓の外も楽しみのうち", w: { wander: 2, style: 1 }, r: "景色を楽しみながら走るのが好き" },
   ]},
@@ -513,13 +514,13 @@ const QUESTIONS = [
     { t: "シンプルで飽きない", s: "10年後も好きでいられる", w: { smart: 3, cruise: 1 }, r: "シンプルで飽きないデザインが好き" },
     { t: "角ばっていて無骨", s: "道具っぽさがたまらない", w: { gear: 2, vintage: 2 }, r: "角ばった無骨なカタチに惹かれる" },
     { t: "丸くてちょっとレトロ", s: "見てるだけで和む", w: { city: 2, vintage: 2 }, r: "丸くてレトロなデザインが好き" },
-    { t: "低くてシュッとしてる", s: "止まってても速そう", w: { style: 3 }, r: "低くてシュッとしたカタチに惹かれる" },
+    { t: "低くてスポーティ", s: "見るだけで走りたくなる", w: { style: 3 }, r: "低くてスポーティなカタチに惹かれる" },
   ]},
-  { id: "oldnew", part: 1, q: "新しいものと古いもの、惹かれるのは？", opts: [
-    { t: "最新のもの", s: "アップデートにワクワク", w: { smart: 2, cruise: 1, style: 1 }, r: "新しい機能にワクワクする" },
-    { t: "新しいのに懐かしいもの", s: "レトロ風がちょうどいい", w: { city: 2, vintage: 1 }, r: "新しいのに懐かしいものが好き" },
-    { t: "古着・中古・ヴィンテージ", s: "育ってきた味がいい", w: { vintage: 3 }, r: "時間が育てた味のあるものが好き" },
-    { t: "どっちでもいい", s: "使えればそれでいい", w: { smart: 2, gear: 1, family: 1 }, r: "モノは使い勝手で選ぶ" },
+  { id: "oldnew", part: 1, q: "新しいものと、時間を重ねたもの。惹かれるのは？", opts: [
+    { t: "やっぱり新しいもの", s: "新機能や|アップデートにワクワク", w: { smart: 2, cruise: 1, style: 1 }, r: "新しい機能にワクワクする" },
+    { t: "新しいけど、どこか懐かしいもの", s: "レトロっぽさがちょうどいい", w: { city: 2, vintage: 1 }, r: "新しいのに懐かしいものが好き" },
+    { t: "昔のデザインや、使い込まれたもの", s: "時間がつくる味が好き", w: { vintage: 3 }, r: "時間が育てた味のあるものが好き" },
+    { t: "どっちも好き", s: "いいと思えば新旧は気にしない", w: { smart: 2, gear: 1, family: 1 }, r: "いいと思えば新旧は気にしない" },
   ]},
   { id: "use", part: 2, q: "クルマ、いちばん何に使いそう？", opts: [
     { t: "通勤・通学", s: "毎日の相棒", w: { smart: 3, cruise: 1 }, r: "毎日の足としてよく乗る" },
@@ -529,33 +530,33 @@ const QUESTIONS = [
   ]},
   { id: "who", part: 2, q: "クルマの後ろの席、ふだんはどうなってる？", opts: [
     { t: "ほぼ荷物置き場", s: "人が乗るのはたまに", w: { style: 2, vintage: 1 }, r: "後ろの席はほぼ荷物置き場" },
-    { t: "ときどき友だちや家族が乗る", s: "乗っても2〜3人", w: { city: 1, style: 1, cruise: 1 }, r: "乗るのはたいてい2〜3人まで" },
-    { t: "チャイルドシートの定位置", s: "子どもの指定席", w: { family: 3 }, r: "後ろの席は子どもの指定席" },
+    { t: "ときどき|友だちや家族が乗る", s: "乗っても2〜3人", w: { city: 1, style: 1, cruise: 1 }, r: "乗るのはたいてい2〜3人まで" },
+    { t: "チャイルドシートの|定位置", s: "子どもの指定席", w: { family: 3 }, r: "後ろの席は子どもの指定席" },
     { t: "みんなで乗ると、だいたい満席", s: "運転はたいてい自分", w: { family: 1, gear: 1 }, r: "みんなで乗ると満席になる" },
   ]},
   { id: "luggage", part: 2, q: "荷物はどれくらい積みそう？", opts: [
     { t: "バッグひとつ", s: "身軽がいちばん", w: { city: 2, style: 1 }, r: "荷物は身軽" },
-    { t: "買い物袋やベビーカー", s: "日常の荷物そこそこ", w: { family: 2, smart: 1 }, r: "買い物袋やベビーカーを積む" },
-    { t: "キャンプ道具をがっつり", s: "積み込みの腕が上がる", w: { gear: 3, wander: 1 }, r: "キャンプ道具をがっつり積む" },
-    { t: "趣味の道具や大きな荷物を積みたい", s: "自転車もサーフボードも", w: { wander: 2, gear: 1 }, r: "趣味の道具や大きな荷物を積みたい" },
+    { t: "買い物袋や|ベビーカー", s: "日常の荷物そこそこ", w: { family: 2, smart: 1 }, r: "買い物袋やベビーカーを積む" },
+    { t: "キャンプ道具を|がっつり", s: "積み込みの腕が上がる", w: { gear: 3, wander: 1 }, r: "キャンプ道具をがっつり積む" },
+    { t: "趣味の道具や|大きな荷物を積みたい", s: "自転車もサーフボードも", w: { wander: 2, gear: 1 }, r: "趣味の道具や大きな荷物を積みたい" },
   ]},
   { id: "custom", part: 2, q: "クルマは自分好みにしたい？", opts: [
-    { t: "そのままのデザインを楽しみたい", s: "完成されたカタチが好き", w: { smart: 2, family: 1, cruise: 1 }, r: "そのままのデザインを楽しみたい" },
-    { t: "色や内装にはこだわりたい", s: "シートの色まで選びたい", w: { city: 2, vintage: 1, cruise: 1 }, r: "色や内装にこだわりたい" },
-    { t: "ホイールやパーツも自分好みにしたい", s: "いじるのも楽しみのうち", w: { style: 2, gear: 1, vintage: 1 }, r: "ホイールやパーツも自分好みにしたい" },
-    { t: "便利な装備を充実させたい", s: "ないと困るものから", w: { family: 1, cruise: 2, smart: 1 }, r: "便利な装備を充実させたい" },
+    { t: "そのままのデザインを|楽しみたい", s: "完成されたカタチが好き", w: { smart: 2, family: 1, cruise: 1 }, r: "そのままのデザインを楽しみたい" },
+    { t: "色や内装には|こだわりたい", s: "シートの色まで選びたい", w: { city: 2, vintage: 1, cruise: 1 }, r: "色や内装にこだわりたい" },
+    { t: "ホイールやパーツも|自分好みにしたい", s: "いじるのも楽しみのうち", w: { style: 2, gear: 1, vintage: 1 }, r: "ホイールやパーツも自分好みにしたい" },
+    { t: "便利な装備を|充実させたい", s: "ないと困るものから", w: { family: 1, cruise: 2, smart: 1 }, r: "便利な装備を充実させたい" },
   ]},
   { id: "time", part: 2, q: "クルマに乗っているとき、何してることが多そう？", opts: [
-    { t: "運転そのものを楽しんでいる", s: "カーブが来るとうれしい", w: { style: 3 }, r: "運転そのものを楽しみたい" },
-    { t: "寄り道先を探している", s: "気になる店は、とりあえず寄る", w: { wander: 3 }, r: "寄り道先を探しながら走りたい" },
-    { t: "気づけば県外まで走っている", s: "休憩はサービスエリアのグルメ", w: { cruise: 3 }, r: "気づけば遠くまで走っている" },
-    { t: "車内でごはんや昼寝", s: "ほぼ秘密基地", w: { vintage: 2, gear: 1 }, r: "車内を秘密基地みたいに使いたい" },
+    { t: "運転そのものを|楽しんでいる", s: "カーブが来るとうれしい", w: { style: 3 }, r: "運転そのものを楽しみたい" },
+    { t: "寄り道先を|探している", s: "気になる店は、とりあえず寄る", w: { wander: 3 }, r: "寄り道先を探しながら走りたい" },
+    { t: "気づけば|遠くまで走っている", s: "長距離ドライブもわりと好き", w: { cruise: 3 }, r: "気づけば遠くまで走っている" },
+    { t: "車内で|ごはんや昼寝", s: "ほぼ秘密基地", w: { vintage: 2, gear: 1 }, r: "車内を秘密基地みたいに使いたい" },
   ]},
   { id: "honne", part: 2, q: "最後に本音。クルマ選びで大事なのは？", opts: [
     { t: "好きなら、多少の不便はOK", s: "好き100%", w: { style: 1, vintage: 2, city: 1 }, r: "好きなら多少の不便はOK", like: 3, life: 0 },
     { t: "好き寄り。でも使いやすさも", s: "好き70%", w: { wander: 1 }, r: "好き寄りだけど使いやすさも気になる", like: 2, life: 1 },
     { t: "暮らし寄り。でも好きも少し", s: "暮らし70%", w: { family: 1, cruise: 1 }, r: "暮らし寄りだけど好きな部分もほしい", like: 1, life: 2 },
-    { t: "使いやすさがいちばん", s: "暮らし100%", w: { smart: 2 }, r: "使いやすさがいちばん", like: 0, life: 3 },
+    { t: "使いやすさが|いちばん", s: "暮らし100%", w: { smart: 2 }, r: "使いやすさがいちばん", like: 0, life: 3 },
   ]},
 ];
 const Q_INDEX = Object.fromEntries(QUESTIONS.map((q, i) => [q.id, i]));
@@ -892,7 +893,7 @@ function renderQuiz() {
       <h2 class="qtext">${esc(Q.q)}</h2>
       <div class="opts">${Q.opts.map((o, k) => `
         <button class="opt${state.answers[i] === k ? " picked" : ""}" id="opt-${k}" data-k="${k}">
-          <span class="k">${k + 1}</span><span class="t">${esc(o.t)}<span class="s">${esc(o.s)}</span></span>
+          <span class="k">${k + 1}</span><span class="t">${esc(o.t).replace("|", "<wbr>")}<span class="s">${esc(o.s).replace("|", "<wbr>")}</span></span>
         </button>`).join("")}</div>
     </section>
     <div class="nav">
@@ -1056,7 +1057,8 @@ function renderResult() {
     <section class="next">
       <h2>実際のクルマ選びも、<wbr>好きと暮らしの<wbr>両方から。</h2>
       <p>診断は、あくまでひとつのヒント。「こんなクルマもアリかも」と思ったら、実際のクルマ選びも一緒に考えましょう。</p>
-      ${CONSULT_URL ? `<a class="btn line wide" id="consult" href="${esc(CONSULT_URL)}" target="_blank" rel="noopener">クルマ選びを相談する</a>` : ""}
+      ${CONSULT_URL ? `<p class="cta-lead">実際の車探しは、ここから。</p>
+      <a class="btn wide" id="consult" href="${esc(CONSULT_URL)}" target="_blank" rel="noopener noreferrer">LINEで話してみる</a>` : ""}
     </section>
 
     <div class="foot">${BRAND()}<p>CAR MATCHは、回答から自動で選ぶ遊びの診断です。性格や適性を判定するものではありません。</p></div>
