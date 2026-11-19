@@ -397,6 +397,8 @@ const TYPES = {
     flavor: { NEO:   [["マツダ", "ロードスター（初代 NA）"], "リトラクタブルライトの初代。軽くて素直な走りは、今乗っても気持ちいい。"],
               SPORT: [["ホンダ", "シビック タイプR"], "毎日乗れる5ドアで、中身は本気のスポーツ。走るのが好きなら一度は乗ってみたい一台。"],
               KEI:   [["ホンダ", "S660"], "軽のミッドシップ・オープン。小さいのに、走りのワクワクは本物です。"] },
+    roomy:  { NEO:   [["BMW", "3シリーズ ツーリング（E46）"], "走りのいい、少し前のBMWワゴン。荷物や後ろの席を使っても、運転の楽しさは手放しません。"],
+              KEI:   [["スズキ", "アルトワークス"], "軽くてキビキビ走る、軽のスポーツ。後ろの席もちゃんと使えます。"] },
     fit: { FAMILY: [["トヨタ", "ヴォクシー"], "スライドドアで家族の乗り降りはラク。シャープな顔つきで、見た目もゆずりません。"],
            GEAR:   [["マツダ", "CX-60"], "荷室がしっかり広く、走りの質も高いSUV。道具を積んでも運転が楽しい。"],
            CITY:   [["トヨタ", "ヤリス"], "小回りが利いて毎日使いやすい。軽快なハンドリングで、近所の運転も楽しくなります。"],
@@ -428,6 +430,7 @@ const TYPES = {
     flavor: { NEO:   [["ローバー", "ミニ"], "小さくて丸い、英国の名車。手をかけるほど愛着がわく、古いもの好きの定番です。"],
               SPORT: [["BMW", "3シリーズ（E30）"], "角ばったボディに、軽快な走り。80年代のスポーツセダンを、じっくり味わえます。"],
               KEI:   [["ダイハツ", "ミラジーノ"], "丸目のレトロ顔の軽。古いクルマの雰囲気を、毎日気軽に楽しめます。"] },
+    roomy:  { NEO:   [["三菱", "パジェロ（2代目）"], "角ばった90年代の4WD。家族も荷物もしっかり乗せて、古いクルマの味わいを。"] },
     fit: { FAMILY: [["シトロエン", "ベルランゴ"], "両側スライドドアで乗り降りしやすいフランス車。どこか懐かしいデザインも魅力です。"],
            GEAR:   [["ボルボ", "XC70（少し前の年式）"], "荷室が広く、少し前のボルボらしい味わいも。道具を積んでも絵になります。"],
            CITY:   [["スズキ", "ラパン LC"], "レトロな顔つきの軽。小回りが利いて、毎日の買い物もラクです。"],
@@ -444,6 +447,7 @@ const TYPES = {
     flavor: { NEO:   [["日産", "フィガロ"], "90年代に生まれた、レトロでかわいいオープンカー。街に停めているだけで絵になります。"],
               SPORT: [["アバルト", "595"], "小さくてかわいいのに、走りは元気。街なかのちょっとした運転も楽しくなります。"],
               KEI:   [["ダイハツ", "ムーヴ キャンバス"], "やさしい色づかいの軽。スライドドアで、毎日の買い物もラクです。"] },
+    roomy:  { NEO:   [["ルノー", "カングー（初代）"], "丸っこい顔の初代カングー。レトロでおしゃれなまま、家族も荷物もたっぷり乗せられます。"] },
     fit: { FAMILY: [["プジョー", "リフター"], "両側スライドドアで送り迎えもラク。街に映えるデザインのまま、家族仕様に。"],
            GEAR:   [["フォルクスワーゲン", "T-Cross"], "コンパクトなのに荷室は広め。おしゃれなまま、荷物もしっかり積めます。"],
            CITY:   [["ルノー", "トゥインゴ"], "小さくて小回り抜群。狭い道も駐車場も気になりません。"],
@@ -459,6 +463,7 @@ const TYPES = {
     flavor: { NEO:   [["ホンダ", "インサイト（初代）"], "燃費をとことん突き詰めた2人乗りのハイブリッド。比べる派なら、その発想にうなるはず。"],
               SPORT: [["トヨタ", "カローラスポーツ"], "ハイブリッドも選べるスポーティなハッチバック。燃費と運転の楽しさを、どちらも。"],
               KEI:   [["スズキ", "アルト"], "軽くて燃費がよく、維持費もおさえやすい。とことん合理的に選ぶならこれ。"] },
+    roomy:  { NEO:   [["トヨタ", "プリウス（2代目）"], "ハイブリッドを広めた立役者。荷室の広い5ドアで、燃費と使いやすさを今も両立しています。"] },
     fit: { FAMILY: [["トヨタ", "シエンタ"], "コンパクトなスライドドア車で、ハイブリッドも選べる。使いやすさと維持費のバランス役です。"],
            GEAR:   [["トヨタ", "ヤリスクロス"], "コンパクトでも荷室は十分。ハイブリッドで燃費もおさえやすい。"],
            CITY:   [["日産", "サクラ"], "近場の移動が中心なら、ランニングコストをおさえやすい軽の電気自動車です。"],
@@ -837,6 +842,9 @@ const app = document.getElementById("app");
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 const pad = n => String(n).padStart(2, "0");
 const carName = ([mk, md]) => `${mk} ${md}`;
+/* 2人乗りや、後ろの席・荷室がほとんど使えないクルマ。
+   家族（チャイルドシート・満席）や大きな荷物と答えた人には、①とSURPRISE PICKに出さず、使える仲間（roomy）に替える */
+const TIGHT = ["マツダ ロードスター", "トヨタ GR86", "マツダ ロードスター（初代 NA）", "ホンダ S660", "ローバー ミニ", "日産 フィガロ", "ホンダ インサイト（初代）"];
 const plainName = n => n.replace("|", "");
 const nameHTML = n => esc(n).replace("|", "<wbr>");
 const reduce = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -976,15 +984,20 @@ function renderResult() {
   const d = diagnose(state.answers), T = TYPES[d.type];
   const need = NEEDS[d.need];
   const matched = d.need === "FREE" || T.natural === d.need;
-  const p1 = { car: T.ideal[0], sub: T.body, why: "前半の「好きなもの」の答えから選んだ、気分が上がる一台。" };
+  const roomy = d.need === "FAMILY" || d.need === "GEAR";
+  const fits = c => !roomy || !TIGHT.includes(carName(c));
+  const fav = T.ideal.find(fits) || T.ideal[0];
+  const p1 = { car: fav, sub: T.body, why: fav === T.ideal[0] ? "前半の「好きなもの」の答えから選んだ、気分が上がる一台。"
+    : `前半の「好きなもの」の答えから、${d.need === "FAMILY" ? "家族も乗れる" : "荷物も積める"}ものを選んだ、気分が上がる一台。` };
   const p2 = { car: T.fit[d.need][0], sub: need.body, why: `${need.why}${T.fit[d.need][1]}` };
   const p3 = matched
     ? { car: T.ideal[1], sub: "好きと暮らしが同じ方向", why: "好きなものと今の暮らしが、きれいに重なっています。①の仲間から選べば、どちらもあきらめずに済みそう。" }
     : { car: T.balance[d.need][0], sub: "好きと暮らしのあいだ", why: T.balance[d.need][1] };
   const fl = subOf(state.answers, d.need), T2 = TYPES[d.second];
   const taken = [p1, p2, p3].map(p => carName(p.car));
-  const alt = [T2.ideal[0], T2.ideal[1], T2.ideal[2]].find(c => !taken.includes(carName(c)));
-  const sp = fl ? { car: T.flavor[fl][0], why: T.flavor[fl][1], tag: SUB_TAG[fl] }
+  const alt = [T2.ideal[0], T2.ideal[1], T2.ideal[2]].find(c => fits(c) && !taken.includes(carName(c)));
+  const F = fl && (roomy && !fits(T.flavor[fl][0]) ? T.roomy[fl] : T.flavor[fl]);
+  const sp = fl ? { car: F[0], why: F[1], tag: SUB_TAG[fl] }
     : alt ? { car: alt, why: `もうひとつの顔「${plainName(T2.name)}」から選んだ一台。${T2.body}の気分も、実は似合います。`, tag: "もうひとつの顔から選ぶなら" }
     : { car: T.surprise[0], why: T.surprise[1], tag: "意外と似合う一台" };
   const subName = fl ? SUB_LABEL[fl] : plainName(T2.name);
